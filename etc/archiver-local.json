@@ -1,0 +1,7 @@
+{
+    className: "net.anotheria.moskito.central.storages.AssynchroneousConnector",
+    archiversConstructorMoreParams: "",
+    storageClassName: "net.anotheria.moskito.central.storages.XmlStatStorage",
+    storageParams: "/home/imer/projects/ano/XML",
+    hostName: "thishost.net"
+}
