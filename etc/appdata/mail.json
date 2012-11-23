@@ -1,0 +1,6 @@
+{
+	"host": "$<moskito.mailhost>",
+	"user": "$<moskito.mailuser>",
+	"password": "$<moskito.mailpassword>",
+	"debug": false,
+}
