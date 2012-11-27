@@ -13,7 +13,7 @@
     <name>moskito demonstration webapp</name>
     <packaging>war</packaging>
     <properties>
-        <moskito.version>2.1.0</moskito.version>
+        <moskito.version>2.1.1-SNAPSHOT</moskito.version>
     </properties>
     <build>
         <!-- testSourceDirectory>${project.basedir}/test/component</testSourceDirectory -->
@@ -175,16 +175,6 @@
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-util</artifactId>
                 <version>2.0.0</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>blowfish</groupId>
-                        <artifactId>blowfish</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>net.sf.dozer</groupId>
-                        <artifactId>dozer</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
                 <groupId>net.anotheria</groupId>

@@ -19,10 +19,14 @@ public class SetupThresholds implements ServletContextListener{
 	public void contextInitialized(ServletContextEvent sce) {
 		
 		System.out.println("Configuring thresholds ... ");
-		setupServiceTRThreshold();
-		setupServiceAVGThreshold();
-		setupRequestURIThreshold();
-		setupMemory();
+		try{
+			setupServiceTRThreshold();
+			setupServiceAVGThreshold();
+			setupRequestURIThreshold();
+			setupMemory();
+		}catch(Throwable t){
+			t.printStackTrace();
+		}
 		System.out.println(" ... done.");
 	}
 	
