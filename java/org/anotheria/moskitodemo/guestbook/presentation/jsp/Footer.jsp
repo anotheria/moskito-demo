@@ -4,7 +4,7 @@
 	<div class="fll">
 		<ul>
 			<li><a href="http://moskito.anotheria.net/">Home</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
-			<li><a href="http://moskito.anotheria.net/moskitodemo/">Demo</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+			<li><a href="http://moskito.anotheria.net/Demo.html">Demo</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
 			<li><a href="http://infra.anotheria.net/confluence/display/MSK/Home">Docs</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
 			<li><a href="http://infra.anotheria.net/confluence/display/MSK/HowToGet">Download</a></li>
 		</ul>

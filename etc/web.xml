@@ -50,6 +50,15 @@
 			<param-value>/guestbook/</param-value>
 		</init-param>
    	</filter>
+   	
+   	<filter>
+        <filter-name>MoskitoDemoFilter2</filter-name>
+       	<filter-class>org.anotheria.moskitodemo.MoskitoDemoFilter</filter-class>
+		<init-param>
+			<param-name>path</param-name>
+			<param-value>/demo/</param-value>
+		</init-param>
+   	</filter>
 
 	<filter>
         <filter-name>MoskitoCommandFilter</filter-name>
@@ -153,7 +162,7 @@
    	    <url-pattern>/guestbook/*</url-pattern>
     </filter-mapping>
    	<filter-mapping>
-       	<filter-name>MoskitoDemoFilter</filter-name>
+       	<filter-name>MoskitoDemoFilter2</filter-name>
    	    <url-pattern>/demo/*</url-pattern>
     </filter-mapping>
 
