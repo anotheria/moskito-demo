@@ -13,7 +13,7 @@
     <name>moskito demonstration webapp</name>
     <packaging>war</packaging>
     <properties>
-        <moskito.version>2.1.1</moskito.version>
+        <moskito.version>2.1.5-SNAPSHOT</moskito.version>
     </properties>
     <build>
         <!-- testSourceDirectory>${project.basedir}/test/component</testSourceDirectory -->
