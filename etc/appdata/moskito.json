@@ -23,7 +23,16 @@
 
 	},
 	"@accumulatorsConfig" : {
-		"accumulationAmount": 500
+		"accumulationAmount": 500,
+		"@accumulators": [
+			{
+				"name": "Configured SessionCount Cur 5m",
+				"producerName": "SessionCount",
+				"statName": "Sessions",
+				"valueName": "cur",
+				"intervalName": "5m",
+			}
+		]
 	},
 	"@thresholdsConfig": {
 		"@thresholds": [
