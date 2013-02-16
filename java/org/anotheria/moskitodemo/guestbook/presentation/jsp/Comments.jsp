@@ -20,7 +20,7 @@
 		<div class="w_980">
 			<ul class="main_menu">
 				<li><a href="http://moskito.anotheria.net/">Home</a></li>
-				<li class="active"><a href="http://moskito.anotheria.net/moskitodemo/">Demo</a></li>
+				<li class="active"><a href="http://moskito.anotheria.net/Demo.html">Demo</a></li>
 				<li class="logo"><a href="http://moskito.anotheria.net/"><img src="/moskitodemo/images/logo.png" alt=""/></a></li>
 				<li><a href="https://confluence.opensource.anotheria.net/display/MSK/Home">Docs</a></li>
 				<li><a href="https://confluence.opensource.anotheria.net/display/MSK/01+How+To+Get">Download</a></li>
@@ -76,10 +76,10 @@
 									<thead>
 									<tr class="lineCaptions">
 										<ano:iterate name="headers" id="header"
-													   type="net.anotheria.moskitodemo.guestbook.presentation.bean.CommentTableHeaderBean">
+													   type="org.anotheria.moskitodemo.guestbook.presentation.bean.CommentTableHeaderBean">
 											<th><ano:write name="header" property="caption"/>&nbsp;
 												<ano:iterate name="header" property="links"
-															   type="net.anotheria.moskitodemo.guestbook.presentation.bean.SortLinkBean"
+															   type="org.anotheria.moskitodemo.guestbook.presentation.bean.SortLinkBean"
 															   id="link">
 													<ano:equal name="link" property="active" value="true">
 														<b><ano:write name="link" property="caption"/></b>
@@ -109,7 +109,7 @@
 										<%--</thead>--%>
 									<tbody>
 									<ano:iterate name="comments" id="comment"
-												   type="net.anotheria.moskitodemo.guestbook.presentation.bean.CommentTableItemBean"
+												   type="org.anotheria.moskitodemo.guestbook.presentation.bean.CommentTableItemBean"
 												   indexId="i">
 										<tr><%--<tr class="<%=i.intValue()%2==1	 ? "lineDark" : "lineLight"%>">--%>
 											<td>

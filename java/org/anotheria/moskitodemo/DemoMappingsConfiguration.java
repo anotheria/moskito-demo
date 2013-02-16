@@ -20,38 +20,38 @@ public class DemoMappingsConfiguration implements ActionMappingsConfigurator{
 	@Override public void configureActionMappings(ActionMappings mappings){
 
 		mappings.addMapping("gbookShowComments", ShowCommentsAction.class,
-				new ActionForward("success", "/net/anotheria/moskitodemo/guestbook/presentation/jsp/Comments.jsp")
+				new ActionForward("success", "/org/anotheria/moskitodemo/guestbook/presentation/jsp/Comments.jsp")
 		);
 		
 		mappings.addMapping("gbookShowComment", ShowCommentAction.class,
-				new ActionForward("success", "/net/anotheria/moskitodemo/guestbook/presentation/jsp/Comment.jsp")
+				new ActionForward("success", "/org/anotheria/moskitodemo/guestbook/presentation/jsp/Comment.jsp")
 		);
 
 		mappings.addMapping("gbookDeleteComment", DeleteCommentAction.class,
-				new ActionForward("success", "/net/anotheria/moskitodemo/guestbook/presentation/jsp/Comments.jsp")
+				new ActionForward("success", "/org/anotheria/moskitodemo/guestbook/presentation/jsp/Comments.jsp")
 		);
 		mappings.addMapping("gbookNewComment", NewCommentAction.class,
-				new ActionForward("success", "/net/anotheria/moskitodemo/guestbook/presentation/jsp/NewComment.jsp")
+				new ActionForward("success", "/org/anotheria/moskitodemo/guestbook/presentation/jsp/NewComment.jsp")
 		);
 		mappings.addMapping("gbookCreateComment", CreateCommentAction.class,
-				new ActionForward("success", "/net/anotheria/moskitodemo/guestbook/presentation/jsp/Message.jsp")
+				new ActionForward("success", "/org/anotheria/moskitodemo/guestbook/presentation/jsp/Message.jsp")
 		);
 		mappings.addMapping("gbookAuthorize", AuthorizeUserAction.class,
-				new ActionForward("success", "/net/anotheria/moskitodemo/guestbook/presentation/jsp/Message.jsp")
+				new ActionForward("success", "/org/anotheria/moskitodemo/guestbook/presentation/jsp/Message.jsp")
 		);
 		
 		mappings.addMapping("solveQE", SolveQEAction.class,
-				new ActionForward("success", "/net/anotheria/moskitodemo/usecases/qe/presentation/jsp/QE.jsp")
+				new ActionForward("success", "/org/anotheria/moskitodemo/usecases/qe/presentation/jsp/QE.jsp")
 		);
 		mappings.addMapping("fibonacci", FibonacciCalculatorAction.class,
-				new ActionForward("success", "/net/anotheria/moskitodemo/usecases/fibonacci/presentation/jsp/Success.jsp"),
-				new ActionForward("dialog", "/net/anotheria/moskitodemo/usecases/fibonacci/presentation/jsp/Dialog.jsp")
+				new ActionForward("success", "/org/anotheria/moskitodemo/usecases/fibonacci/presentation/jsp/Success.jsp"),
+				new ActionForward("dialog", "/org/anotheria/moskitodemo/usecases/fibonacci/presentation/jsp/Dialog.jsp")
 		);
 		mappings.addMapping("thresholdsTR", EmulateRequestsAction.class,
-				new ActionForward("success", "/net/anotheria/moskitodemo/threshold/presentation/jsp/Success.jsp")
+				new ActionForward("success", "/org/anotheria/moskitodemo/threshold/presentation/jsp/Success.jsp")
 		);
 		mappings.addMapping("thresholdsAVG", EmulateAverageRequestsAction.class,
-				new ActionForward("success", "/net/anotheria/moskitodemo/threshold/presentation/jsp/Success.jsp")
+				new ActionForward("success", "/org/anotheria/moskitodemo/threshold/presentation/jsp/Success.jsp")
 		);
 
 		mappings.addMapping("paymentTest", PaymentAction.class, (ActionForward[])null);
