@@ -1,3 +1,4 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
@@ -13,7 +14,7 @@
     <name>moskito demonstration webapp</name>
     <packaging>war</packaging>
     <properties>
-        <moskito.version>2.1.2</moskito.version>
+    	<moskito.version>2.1.5-SNAPSHOT</moskito.version>
     </properties>
     <build>
         <!-- testSourceDirectory>${project.basedir}/test/component</testSourceDirectory -->
