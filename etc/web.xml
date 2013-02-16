@@ -36,6 +36,7 @@
 			<param-value>/mui/</param-value>
 		</init-param>
    	</filter>
+    <!-- 
     <filter>
         <filter-name>DebugRequestFilter</filter-name>
         <filter-class>net.anotheria.moskito.web.filters.DebugRequestFilter</filter-class>
@@ -44,6 +45,7 @@
         <filter-name>DebugRequestFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+   	 -->
    	<filter-mapping>
        	<filter-name>MoskitoUIFilter</filter-name>
    	    <url-pattern>/mui/*</url-pattern>
