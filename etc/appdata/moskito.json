@@ -53,6 +53,17 @@
 			}
 		]
 	},
+	
+	"@pluginsConfig": {
+            "@plugins": [
+                    {
+                            "name": "EmbeddedCentralConnector",
+                            "configurationName": "none",
+                            "className": "net.anotheria.moskito.central.connectors.embedded.EmbeddedConnector"
+                    }
+            ]
+    },
+    
 	//options for mail, optional and used for linking from mail config:
 	"mailhost": "mail.anotheria.net",
 	"mailuser": "moskito@anotheria.net",
