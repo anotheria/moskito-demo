@@ -14,7 +14,7 @@
     <name>moskito demonstration webapp</name>
     <packaging>war</packaging>
     <properties>
-    	<moskito.version>2.1.5-SNAPSHOT</moskito.version>
+    	<moskito.version>2.2.2-SNAPSHOT</moskito.version>
     </properties>
 
 	<repositories>
@@ -283,6 +283,11 @@
                 <artifactId>moskito-webui</artifactId>
                 <version>${moskito.version}</version>
             </dependency>
+            <dependency>
+                <groupId>net.anotheria</groupId>
+                <artifactId>moskito-central</artifactId>
+                <version>${moskito.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
@@ -320,6 +325,10 @@
         <dependency>
             <groupId>net.anotheria</groupId>
             <artifactId>moskito-webui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.anotheria</groupId>
+            <artifactId>moskito-central</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
