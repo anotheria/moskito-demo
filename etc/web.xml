@@ -153,6 +153,22 @@
 		</init-param>
     </filter>
 
+	<filter>
+        <filter-name>SourceIpSegmentFilter</filter-name>
+        <filter-class>net.anotheria.moskito.web.filters.SourceIpSegmentFilter</filter-class>
+		<init-param>
+			<param-name>limit</param-name>
+			<param-value>1000</param-value>
+		</init-param>
+    </filter>
+	<filter>
+        <filter-name>SourceTldFilter</filter-name>
+        <filter-class>net.anotheria.moskito.web.filters.SourceTldFilter</filter-class>
+		<init-param>
+			<param-name>limit</param-name>
+			<param-value>1000</param-value>
+		</init-param>
+    </filter>
 
     <filter-mapping>
         <filter-name>MoskitoCommandFilter</filter-name>
@@ -177,6 +193,15 @@
 
     <filter-mapping>
         <filter-name>RequestURIFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>SourceIpSegmentFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SourceTldFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
