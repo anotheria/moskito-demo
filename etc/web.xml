@@ -218,15 +218,6 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-<filter>
-    <filter-name>SessionByTldFilter</filter-name>
-    <filter-class>net.anotheria.moskito.web.filters.sessionbytld.SessionByTldFilter</filter-class>
-</filter>
-<filter-mapping>
-    <filter-name>SessionByTldFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-</filter-mapping>
-
 
     <filter-mapping>
         <filter-name>UserAgentFilter</filter-name>
@@ -272,9 +263,15 @@
     </listener>
     <listener>
 		<listener-class>
-			net.anotheria.moskito.web.filters.sessionbytld.SessionByTldListener
-		</listener-class>
+            net.anotheria.moskito.web.session.SessionByTldListener
+        </listener-class>
 	</listener>
+    <listener>
+        <listener-class>
+            net.anotheria.moskito.web.session.TestListener
+        </listener-class>
+    </listener>
+
     <listener>
 		<listener-class>
             org.anotheria.moskitodemo.threshold.presentation.listener.SetupThresholds
