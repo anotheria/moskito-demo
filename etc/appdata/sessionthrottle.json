@@ -1,4 +1,4 @@
 {
-	"limit": 10,
-	"target": "http://www.yahoo.de"
+	"limit": 100,
+	"target": "http://www.yahoo.com"
 }
