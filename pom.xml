@@ -14,7 +14,7 @@
     <name>moskito demonstration webapp</name>
     <packaging>war</packaging>
     <properties>
-    	<moskito.version>2.2.3-SNAPSHOT</moskito.version>
+    	<moskito.version>2.2.5-SNAPSHOT</moskito.version>
     </properties>
 
 	<repositories>
