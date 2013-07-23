@@ -3,6 +3,7 @@ target
 .idea
 logs
 *.iml
+resources
 
 # Package Files #
 *.jar

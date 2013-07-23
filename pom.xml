@@ -14,7 +14,7 @@
     <name>moskito demonstration webapp</name>
     <packaging>war</packaging>
     <properties>
-    	<moskito.version>2.2.3-SNAPSHOT</moskito.version>
+    	<moskito.version>2.2.6</moskito.version>
     </properties>
 
 	<repositories>
@@ -289,16 +289,17 @@
                 <version>${moskito.version}</version>
             </dependency>
             <dependency>
-                <groupId>net.anotheria</groupId>
+                <groupId>org.moskito</groupId>
                 <artifactId>moskito-control-agent</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>0.2</version>
             </dependency>
+
 
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
+	    <dependency>
             <groupId>net.anotheria</groupId>
             <artifactId>ano-util</artifactId>
         </dependency>
@@ -364,7 +365,7 @@
             <artifactId>ano-db</artifactId>
         </dependency>
         <dependency>
-            <groupId>net.anotheria</groupId>
+            <groupId>org.moskito</groupId>
             <artifactId>moskito-control-agent</artifactId>
         </dependency>
     </dependencies>
