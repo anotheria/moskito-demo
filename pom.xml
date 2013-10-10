@@ -283,7 +283,7 @@
                 <artifactId>moskito-webui</artifactId>
                 <version>${moskito.version}</version>
             </dependency>
-            <dependency>
+			<dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>moskito-central</artifactId>
                 <version>${moskito.version}</version>
@@ -364,6 +364,11 @@
             <groupId>net.anotheria</groupId>
             <artifactId>ano-db</artifactId>
         </dependency>
+		<dependency>
+			<groupId>org.moskito</groupId>
+			<artifactId>moskito-central</artifactId>
+			<version>1.0</version>
+		</dependency>
         <dependency>
             <groupId>org.moskito</groupId>
             <artifactId>moskito-control-agent</artifactId>
