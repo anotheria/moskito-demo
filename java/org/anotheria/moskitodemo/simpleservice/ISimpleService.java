@@ -35,13 +35,13 @@
 package org.anotheria.moskitodemo.simpleservice;
 
 public interface ISimpleService {
-	public void randomWait() throws Exception;
+	void randomWait() throws Exception;
 
-	public void waitForSoLongInMillis(long parameter) throws Exception;
+	void waitForSoLongInMillis(long parameter) throws Exception;
 	
-	public void produceExceptionIfParameterIsEven(int parameter) throws Exception;
+	void produceExceptionIfParameterIsEven(int parameter) throws Exception;
 
-	public void printStats() ;
+	void printStats() ;
 	
-	public void printStats(String inteval) ;
+	void printStats(String inteval) ;
 }

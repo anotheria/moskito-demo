@@ -2,7 +2,7 @@ package org.anotheria.moskitodemo.sqltrace.persistence;
 
 import net.anotheria.db.config.JDBCConfig;
 import net.anotheria.db.config.JDBCConfigFactory;
-import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -27,7 +27,7 @@ public class DBUtil {
             "\twishesUpdates boolean,\n" +
             "\tdao_created bigint,\n" +
             "\tdao_updated bigint\n" +
-            ")";
+            ')';
 
     private static final String DROP_TABLE_QUERY = "DROP TABLE comment";
 
@@ -45,15 +45,15 @@ public class DBUtil {
         BasicDataSource newDataSource = new BasicDataSource();
         JDBCConfig config = JDBCConfigFactory.getJDBCConfig();
         newDataSource.setDriverClassName(config.getDriver());
-        if (config.getPreconfiguredJdbcUrl() != null && config.getPreconfiguredJdbcUrl().length() > 0)
+        if (config.getPreconfiguredJdbcUrl() != null && !config.getPreconfiguredJdbcUrl().isEmpty())
             newDataSource.setUrl(config.getPreconfiguredJdbcUrl());
         else
-            newDataSource.setUrl("jdbc:" + config.getVendor() + "://" + config.getHost() + ":" + config.getPort() + "/" + config.getDb());
+            newDataSource.setUrl("jdbc:" + config.getVendor() + "://" + config.getHost() + ':' + config.getPort() + '/' + config.getDb());
         newDataSource.setUsername(config.getUsername());
         newDataSource.setPassword(config.getPassword());
 
         if (config.getMaxConnections() != Integer.MAX_VALUE)
-            newDataSource.setMaxActive(config.getMaxConnections());
+            newDataSource.setMaxTotal(config.getMaxConnections());
         return newDataSource.getConnection();
     }
 }

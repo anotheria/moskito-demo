@@ -35,6 +35,7 @@
 package org.anotheria.moskitodemo.guestbook.presentation.action;
 
 import net.anotheria.maf.action.ActionCommand;
+import net.anotheria.maf.action.ActionMapping;
 import net.anotheria.maf.bean.FormBean;
 import net.anotheria.moskito.aop.annotation.Monitor;
 
@@ -45,7 +46,7 @@ import javax.servlet.http.HttpServletResponse;
 public class NewCommentAction extends BaseGuestbookAction{
 
 	@Override
-	public ActionCommand execute(net.anotheria.maf.action.ActionMapping mapping, FormBean af, HttpServletRequest req, HttpServletResponse res) throws Exception {
+	public ActionCommand execute(ActionMapping mapping, FormBean af, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		return mapping.success();
 	}
 

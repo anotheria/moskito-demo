@@ -35,7 +35,7 @@
 package org.anotheria.moskitodemo.lesssimpleservice;
 
 public interface ILesserSimpleService extends ILessSimpleService{
-	public void methodA() throws LesserSimpleServiceException;
+	void methodA() throws LesserSimpleServiceException;
 	
-	public void methodB() throws AnotherTypedException;
+	void methodB() throws AnotherTypedException;
 }

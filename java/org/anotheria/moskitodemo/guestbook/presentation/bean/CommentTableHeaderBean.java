@@ -42,7 +42,7 @@ public class CommentTableHeaderBean {
 	private List<SortLinkBean> links;
 
 	public CommentTableHeaderBean(){
-		links = new ArrayList<SortLinkBean>();
+		links = new ArrayList<>();
 	}
 	
 	public void addSortLink(SortLinkBean b){
@@ -61,6 +61,6 @@ public class CommentTableHeaderBean {
 	}
 	
 	public String toString(){
-		return caption + " "+links;
+		return caption + ' ' +links;
 	}
 }

@@ -39,6 +39,8 @@ import net.anotheria.moskito.core.producers.IStats;
 import net.anotheria.moskito.web.MoskitoHttpServlet;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -73,7 +75,7 @@ public class SimpleServlet extends MoskitoHttpServlet {
 	protected void moskitoDoGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		//emulate working
 		String showStatsParameterValue = req.getParameter("pShowInterval");
-		if (showStatsParameterValue!=null && showStatsParameterValue.length()>0){
+		if (showStatsParameterValue!=null && !showStatsParameterValue.isEmpty()){
 			moskitoShowStats(req, res);
 			return;
 		}
@@ -103,7 +105,7 @@ public class SimpleServlet extends MoskitoHttpServlet {
 		writeResponse(res, sleepTime);
 	}
 
-	protected void moskitoShowStats(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void moskitoShowStats(ServletRequest req, ServletResponse res) throws ServletException, IOException {
 		String interval = req.getParameter("pShowInterval");
 		if (interval=="default"){
 			interval = null;
@@ -166,7 +168,7 @@ public class SimpleServlet extends MoskitoHttpServlet {
 		return true;
 	}
 	
-	private void writeResponse(HttpServletResponse res, int amountOfTimeSlept) throws IOException{
+	private void writeResponse(ServletResponse res, int amountOfTimeSlept) throws IOException{
 		res.setContentType("text/html");
 		PrintWriter writer = res.getWriter();
 		writer.write("<html>\n");

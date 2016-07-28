@@ -90,7 +90,7 @@ public class Comment implements Serializable, IComparable{
 	}
 
 	public String toString(){
-		return id+" "+NumberUtils.makeISO8601TimestampString(timestamp)+" "+firstName+" "+lastName+" ("+email+"):"+text;
+		return id+" "+NumberUtils.makeISO8601TimestampString(timestamp)+ ' ' +firstName+ ' ' +lastName+" ("+email+"):"+text;
 	}
 	public int getId() {
 		return id;

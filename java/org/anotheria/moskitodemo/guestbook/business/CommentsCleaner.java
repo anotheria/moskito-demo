@@ -5,7 +5,6 @@ import org.apache.log4j.BasicConfigurator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -65,7 +64,7 @@ public class CommentsCleaner {
 		"gonew@gmail.com",
 	} 	;
 	
-	public static final Integer ZERO = new Integer(0);
+	public static final Integer ZERO = 0;
 
 	
 	public static void main(String a[]) throws CommentServiceException{
@@ -74,21 +73,20 @@ public class CommentsCleaner {
 	}
 	
 	public static void clean() throws CommentServiceException{
-		List<Comment> comments = new ArrayList<Comment>();
-		comments.addAll(service.getComments());
-		System.out.println(comments.size()+" comments to test.");
+		List<Comment> comments = new ArrayList<>(service.getComments());
+        System.out.println(comments.size()+" comments to test.");
 		long removed = 0;
-		for (Comment c : comments){ 
-			for (int i=0; i<WORDS.length; i++){
-				if (doesFieldMatch(c.getFirstName(), WORDS[i]) || 
-						doesFieldMatch(c.getLastName(), WORDS[i]) ||
-						doesFieldMatch(c.getText(), WORDS[i])){
-					service.deleteComment(c.getId());
-					removed++;
-					break;
-					
-				}
-			}
+		for (Comment c : comments){
+            for (String WORD : WORDS) {
+                if (doesFieldMatch(c.getFirstName(), WORD) ||
+                        doesFieldMatch(c.getLastName(), WORD) ||
+                        doesFieldMatch(c.getText(), WORD)) {
+                    service.deleteComment(c.getId());
+                    removed++;
+                    break;
+
+                }
+            }
 		}
 		System.out.println("Removed: "+removed+" from "+comments.size());
 		
@@ -96,36 +94,34 @@ public class CommentsCleaner {
 
 	private static void analyze() throws CommentServiceException{
 		
-		List<Comment> comments = new ArrayList<Comment>();
-		comments.addAll(service.getComments());
-		System.out.println(comments.size()+" comments loaded.");
-		HashMap<String, Integer> statistics = new HashMap<String, Integer>();
+		List<Comment> comments = new ArrayList<>(service.getComments());
+        System.out.println(comments.size()+" comments loaded.");
+		HashMap<String, Integer> statistics = new HashMap<>();
 
 		for (Comment c : comments){
-			for (int i=0; i<WORDS.length; i++){
-				if (doesFieldMatch(c.getFirstName(), WORDS[i]) || 
-						doesFieldMatch(c.getLastName(), WORDS[i]) ||
-						doesFieldMatch(c.getText(), WORDS[i])){
-					Integer oldValue = statistics.get(WORDS[i]);
-					if (oldValue==null)
-						oldValue = ZERO;
-					statistics.put(WORDS[i], oldValue.intValue()+1);
-					break;
-				}
-			}
+            for (String WORD : WORDS) {
+                if (doesFieldMatch(c.getFirstName(), WORD) ||
+                        doesFieldMatch(c.getLastName(), WORD) ||
+                        doesFieldMatch(c.getText(), WORD)) {
+                    Integer oldValue = statistics.get(WORD);
+                    if (oldValue == null)
+                        oldValue = ZERO;
+                    statistics.put(WORD, oldValue + 1);
+                    break;
+                }
+            }
 		}
 		//System.out.println("Statistics: "+statistics);
 		int sum = 0;
-		for (Iterator<String> it = statistics.keySet().iterator(); it.hasNext() ; ){
-			String word = it.next();
-			int value = statistics.get(word);
-			sum += value;
-			System.out.println(word+": "+value);
-		}
+        for (String word : statistics.keySet()) {
+            int value = statistics.get(word);
+            sum += value;
+            System.out.println(word + ": " + value);
+        }
 		System.out.println("UNSPAMMED: "+(comments.size()-sum));
 	}
 	
-	private static boolean doesFieldMatch(String fieldValue, String word){
-		return fieldValue != null && fieldValue.toLowerCase().indexOf(word)!=-1;
+	private static boolean doesFieldMatch(String fieldValue, CharSequence word){
+		return fieldValue != null && fieldValue.toLowerCase().contains(word);
 	}
 }

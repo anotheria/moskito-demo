@@ -79,7 +79,7 @@ public class CommentForm implements FormBean{
 	}
 	
 	public String toString(){
-		return firstName+" "+lastName+" "+email+", upd: "+updateFlagChecked+", text: "+text;
+		return firstName+ ' ' +lastName+ ' ' +email+", upd: "+updateFlagChecked+", text: "+text;
 	}
 	public boolean isUpdateFlagChecked() {
 		return updateFlagChecked;

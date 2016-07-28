@@ -33,7 +33,7 @@ public class RandomProducer implements IStatsProducer {
 		
 		rnd = new Random(System.nanoTime());
 		serviceStats = new ServiceStats("cumulated");
-		stats = new ArrayList<IStats>();
+		stats = new ArrayList<>();
 		stats.add(serviceStats);
 		
 		ProducerRegistryFactory.getProducerRegistryInstance().registerProducer(this);

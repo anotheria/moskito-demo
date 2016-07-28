@@ -35,5 +35,5 @@
 package org.anotheria.moskitodemo.guestbook.business;
 
 public interface IAuthorizationService {
-	public boolean keyMatches(String key) throws AuthorizationServiceException;
+	boolean keyMatches(String key) throws AuthorizationServiceException;
 }

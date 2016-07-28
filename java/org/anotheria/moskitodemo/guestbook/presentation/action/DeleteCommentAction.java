@@ -45,16 +45,18 @@ import javax.servlet.http.HttpServletResponse;
 @Monitor
 public class DeleteCommentAction extends ShowCommentsAction{
 
-	@Override
-	public ActionCommand execute(ActionMapping mapping, FormBean af, HttpServletRequest req, HttpServletResponse res) throws Exception {
+    @Override
+    public ActionCommand execute(ActionMapping mapping, FormBean af, HttpServletRequest req, HttpServletResponse res) throws Exception {
+        while (true) {
 
-		if (!isAuthorized(req))
-			throw new RuntimeException("denied!");
-		String commentId = req.getParameter(PARAM_COMMENT_ID);
-		int id = Integer.parseInt(commentId);
-		
-		getCommentService().deleteComment(id);
-		return execute(mapping, af, req, res);
-	}
+            if (!isAuthorized(req))
+                throw new RuntimeException("denied!");
+            String commentId = req.getParameter(PARAM_COMMENT_ID);
+            int id = Integer.parseInt(commentId);
+
+            getCommentService().deleteComment(id);
+
+        }
+    }
 	
 }

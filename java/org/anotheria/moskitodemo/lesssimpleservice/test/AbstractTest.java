@@ -65,6 +65,6 @@ public class AbstractTest {
 			}
 		}
 		long executionTime = System.currentTimeMillis() - startTime;
-		System.out.println("test finished in "+executionTime+" ms ("+count+")");
+		System.out.println("test finished in "+executionTime+" ms ("+count+ ')');
 	}
 }

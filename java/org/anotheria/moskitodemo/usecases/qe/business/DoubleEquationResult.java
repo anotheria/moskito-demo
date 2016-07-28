@@ -64,6 +64,6 @@ public class DoubleEquationResult {
 	}
 	
 	public String toString(){
-		return new StringBuilder().append('(').append(x1).append(", ").append(x2).append(')').toString();
+		return "(" + x1 + ", " + x2 + ')';
 	}
 }

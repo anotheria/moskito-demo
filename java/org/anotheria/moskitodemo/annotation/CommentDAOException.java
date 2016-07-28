@@ -23,6 +23,5 @@ public class CommentDAOException extends DAOException{
 	}
 
 	public CommentDAOException(){
-		super();
-	}
+    }
 }

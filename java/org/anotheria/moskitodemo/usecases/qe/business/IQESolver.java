@@ -37,5 +37,5 @@ package org.anotheria.moskitodemo.usecases.qe.business;
 import java.util.List;
 
 public interface IQESolver {
-	public List<Double> solveQuadrationEquation(int a, int b, int c);
+	List<Double> solveQuadrationEquation(int a, int b, int c);
 }

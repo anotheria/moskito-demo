@@ -30,7 +30,7 @@ public class CommentRowMapper extends RowMapper<Comment>{
 	public Comment map(ResultSet row) throws RowMapperException {
 		try {
 			long id = row.getLong(1);
-			Comment ret = new CommentVO(""+id);
+			Comment ret = new CommentVO(String.valueOf(id));
 			ret.setFirstName(row.getString(2));
 			ret.setLastName(row.getString(3));
 			ret.setEmail(row.getString(4));

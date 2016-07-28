@@ -42,6 +42,7 @@ import org.anotheria.moskitodemo.guestbook.business.MonitorableAuthorizationServ
 import org.anotheria.moskitodemo.guestbook.business.MonitorableCommentServiceFactory;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Objects;
 
 public abstract class BaseGuestbookAction extends AbstractAction{
 	public static final String BEAN_AUTHORIZATION = "guestbook.Authorization";
@@ -59,7 +60,6 @@ public abstract class BaseGuestbookAction extends AbstractAction{
 	}
 	
 	protected BaseGuestbookAction(){
-		super();
 	}
 	
 	private String extractClassName(){
@@ -70,7 +70,7 @@ public abstract class BaseGuestbookAction extends AbstractAction{
 	
 	protected boolean isAuthorized(HttpServletRequest req){
 		Boolean authorization = (Boolean)req.getSession().getAttribute(BEAN_AUTHORIZATION);
-		return authorization!=null && authorization.equals(Boolean.TRUE);
+		return Objects.equals(authorization, Boolean.TRUE);
 	}
 	
 	protected void authorizeUser(HttpServletRequest req){
@@ -86,9 +86,9 @@ public abstract class BaseGuestbookAction extends AbstractAction{
 	}
 	
 	protected static String obfuscateEmail(String anEmail){
-		if (anEmail==null || anEmail.length()==0)
+		if (anEmail==null || anEmail.isEmpty())
 			return "";
-		int atIndex = anEmail.indexOf("@");
+		int atIndex = anEmail.indexOf('@');
 		if (atIndex==-1)
 			return x(anEmail);
 		String firstPart = "NoSpam-"+anEmail.substring(0, atIndex+1); 
@@ -98,7 +98,7 @@ public abstract class BaseGuestbookAction extends AbstractAction{
 		return firstPart+x(anEmail.substring(atIndex+1, dotIndex))+anEmail.substring(dotIndex);
 	}
 	
-	private static String x(String src){
+	private static String x(CharSequence src){
 		String x = "";
 		for (int i=0; i<src.length(); i++){
 			x+="#";
@@ -107,7 +107,7 @@ public abstract class BaseGuestbookAction extends AbstractAction{
 	}
 	
 	protected String makeDateString(long timestamp){
-		return NumberUtils.makeDigitalDateStringLong(timestamp)+" "+NumberUtils.makeTimeString(timestamp);
+		return NumberUtils.makeDigitalDateStringLong(timestamp)+ ' ' +NumberUtils.makeTimeString(timestamp);
 	}
 
 	//@Override

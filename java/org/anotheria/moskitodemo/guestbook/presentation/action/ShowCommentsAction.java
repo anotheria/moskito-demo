@@ -47,6 +47,7 @@ import org.anotheria.moskitodemo.guestbook.presentation.bean.CommentTableHeaderB
 import org.anotheria.moskitodemo.guestbook.presentation.bean.CommentTableItemBean;
 import org.anotheria.moskitodemo.guestbook.presentation.bean.SortLinkBean;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -104,7 +105,7 @@ public class ShowCommentsAction extends BaseGuestbookAction{
 		
 		CommentSortType sortType = createSortTypeFromRequest(req);
 		List<Comment> comments = getCommentService().getCommentsSorted(sortType);
-		List<CommentTableItemBean> itemBeans = new ArrayList<CommentTableItemBean>(comments.size());
+		List<CommentTableItemBean> itemBeans = new ArrayList<>(comments.size());
 
 		for (Comment c : comments){
 			itemBeans.add(createTableItemBean(c, !userIsAuthorized));
@@ -135,7 +136,7 @@ public class ShowCommentsAction extends BaseGuestbookAction{
 	 * @param defaultValue		 default value
 	 * @return int value
 	 */
-	private int getIntPositiveValueFromRequest(String requestParameterName, HttpServletRequest request, int defaultValue) {
+	private int getIntPositiveValueFromRequest(String requestParameterName, ServletRequest request, int defaultValue) {
 		try {
 			Integer value = Integer.valueOf(request.getParameter(requestParameterName));
 			return value >= 0 ? value : defaultValue;
@@ -144,7 +145,7 @@ public class ShowCommentsAction extends BaseGuestbookAction{
 		return defaultValue;
 	}
 
-	private CommentSortType createSortTypeFromRequest(HttpServletRequest req){
+	private CommentSortType createSortTypeFromRequest(ServletRequest req){
 		int sortBy = CommentSortType.SORT_BY_DEFAULT;
 		try{
 			sortBy = Integer.parseInt(req.getParameter(P_SORT_BY));
@@ -164,7 +165,7 @@ public class ShowCommentsAction extends BaseGuestbookAction{
 		bean.setFirstName(c.getFirstName());
 		bean.setLastName(c.getLastName());
 		bean.setDate(makeDateString(c.getTimestamp()));
-		bean.setId(""+c.getId());
+		bean.setId(String.valueOf(c.getId()));
 		bean.setEmail(obfuscateEmail? obfuscateEmail(c.getEmail()) : c.getEmail() );
 		bean.setComment(shortenCommentLine(c.getText()));
 		
@@ -172,7 +173,7 @@ public class ShowCommentsAction extends BaseGuestbookAction{
 	}
 	
 	protected String shortenCommentLine(String text){
-		if (text==null || text.length()==0)
+		if (text==null || text.isEmpty())
 			return "";
 		if (text.length()<=OVERVIEW_COMMENT_LENGTH)
 			return text;
@@ -180,13 +181,13 @@ public class ShowCommentsAction extends BaseGuestbookAction{
 	}
 	
 	private List<CommentTableHeaderBean> createHeaders(CommentSortType currentSortType){
-		List<CommentTableHeaderBean> beans = new ArrayList<CommentTableHeaderBean>();
+		List<CommentTableHeaderBean> beans = new ArrayList<>();
 		
 		for (int i=0; i<CAPTIONS.length; i++){
 			CommentTableHeaderBean bean = new CommentTableHeaderBean();
 			bean.setCaption(CAPTIONS[i]);
 			for (int t=0; t<V_SORT_ORDERS.length; t++){
-				String link = P_SORT_BY+"="+SORT_BYS[i]+"&"+P_SORT_ORDER+"="+V_SORT_ORDERS[t];
+				String link = P_SORT_BY+ '=' +SORT_BYS[i]+ '&' +P_SORT_ORDER+ '=' +V_SORT_ORDERS[t];
 				SortLinkBean sortLinkBean = new SortLinkBean(SORT_ORDER_CAPTIONS[t], link);
 				if (currentSortType.getSortBy()==SORT_BYS[i] && currentSortType.getSortOrder()==SORT_ORDERS[t])
 					sortLinkBean.setActive(true);

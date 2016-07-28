@@ -56,12 +56,12 @@ public class CommentsPersistenceServiceImpl extends BasePersistenceServiceJDBCIm
 			currentDAO = "Comment";
 			commentDAO.init(c);
 		}catch(DAOException e){
-			log.fatal("init failed (dao:"+currentDAO+") ",e );
+			log.error("init failed (dao:"+currentDAO+") ",e );
 		}catch(SQLException e){
-			log.fatal("init failed (sql) ",e );
+			log.error("init failed (sql) ",e );
 		}catch(Exception e){
-			System.out.println(e.getMessage()+" "+e.getClass());
-			log.fatal("init failed (e) ",e );
+			System.out.println(e.getMessage()+ ' ' +e.getClass());
+			log.error("init failed (e) ",e );
 		}
 	}
 
@@ -112,8 +112,7 @@ public class CommentsPersistenceServiceImpl extends BasePersistenceServiceJDBCIm
 		try {
 			c = getConnection();
 			commentDAO.deleteComments(c, list);
-			return;
-		}catch(SQLException e){
+        }catch(SQLException e){
 			log.error("deleteComments("+list+") ",e);
 			throw new CommentsPersistenceServiceException(e);
 		}catch(DAOException e){
@@ -325,13 +324,13 @@ public class CommentsPersistenceServiceImpl extends BasePersistenceServiceJDBCIm
 	 * Returns Comment objects segment which match the given property.
 	 */
 	public List<Comment> getCommentsByProperty(Segment aSegment, QueryProperty... aProperties) throws CommentsPersistenceServiceException {
-		log.debug("Call getCommentsByProperty(" + aSegment + "," + aProperties + ") ");
+		log.debug("Call getCommentsByProperty(" + aSegment + ',' + aProperties + ") ");
 		Connection c = null;
 		try {
 			c = getConnection();
 			return commentDAO.getCommentsByProperty(c, aSegment, Arrays.asList(aProperties));
 		}catch(SQLException e){
-			log.error("getCommentsByProperty(" + aSegment + "," + aProperties + ") ",e);
+			log.error("getCommentsByProperty(" + aSegment + ',' + aProperties + ") ",e);
 			throw new CommentsPersistenceServiceException(e);
 		}catch(DAOException e){
 			throw new CommentsPersistenceServiceException(e);

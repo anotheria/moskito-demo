@@ -58,7 +58,7 @@ public class ShowCommentAction extends BaseGuestbookAction{
 		Comment c = getCommentService().getComment(id);
 		CommentBean bean = new CommentBean();
 		
-		bean.setId(""+c.getId());
+		bean.setId(String.valueOf(c.getId()));
 		bean.setFirstName(c.getFirstName());
 		bean.setLastName(c.getLastName());
 		bean.setText(c.getText());

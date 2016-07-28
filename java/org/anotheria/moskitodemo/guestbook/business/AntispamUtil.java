@@ -193,7 +193,7 @@ public class AntispamUtil {
 			s = "";
 		s = s.toLowerCase();
 		for (String b : BLACKLIST){
-			if (s.indexOf(b)!=-1)
+			if (s.contains(b))
 				return true;
 		}
 		return false;
