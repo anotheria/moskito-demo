@@ -48,6 +48,7 @@ import org.anotheria.moskitodemo.usecases.qe.business.QESolverImpl;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class SolveQEAction extends AbstractAction{
@@ -74,7 +75,7 @@ public class SolveQEAction extends AbstractAction{
 		}
 	
 		int a=0,b=0,c=0;
-		List<String> errorMessages = new ArrayList<String>();
+		Collection<String> errorMessages = new ArrayList<>();
 		try{
 			a = Integer.parseInt(form.getA());
 		}catch(NumberFormatException e){
@@ -92,24 +93,24 @@ public class SolveQEAction extends AbstractAction{
 		}
 		
 		System.out.println("Errors: "+errorMessages);
-		if (errorMessages.size()>0){
+		if (!errorMessages.isEmpty()){
 			req.setAttribute("errors", errorMessages);
 			return mapping.success();
 		}
 		
 		
 		List<Double> solutions = solver.solveQuadrationEquation(a,b,c);
-		if (solutions.size()==0){
+		if (solutions.isEmpty()){
 			errorMessages.add("No solutions available");
 			req.setAttribute("errors", errorMessages);
-			return mapping.findForward("success");
+			return mapping.findCommand("success");
 		}
 			
 		System.out.println("Solver: "+solutions);
 		req.setAttribute("solutions", solutions);
 		
 		// TODO Auto-generated method stub
-		return mapping.findForward("success");
+		return mapping.findCommand("success");
 	}
 	
 	

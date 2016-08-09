@@ -68,7 +68,7 @@ public class QEParameterForm implements FormBean{
 			
 	}
 	
-	private boolean isEmpty(String s){
+	private boolean isEmpty(CharSequence s){
 		return s == null || s.length() == 0;
 	}
 }

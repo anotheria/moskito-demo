@@ -70,7 +70,7 @@ public class CommentServiceImpl implements ICommentService{
 	CommentServiceImpl(){
 		nextId = new AtomicInteger(1);
 		comments = Storage.createConcurrentHashMapStorage();
-		sorter = new QuickSorter<Comment>();
+		sorter = new QuickSorter<>();
 		_load();
 	}
 
@@ -115,7 +115,7 @@ public class CommentServiceImpl implements ICommentService{
 	}
 	
 	private List<Comment> createListFromMap(){
-		return new ArrayList<Comment>(comments.values());
+		return new ArrayList<>(comments.values());
 	}
 
 	public void updateComment(Comment c) throws CommentServiceException {
@@ -146,7 +146,6 @@ public class CommentServiceImpl implements ICommentService{
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
 	private synchronized void _load(){
 		ObjectInputStream oIn = null;
 		try{

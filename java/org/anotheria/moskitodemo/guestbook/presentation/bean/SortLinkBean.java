@@ -69,6 +69,6 @@ public class SortLinkBean {
 	}
 	
 	public String toString(){
-		return caption+" "+link+" "+active;
+		return caption+ ' ' +link+ ' ' +active;
 	}
 }

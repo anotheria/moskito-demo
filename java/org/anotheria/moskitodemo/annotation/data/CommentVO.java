@@ -115,18 +115,18 @@ public class CommentVO implements Comment, Serializable {
 
 	public String toString(){
 		String ret = "Comment ";
-		ret += "["+getId()+"] ";
-		ret += "firstName: "+getFirstName();
+        ret += '[' + id +"] ";
+        ret += "firstName: "+ firstname;
 		ret += ", ";
-		ret += "lastName: "+getLastName();
+        ret += "lastName: "+ lastname;
 		ret += ", ";
-		ret += "email: "+getEmail();
+        ret += "email: "+ email;
 		ret += ", ";
-		ret += "text: "+getText();
+        ret += "text: "+ text;
 		ret += ", ";
-		ret += "timestamp: "+getTimestamp();
+        ret += "timestamp: "+ timestamp;
 		ret += ", ";
-		ret += "wishesUpdates: "+getWishesUpdates();
+        ret += "wishesUpdates: "+ wishesupdates;
 		return ret;
 	}
 
@@ -140,20 +140,27 @@ public class CommentVO implements Comment, Serializable {
 	}
 
 	public Object getPropertyValue(String propertyName){
-		if (PROP_ID.equals(propertyName))
-			return getId();
-		if (PROP_FIRST_NAME.equals(propertyName))
-			return getFirstName();
-		if (PROP_LAST_NAME.equals(propertyName))
-			return getLastName();
-		if (PROP_EMAIL.equals(propertyName))
-			return getEmail();
-		if (PROP_TEXT.equals(propertyName))
-			return getText();
-		if (PROP_TIMESTAMP.equals(propertyName))
-			return getTimestamp();
-		if (PROP_WISHES_UPDATES.equals(propertyName))
-			return getWishesUpdates();
+		if (PROP_ID.equals(propertyName)) {
+            return id;
+        }
+		if (PROP_FIRST_NAME.equals(propertyName)) {
+            return firstname;
+        }
+		if (PROP_LAST_NAME.equals(propertyName)) {
+            return lastname;
+        }
+		if (PROP_EMAIL.equals(propertyName)) {
+            return email;
+        }
+		if (PROP_TEXT.equals(propertyName)) {
+            return text;
+        }
+		if (PROP_TIMESTAMP.equals(propertyName)) {
+            return timestamp;
+        }
+		if (PROP_WISHES_UPDATES.equals(propertyName)) {
+            return wishesupdates;
+        }
 		throw new RuntimeException("No property getter for "+propertyName);
 	}
 
@@ -167,16 +174,16 @@ public class CommentVO implements Comment, Serializable {
 
 	public String getFootprint(){
 		StringBuilder footprint = new StringBuilder();
-		footprint.append(getFirstName());
-		footprint.append(getLastName());
-		footprint.append(getEmail());
-		footprint.append(getText());
-		footprint.append(getTimestamp());
-		footprint.append(getWishesUpdates());
+        footprint.append(firstname);
+        footprint.append(lastname);
+        footprint.append(email);
+        footprint.append(text);
+        footprint.append(timestamp);
+        footprint.append(wishesupdates);
 		return MD5Util.getMD5Hash(footprint);
 	}
 
 	public boolean equals(Object o){
-		return o == this || ((o instanceof CommentVO) && ((CommentVO)o).getId().equals(getId()));
+        return o == this || ((o instanceof CommentVO) && ((CommentVO) o).id.equals(id));
 	}
 }

@@ -40,21 +40,17 @@ import net.anotheria.moskito.core.producers.IStatsProducer;
 import net.anotheria.moskito.core.stats.DefaultIntervals;
 import org.anotheria.moskitodemo.simpleservice.ISimpleService;
 import org.anotheria.moskitodemo.simpleservice.test.MultiTest6M;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class TestLog4JLogger extends MultiTest6M {
-		
-	static{
-		BasicConfigurator.configure();
-	}
+
 	
 	@Override
 	protected ISimpleService createService() {
 		ISimpleService createdService = super.createService();
 		
 		//create a new 1minute logger, and connect it to the service and the logoutput.
-		new IntervalStatsLogger((IStatsProducer)createdService, DefaultIntervals.ONE_MINUTE, new Log4JOutput(Logger.getLogger(TestLog4JLogger.class)));
+		new IntervalStatsLogger((IStatsProducer)createdService, DefaultIntervals.ONE_MINUTE, new Log4JOutput(LogManager.getLogger(TestLog4JLogger.class)));
 		
 		return createdService;
 	}

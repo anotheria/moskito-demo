@@ -35,5 +35,5 @@
 package org.anotheria.moskitodemo.lesssimpleservice;
 
 public interface ILesserSimpleServiceFactory {
-	public ILesserSimpleService createService();
+	ILesserSimpleService createService();
 }

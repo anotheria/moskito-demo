@@ -38,7 +38,7 @@ import org.anotheria.moskitodemo.simpleservice.ISimpleService;
 import org.anotheria.moskitodemo.simpleservice.SimpleServiceFactory;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public abstract class AbstractMultiTestWithDuration {
 	
@@ -61,7 +61,7 @@ public abstract class AbstractMultiTestWithDuration {
 	}
 	
 	protected void executeTests(){
-		List<TestRunner> runners = new ArrayList<TestRunner>();
+		Collection<TestRunner> runners = new ArrayList<>();
 		runners.add(new TestRunner(new TestControlledWait()));
 		runners.add(new TestRunner(new TestRandomWait()));
 		runners.add(new TestRunner(new TestExceptionProduction()));

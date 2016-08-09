@@ -46,7 +46,7 @@ public class QueryProperty {
 	}
 
 	@Override public String toString(){
-		return getName() + "=" +getValue();
+        return name + '=' + value;
 	}
 
 	/**

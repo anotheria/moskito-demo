@@ -18,92 +18,92 @@ public interface Comment {
 	/**
 	 * Constant property name for "id" for internal storage and queries.
 	 */
-	public static final String PROP_ID	= "id";
+    String PROP_ID	= "id";
 	/**
 	 * Constant property name for "firstName" for internal storage and queries.
 	 */
-	public static final String PROP_FIRST_NAME	= "firstName";
+    String PROP_FIRST_NAME	= "firstName";
 	/**
 	 * Constant property name for "lastName" for internal storage and queries.
 	 */
-	public static final String PROP_LAST_NAME	= "lastName";
+    String PROP_LAST_NAME	= "lastName";
 	/**
 	 * Constant property name for "email" for internal storage and queries.
 	 */
-	public static final String PROP_EMAIL	= "email";
+    String PROP_EMAIL	= "email";
 	/**
 	 * Constant property name for "text" for internal storage and queries.
 	 */
-	public static final String PROP_TEXT	= "text";
+    String PROP_TEXT	= "text";
 	/**
 	 * Constant property name for "timestamp" for internal storage and queries.
 	 */
-	public static final String PROP_TIMESTAMP	= "timestamp";
+    String PROP_TIMESTAMP	= "timestamp";
 	/**
 	 * Constant property name for "wishesUpdates" for internal storage and queries.
 	 */
-	public static final String PROP_WISHES_UPDATES	= "wishesUpdates";
+    String PROP_WISHES_UPDATES	= "wishesUpdates";
 
 	/**
 	 * Returns the value of the firstName attribute.
 	 */
-	public String getFirstName();
+    String getFirstName();
 
 	/**
 	 * Sets the value of the firstName attribute.
 	 */
-	public void setFirstName(String value);
+    void setFirstName(String value);
 
 	/**
 	 * Returns the value of the lastName attribute.
 	 */
-	public String getLastName();
+    String getLastName();
 
 	/**
 	 * Sets the value of the lastName attribute.
 	 */
-	public void setLastName(String value);
+    void setLastName(String value);
 
 	/**
 	 * Returns the value of the email attribute.
 	 */
-	public String getEmail();
+    String getEmail();
 
 	/**
 	 * Sets the value of the email attribute.
 	 */
-	public void setEmail(String value);
+    void setEmail(String value);
 
 	/**
 	 * Returns the value of the text attribute.
 	 */
-	public String getText();
+    String getText();
 
 	/**
 	 * Sets the value of the text attribute.
 	 */
-	public void setText(String value);
+    void setText(String value);
 
 	/**
 	 * Returns the value of the timestamp attribute.
 	 */
-	public long getTimestamp();
+    long getTimestamp();
 
 	/**
 	 * Sets the value of the timestamp attribute.
 	 */
-	public void setTimestamp(long value);
+    void setTimestamp(long value);
 
 	/**
 	 * Returns the value of the wishesUpdates attribute.
 	 */
-	public boolean getWishesUpdates();
+    boolean getWishesUpdates();
 
 	/**
 	 * Sets the value of the wishesUpdates attribute.
 	 */
-	public void setWishesUpdates(boolean value);
+    void setWishesUpdates(boolean value);
 
 
-    public String getId();
+    String getId();
 }

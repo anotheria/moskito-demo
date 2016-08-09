@@ -21,6 +21,6 @@ public class CommentDAONoItemForIdFoundException extends CommentDAOException{
 		super("No item found for id: "+id);
 	}
 	public CommentDAONoItemForIdFoundException(long id){
-		this(""+id);
+		this(String.valueOf(id));
 	}
 }

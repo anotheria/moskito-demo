@@ -35,5 +35,5 @@
 package org.anotheria.moskitodemo.lesssimpleservice;
 
 public interface ILessSimpleService {
-	public void lessSimpleServiceMethod() throws LessSimpleServiceException;
+	void lessSimpleServiceMethod() throws LessSimpleServiceException;
 }

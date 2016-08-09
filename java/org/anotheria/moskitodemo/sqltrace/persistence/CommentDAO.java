@@ -20,6 +20,7 @@ import net.anotheria.db.dao.DAO;
 import net.anotheria.db.dao.DAOException;
 import net.anotheria.db.dao.DAOSQLException;
 import net.anotheria.db.dao.RowMapper;
+import net.anotheria.db.util.JDBCUtil;
 import net.anotheria.util.slicer.Segment;
 import org.anotheria.moskitodemo.sqltrace.persistence.data.Comment;
 import org.anotheria.moskitodemo.sqltrace.persistence.data.CommentVO;
@@ -52,9 +53,9 @@ public class CommentDAO implements DAO{
 	public static final String  SQL_UPDATE_1 	= "UPDATE ";
 	public static final String  SQL_UPDATE_2 	= " SET " + ATT_NAME_FIRSTNAME + " = ?, " + ATT_NAME_LASTNAME + " = ?, " + ATT_NAME_EMAIL + " = ?, " + ATT_NAME_TEXT + " = ?, " + ATT_NAME_TIMESTAMP + " = ?, " + ATT_NAME_WISHESUPDATES + " = ?, " + ATT_NAME_DAO_UPDATED + " = ?" + " WHERE " + ATT_NAME_ID + " = ?";
 	public static final String  SQL_DELETE_1 	= "DELETE FROM ";
-	public static final String  SQL_DELETE_2 	= " WHERE " + TABNAME +"." + ATT_NAME_ID + " = ?";
+	public static final String  SQL_DELETE_2 	= " WHERE " + TABNAME + '.' + ATT_NAME_ID + " = ?";
 	public static final String  SQL_READ_ONE_1 	= "SELECT "+ATT_NAME_ID+", "+ATT_NAME_FIRSTNAME+", "+ATT_NAME_LASTNAME+", "+ATT_NAME_EMAIL+", "+ATT_NAME_TEXT+", "+ATT_NAME_TIMESTAMP+", "+ATT_NAME_WISHESUPDATES+", "+ATT_NAME_DAO_CREATED+", "+ATT_NAME_DAO_UPDATED+" FROM ";
-	public static final String  SQL_READ_ONE_2 	= " WHERE " + TABNAME +"." + ATT_NAME_ID + " = ?";
+	public static final String  SQL_READ_ONE_2 	= " WHERE " + TABNAME + '.' + ATT_NAME_ID + " = ?";
 	public static final String  SQL_READ_ALL_1 	= "SELECT "+ATT_NAME_ID+", "+ATT_NAME_FIRSTNAME+", "+ATT_NAME_LASTNAME+", "+ATT_NAME_EMAIL+", "+ATT_NAME_TEXT+", "+ATT_NAME_TIMESTAMP+", "+ATT_NAME_WISHESUPDATES+", "+ATT_NAME_DAO_CREATED+", "+ATT_NAME_DAO_UPDATED+" FROM ";
 	public static final String  SQL_READ_ALL_2 	= " ORDER BY id";
 	public static final String  SQL_READ_ALL_BY_PROPERTY_1 	= "SELECT "+ATT_NAME_ID+", "+ATT_NAME_FIRSTNAME+", "+ATT_NAME_LASTNAME+", "+ATT_NAME_EMAIL+", "+ATT_NAME_TEXT+", "+ATT_NAME_TIMESTAMP+", "+ATT_NAME_WISHESUPDATES+", "+ATT_NAME_DAO_CREATED+", "+ATT_NAME_DAO_UPDATED+" FROM ";
@@ -78,9 +79,7 @@ public class CommentDAO implements DAO{
 	}
 
 	private String createSQL(String sql1, String sql2){
-		StringBuilder sql = new StringBuilder();
-		sql.append(sql1).append(TABNAME).append(sql2);
-		return sql.toString();
+		return sql1 + TABNAME + sql2;
 	}
 
 	/**
@@ -93,16 +92,16 @@ public class CommentDAO implements DAO{
 			con.setAutoCommit(true);
 			ps = con.prepareStatement(createSQL(SQL_READ_ALL_1, SQL_READ_ALL_2));
 			result = ps.executeQuery();
-			ArrayList<Comment> ret = new ArrayList<Comment>();
+			List<Comment> ret = new ArrayList<>();
 			while(result.next())
 				ret.add(rowMapper.map(result));
 			return  ret;
 		} catch (SQLException e) {
-			log.error("getComments("+con+")", e);
+			log.error("getComments("+con+ ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(result);
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(result);
+			JDBCUtil.release(ps);
 		}
 	}
 
@@ -120,17 +119,17 @@ public class CommentDAO implements DAO{
 				log.warn("Deleted more than one row of Comment: "+id);
 			}
 		} catch (SQLException e) {
-			log.error("deleteComment("+con+", "+id+")", e);
+			log.error("deleteComment("+con+", "+id+ ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(ps);
 		}
 	}
 
 	/**
 	 * Deletes multiple Comment objects.
 	 */
-	public void deleteComments(Connection con, List<Comment> list) throws DAOException {
+	public void deleteComments(Connection con, Iterable<Comment> list) throws DAOException {
 		PreparedStatement ps = null;
 		try{
 			con.setAutoCommit(false);
@@ -144,10 +143,10 @@ public class CommentDAO implements DAO{
 			}
 			con.commit();
 		} catch (SQLException e) {
-			log.error("deleteComments("+con+", "+list+")", e);
+			log.error("deleteComments("+con+", "+list+ ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(ps);
 		}
 	}
 
@@ -170,11 +169,11 @@ public class CommentDAO implements DAO{
 				throw new CommentDAONoItemForIdFoundException(id);
 			return rowMapper.map(result);
 		} catch (SQLException e) {
-			log.error("getComment("+con+", "+id+")", e);
+			log.error("getComment("+con+", "+id+ ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(result);
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(result);
+			JDBCUtil.release(ps);
 		}
 	}
 
@@ -204,10 +203,10 @@ public class CommentDAO implements DAO{
 			adjustLastId(con, Long.parseLong(comment.getId()));
 			return newComment;
 		} catch (SQLException e) {
-			log.error("importComment("+con+", "+comment+")", e);
+			log.error("importComment("+con+", "+comment+ ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(ps);
 		}
 	}
 
@@ -215,12 +214,12 @@ public class CommentDAO implements DAO{
 	 * Imports multiple new Comment objects.
 	 * Returns the imported versions.
 	 */
-	public List<Comment> importComments(Connection con,List<Comment> list) throws DAOException {
+	public List<Comment> importComments(Connection con, Iterable<Comment> list) throws DAOException {
 		PreparedStatement ps = null;
 		try{
 			con.setAutoCommit(false);
 			ps = con.prepareStatement(createSQL(SQL_CREATE_1, SQL_CREATE_2));
-			List<Comment> ret = new ArrayList<Comment>();
+			List<Comment> ret = new ArrayList<>();
 			for (Comment comment : list){
 				ps.setLong(1, Long.parseLong(comment.getId()));
 				ps.setString(2, comment.getFirstName());
@@ -242,10 +241,10 @@ public class CommentDAO implements DAO{
 			con.commit();
 			return ret;
 		} catch (SQLException e) {
-			log.error("import Comments("+con+", "+list+")", e);
+			log.error("import Comments("+con+", "+list+ ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(ps);
 		}
 	}
 
@@ -254,7 +253,7 @@ public class CommentDAO implements DAO{
 	 * Returns the created version.
 	 */
 	public Comment createComment(Connection con, Comment comment) throws DAOException {
-		java.sql.SQLException throwable = null;
+		SQLException throwable = null;
 		for (int recoveryAttempt = 1; recoveryAttempt <= dbConfig.getIdRecoveryAttempts(); recoveryAttempt++) {
 			PreparedStatement ps = null;
 			try {
@@ -273,7 +272,7 @@ public class CommentDAO implements DAO{
 				int rows = ps.executeUpdate();
 				if (rows!=1)
 					throw new DAOException("Create failed, updated rows: "+rows);
-				CommentVO newComment = new CommentVO(""+nextId);
+				CommentVO newComment = new CommentVO(String.valueOf(nextId));
 				newComment.copyAttributesFrom(comment);
 				con.commit();
 				return newComment;
@@ -283,10 +282,10 @@ public class CommentDAO implements DAO{
 				throwable = e;
 				continue;
 			} finally {
-				net.anotheria.db.util.JDBCUtil.release(ps);
+				JDBCUtil.release(ps);
 			}
 		}
-		log.error("All "+ dbConfig.getIdRecoveryAttempts()+" attempt of id rereading - Failed. "+"createComment("+con+", "+comment+")", throwable);
+		log.error("All "+ dbConfig.getIdRecoveryAttempts()+" attempt of id rereading - Failed. "+"createComment("+con+", "+comment+ ')', throwable);
 		throw new DAOSQLException(throwable);
 	}
 
@@ -294,14 +293,14 @@ public class CommentDAO implements DAO{
 	 * Creates multiple new Comment objects.
 	 * Returns the created versions.
 	 */
-	public List<Comment> createComments(Connection con, List<Comment> list) throws DAOException {
-		java.sql.SQLException throwable = null;
+	public List<Comment> createComments(Connection con, Iterable<Comment> list) throws DAOException {
+		SQLException throwable = null;
 		for (int recoveryAttempt = 1; recoveryAttempt <= dbConfig.getIdRecoveryAttempts(); recoveryAttempt++) {
 			PreparedStatement ps = null;
 			try{
 				con.setAutoCommit(false);
 				ps = con.prepareStatement(createSQL(SQL_CREATE_1, SQL_CREATE_2));
-				List<Comment> ret = new ArrayList<Comment>();
+				List<Comment> ret = new ArrayList<>();
 				for (Comment comment : list){
 					long nextId = getLastId(con).incrementAndGet();
 					ps.setLong(1, nextId);
@@ -316,7 +315,7 @@ public class CommentDAO implements DAO{
 					int rows = ps.executeUpdate();
 					if (rows!=1)
 						throw new DAOException("Create failed, updated rows: "+rows);
-					CommentVO newComment = new CommentVO(""+nextId);
+					CommentVO newComment = new CommentVO(String.valueOf(nextId));
 					newComment.copyAttributesFrom(comment);
 					ret.add(newComment);
 				}
@@ -328,10 +327,10 @@ public class CommentDAO implements DAO{
 				throwable = e;
 				continue;
 			} finally {
-				net.anotheria.db.util.JDBCUtil.release(ps);
+				JDBCUtil.release(ps);
 			}
 		}
-		log.error("All "+ dbConfig.getIdRecoveryAttempts()+" attempt of id rereading - Failed. "+"createComments("+con+", "+list+")", throwable);
+		log.error("All "+ dbConfig.getIdRecoveryAttempts()+" attempt of id rereading - Failed. "+"createComments("+con+", "+list+ ')', throwable);
 		throw new DAOSQLException(throwable);
 	}
 
@@ -359,10 +358,10 @@ public class CommentDAO implements DAO{
 				throw new DAOException("Update failed, updated rows: "+rows);
 			return comment;
 		} catch (SQLException e) {
-			log.error("updateComment("+con+", "+comment+")", e);
+			log.error("updateComment("+con+", "+comment+ ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(ps);
 		}
 	}
 
@@ -375,7 +374,7 @@ public class CommentDAO implements DAO{
 		try{
 			con.setAutoCommit(false);
 			ps = con.prepareStatement(createSQL(SQL_UPDATE_1, SQL_UPDATE_2));
-			List<Comment> ret = new ArrayList<Comment>();
+			List<Comment> ret = new ArrayList<>();
 			for (Comment comment : list){
 				ps.setString(1, comment.getFirstName());
 				ps.setString(2, comment.getLastName());
@@ -394,17 +393,17 @@ public class CommentDAO implements DAO{
 			con.commit();
 			return list;
 		} catch (SQLException e) {
-			log.error("updateComments("+con+", "+list+")", e);
+			log.error("updateComments("+con+", "+list+ ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(ps);
 		}
 	}
 
 	/**
 	 * Returns all Comments objects stored which matches given properties.
 	 */
-	public List<Comment> getCommentsByProperty(Connection con, List<QueryProperty> properties) throws DAOException {
+	public List<Comment> getCommentsByProperty(Connection con, Iterable<QueryProperty> properties) throws DAOException {
 		PreparedStatement ps = null;
 		ResultSet result = null;
 		try {
@@ -412,7 +411,7 @@ public class CommentDAO implements DAO{
 			String SQL = createSQL(SQL_READ_ALL_BY_PROPERTY_1, SQL_READ_ALL_BY_PROPERTY_2);
 			String whereClause = "";
 			for (QueryProperty p : properties){
-				if (whereClause.length()>0)
+				if (!whereClause.isEmpty())
 					whereClause += " AND ";
 				String statement = p.unprepaireable()? (String) p.getValue(): "?";
 				whereClause += p.getName().toLowerCase()+p.getComparator()+statement;
@@ -426,16 +425,16 @@ public class CommentDAO implements DAO{
 				setProperty(++propertyPosition, ps, property);
 			}
 			result = ps.executeQuery();
-			ArrayList<Comment> ret = new ArrayList<Comment>();
+			List<Comment> ret = new ArrayList<>();
 			while(result.next())
 				ret.add(rowMapper.map(result));
 			return  ret;
 		} catch (SQLException e) {
-			log.error("getCommentsByProperty("+con+","+ properties+")", e);
+			log.error("getCommentsByProperty("+con+ ',' + properties+ ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(result);
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(result);
+			JDBCUtil.release(ps);
 		}
 	}
 
@@ -453,11 +452,11 @@ public class CommentDAO implements DAO{
 				pCount = result.getInt(1);
 			return pCount;
 		} catch (SQLException e) {
-			log.error("getCommentsCount(" + con + ")", e);
+			log.error("getCommentsCount(" + con + ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(result);
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(result);
+			JDBCUtil.release(ps);
 		}
 	}
 
@@ -475,23 +474,23 @@ public class CommentDAO implements DAO{
 			ps.setInt(1, pLimit);
 			ps.setInt(2, pOffset);
 			result = ps.executeQuery();
-			ArrayList<Comment> ret = new ArrayList<Comment>();
+			List<Comment> ret = new ArrayList<>();
 			while(result.next())
 				ret.add(rowMapper.map(result));
 			return  ret;
 		} catch (SQLException e) {
-			log.error("getComments(" + con + ","+ aSegment +")", e);
+			log.error("getComments(" + con + ',' + aSegment + ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(result);
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(result);
+			JDBCUtil.release(ps);
 		}
 	}
 
 	/**
 	 * Returns Comments objects segment which matches given properties.
 	 */
-	public List<Comment> getCommentsByProperty(Connection con, Segment aSegment, List<QueryProperty> properties) throws DAOException {
+	public List<Comment> getCommentsByProperty(Connection con, Segment aSegment, Iterable<QueryProperty> properties) throws DAOException {
 		PreparedStatement ps = null;
 		ResultSet result = null;
 		try {
@@ -499,7 +498,7 @@ public class CommentDAO implements DAO{
 			String SQL = createSQL(SQL_READ_ALL_BY_PROPERTY_1, SQL_READ_ALL_BY_PROPERTY_2);
 			String whereClause = "";
 			for (QueryProperty p : properties){
-				if (whereClause.length()>0)
+				if (!whereClause.isEmpty())
 					whereClause += " AND ";
 				String statement = p.unprepaireable()? (String) p.getValue(): "?";
 				whereClause += p.getName()+p.getComparator()+statement;
@@ -518,16 +517,16 @@ public class CommentDAO implements DAO{
 			ps.setInt(++propertyPosition, pLimit);
 			ps.setInt(++propertyPosition, pOffset);
 			result = ps.executeQuery();
-			ArrayList<Comment> ret = new ArrayList<Comment>();
+			List<Comment> ret = new ArrayList<>();
 			while(result.next())
 				ret.add(rowMapper.map(result));
 			return  ret;
 		} catch (SQLException e) {
-			log.error("getCommentsByProperty(" + con + "," + aSegment + "," + properties + ")", e);
+			log.error("getCommentsByProperty(" + con + ',' + aSegment + ',' + properties + ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(result);
-			net.anotheria.db.util.JDBCUtil.release(ps);
+			JDBCUtil.release(result);
+			JDBCUtil.release(ps);
 		}
 	}
 
@@ -569,7 +568,6 @@ public class CommentDAO implements DAO{
 		}
 		if ("dao_updated".equals(property.getName())){
 			ps.setLong(position, (Long)property.getValue());
-			return;
 		}
 	}
 	/* ---------- SQL --------- 
@@ -610,16 +608,16 @@ public class CommentDAO implements DAO{
 			log.info("maxId in table "+tableName+" is "+maxId);
 			return maxId;
 		} catch (SQLException e) {
-			log.error("getMaxId("+con+", "+tableName+")", e);
+			log.error("getMaxId("+con+", "+tableName+ ')', e);
 			throw new DAOSQLException(e);
 		} finally {
-			net.anotheria.db.util.JDBCUtil.release(result);
-			net.anotheria.db.util.JDBCUtil.release(st);
+			JDBCUtil.release(result);
+			JDBCUtil.release(st);
 		}
 	}
 
 	public void init(Connection con)  throws DAOException {
-		log.debug("Called: init("+con+")");
+		log.debug("Called: init("+con+ ')');
 		long maxId = getMaxId(con, TABNAME);
 		maxId = maxId >= dbConfig.getStartId() ? maxId : dbConfig.getStartId();
 		lastId = new AtomicLong(maxId);

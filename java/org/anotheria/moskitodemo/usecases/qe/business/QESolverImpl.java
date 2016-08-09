@@ -56,7 +56,7 @@ public class QESolverImpl implements IQESolver{
 
 	public List<Double> solveQuadrationEquation(int a, int b, int c) {
 		
-		List<Double> ret = new ArrayList<Double>();
+		List<Double> ret = new ArrayList<>();
 		try{
 			int d = calc.calculateDeterminant(a,b,c);
 			if (d <0 )

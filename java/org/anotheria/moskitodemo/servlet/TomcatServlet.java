@@ -39,6 +39,7 @@ import java.io.PrintWriter;
 import java.util.Random;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -86,7 +87,7 @@ public class TomcatServlet extends HttpServlet{
 		writeResponse(res, sleepTime);
 	}
 	
-	private void writeResponse(HttpServletResponse res, int amountOfTimeSlept) throws IOException{
+	private void writeResponse(ServletResponse res, int amountOfTimeSlept) throws IOException{
 		res.setContentType("text/html");
 		PrintWriter writer = res.getWriter();
 		writer.write("<html>\n");

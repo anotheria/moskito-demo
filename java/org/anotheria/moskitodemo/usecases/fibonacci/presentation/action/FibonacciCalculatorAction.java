@@ -25,7 +25,7 @@ public class FibonacciCalculatorAction extends AbstractAction{
 	public ActionCommand execute(ActionMapping mapping, FormBean af, HttpServletRequest req, HttpServletResponse res) throws Exception {
 
 		String pOrder = req.getParameter("pOrder");
-		if (pOrder==null || pOrder.length()==0){
+		if (pOrder==null || pOrder.isEmpty()){
 			req.setAttribute("useCaseName", "fibonacci-"+counter.incrementAndGet());
 			return mapping.dialog();
 		}

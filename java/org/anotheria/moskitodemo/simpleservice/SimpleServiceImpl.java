@@ -60,7 +60,7 @@ public class SimpleServiceImpl implements ISimpleService, IStatsProducer {
 	}
 	
 	public List<IStats> getStats() {
-		List<IStats> ret = new ArrayList<IStats>();
+		List<IStats> ret = new ArrayList<>();
 		ret.add(serviceStats);
 		ret.add(randomWaitStats);
 		ret.add(waitForSoLongStats);
@@ -78,7 +78,7 @@ public class SimpleServiceImpl implements ISimpleService, IStatsProducer {
 	
 	public void printStats(String interval) {
 		System.out.println("=== STATS FOR "+(interval==null ? "DEFAULT" : interval)+" ====");
-		List<IStats> stats = (List<IStats>)getStats();
+		Iterable<IStats> stats = (List<IStats>)getStats();
 		for (IStats stat : stats)
 			System.out.println(stat.toStatsString(interval));
 		System.out.println("=== END OF STATS ===");

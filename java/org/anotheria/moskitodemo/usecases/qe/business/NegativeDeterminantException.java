@@ -41,6 +41,6 @@ public class NegativeDeterminantException extends QECalculatorException{
 	private static final long serialVersionUID = -3760875604494794494L;
 
 	public NegativeDeterminantException(int value){
-		super(""+value);
+		super(String.valueOf(value));
 	}
 }
