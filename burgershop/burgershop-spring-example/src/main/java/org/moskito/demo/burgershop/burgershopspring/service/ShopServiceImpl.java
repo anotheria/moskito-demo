@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * TODO comment this class
+ * Implementation of the ShopService.
  *
  * @author lrosenberg
  * @since 16.11.13 22:47
