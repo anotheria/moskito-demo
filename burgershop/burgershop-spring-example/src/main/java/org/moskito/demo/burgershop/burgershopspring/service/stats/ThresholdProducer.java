@@ -1,4 +1,4 @@
-package de.zaunberg.burgershop.service.stats;
+package org.moskito.demo.burgershop.burgershopspring.service.stats;
 
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducer;
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducerException;

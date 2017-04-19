@@ -1,8 +1,8 @@
-package de.zaunberg.burgershop.service;
+package org.moskito.demo.burgershop.burgershopspring.service;
 
-import de.zaunberg.burgershop.service.stats.SalesStats;
-import de.zaunberg.burgershop.service.stats.SalesStatsFactory;
-import de.zaunberg.burgershop.service.stats.ThresholdProducer;
+import org.moskito.demo.burgershop.burgershopspring.service.stats.SalesStats;
+import org.moskito.demo.burgershop.burgershopspring.service.stats.SalesStatsFactory;
+import org.moskito.demo.burgershop.burgershopspring.service.stats.ThresholdProducer;
 import net.anotheria.moskito.aop.annotation.Monitor;
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducer;
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducerException;

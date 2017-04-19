@@ -1,4 +1,4 @@
-package de.zaunberg.burgershop.service.stats;
+package org.moskito.demo.burgershop.burgershopspring.service.stats;
 
 import net.anotheria.moskito.core.decorators.AbstractDecorator;
 import net.anotheria.moskito.core.decorators.value.DoubleValueAO;

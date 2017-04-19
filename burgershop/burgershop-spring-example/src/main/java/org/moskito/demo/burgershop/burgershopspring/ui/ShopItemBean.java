@@ -1,4 +1,4 @@
-package de.zaunberg.burgershop.ui;
+package org.moskito.demo.burgershop.burgershopspring.ui;
 
 /**
  * TODO comment this class

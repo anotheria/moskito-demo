@@ -102,7 +102,7 @@
 <table cellpadding="0" cellspacing="0">
     <tbody>
     <tr>
-        <ano:iterate name="BREAD" id="bread" type="de.zaunberg.burgershop.ui.ShopItemBean">
+        <ano:iterate name="BREAD" id="bread" type="org.moskito.demo.burgershop.burgershopspring.ui.ShopItemBean">
             <td class="<ano:write name="bread" property="item"/>">
 
                 <div class="price">
@@ -118,7 +118,7 @@
         </ano:iterate>
     </tr>
     <tr>
-        <ano:iterate name="MEAT" id="meat" type="de.zaunberg.burgershop.ui.ShopItemBean">
+        <ano:iterate name="MEAT" id="meat" type="org.moskito.demo.burgershop.burgershopspring.ui.ShopItemBean">
             <td class="<ano:write name="meat" property="item"/>">
 
                 <div class="price">
@@ -134,7 +134,7 @@
         </ano:iterate>
     </tr>
     <tr>
-        <ano:iterate name="EXTRAS" id="extra" type="de.zaunberg.burgershop.ui.ShopItemBean">
+        <ano:iterate name="EXTRAS" id="extra" type="org.moskito.demo.burgershop.burgershopspring.ui.ShopItemBean">
             <td class="<ano:write name="extra" property="item"/>">
 
                 <div class="price">

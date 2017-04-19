@@ -1,8 +1,8 @@
-package de.zaunberg.burgershop.ui;
+package org.moskito.demo.burgershop.burgershopspring.ui;
 
-import de.zaunberg.burgershop.service.Category;
-import de.zaunberg.burgershop.service.ShopService;
-import de.zaunberg.burgershop.service.ShopableItem;
+import org.moskito.demo.burgershop.burgershopspring.service.Category;
+import org.moskito.demo.burgershop.burgershopspring.service.ShopService;
+import org.moskito.demo.burgershop.burgershopspring.service.ShopableItem;
 import net.anotheria.moskito.aop.annotation.Monitor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

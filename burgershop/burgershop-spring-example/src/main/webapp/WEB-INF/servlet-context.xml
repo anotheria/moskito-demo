@@ -17,6 +17,6 @@
     <!-- Enables the Spring MVC @Controller programming model -->
     <mvc:annotation-driven />
 
-    <bean class="de.zaunberg.burgershop.service.ShopServiceImpl" id="ShopService"/>
+    <bean class="org.moskito.demo.burgershop.burgershopspring.service.ShopServiceImpl" id="ShopService"/>
 
 </beans>

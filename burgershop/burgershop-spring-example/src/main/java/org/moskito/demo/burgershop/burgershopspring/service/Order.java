@@ -1,4 +1,4 @@
-package de.zaunberg.burgershop.service;
+package org.moskito.demo.burgershop.burgershopspring.service;
 
 import java.util.ArrayList;
 import java.util.List;

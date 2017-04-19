@@ -1,4 +1,4 @@
-package de.zaunberg.burgershop.service;
+package org.moskito.demo.burgershop.burgershopspring.service;
 
 import net.anotheria.moskito.aop.annotation.Count;
 

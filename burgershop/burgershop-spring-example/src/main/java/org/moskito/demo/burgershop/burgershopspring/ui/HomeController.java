@@ -1,4 +1,4 @@
-package de.zaunberg.burgershop.ui;
+package org.moskito.demo.burgershop.burgershopspring.ui;
 
 import net.anotheria.moskito.aop.annotation.Monitor;
 import org.springframework.stereotype.Controller;

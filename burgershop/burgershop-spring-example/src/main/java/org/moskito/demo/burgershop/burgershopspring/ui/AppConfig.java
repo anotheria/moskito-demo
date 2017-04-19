@@ -1,4 +1,4 @@
-package de.zaunberg.burgershop.ui;
+package org.moskito.demo.burgershop.burgershopspring.ui;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
