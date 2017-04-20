@@ -15,5 +15,6 @@
 
 	<modules>
 		<module>burgershop-spring-example</module>
+		<module>burgershop-callexecution</module>
     </modules>
 </project>
