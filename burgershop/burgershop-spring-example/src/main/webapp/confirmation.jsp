@@ -41,6 +41,8 @@
             in 30 Minutes, or we give it to the dogs.
             <br/>
             Enjoy your meal.
+            <br/><br/>
+            Your customerId is ${customerId}.
 
         </p>
     </div>

@@ -16,6 +16,8 @@
         document.createElement('aside');
         document.createElement('footer');
     </script>
+    <!-- Your customerId is ${customerId} -->
+
     <![endif]-->
 
     <script type="text/javascript">

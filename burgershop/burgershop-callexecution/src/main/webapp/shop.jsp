@@ -85,6 +85,7 @@
         });
 
     </script>
+    <!-- Your customerId is ${customerId} -->
 </head>
 
 <body class="inner_bg">
