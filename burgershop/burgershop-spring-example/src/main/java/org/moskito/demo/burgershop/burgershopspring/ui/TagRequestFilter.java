@@ -26,7 +26,6 @@ public class TagRequestFilter implements Filter{
 
 	@Override
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
-		MoSKitoContext.get().reset();
 		if (servletRequest instanceof HttpServletRequest){
 			HttpServletRequest req = (HttpServletRequest) servletRequest;
 			HttpSession session = req.getSession(false);
