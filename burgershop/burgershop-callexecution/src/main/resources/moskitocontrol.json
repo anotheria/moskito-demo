@@ -1,0 +1,113 @@
+{
+    "mailNotificationEnabled" : false,
+    "notificationsMutingTime": 60,
+    "defaultApplication" : "Burgershop",
+
+    "@applications": [
+        {
+        "name": "Burgershop",
+        "@components": [
+            {
+                "name": "hamburg",
+                "category": "shop",
+                "connectorType": "HTTP",
+                "location": "burgershop-hamburg.demo.moskito.org/burgershop/"
+            },
+            {
+                "name": "munich",
+                "category": "shop",
+                "connectorType": "HTTP",
+                "location": "burgershop-munich.demo.moskito.org/burgershop/"
+            }
+            ],
+            "@charts": [
+
+			{
+    			"name": "Orders",
+    			"limit": 100,
+    			"@lines": [
+        		{
+            		"component": "hamburg",
+            		"accumulator": "OrdersPerMinute"
+        		},
+        		{
+            		"component": "munich",
+            		"accumulator": "OrdersPerMinute"
+        		}
+    		]
+				},
+                {
+                    "name": "Sessions",
+                    "limit": 100,
+                    "@lines": [
+                        {
+                            "component": "hamburg",
+                            "accumulator": "SessionCount Cur Absolute"
+                        },
+                        {
+                            "component": "munich",
+                            "accumulator": "SessionCount Cur Absolute"
+                        }
+                    ]
+                },
+				
+                {
+                    "name": "CPU",
+                    "limit": 100,
+                    "@lines": [
+                        {
+                            "component": "hamburg",
+                            "accumulator": "CPU Time 1m"
+                        },
+                        {
+                            "component": "munich",
+                            "accumulator": "CPU Time 1m"
+                        }
+                    ]
+                },
+                {
+                    "name": "URL AVG",
+                    "limit": 100,
+                    "@lines": [
+                        {
+                            "component": "hamburg",
+                            "accumulator": "URL AVG 1m"
+                        },
+                        {
+                            "component": "munich",
+                            "accumulator": "URL AVG 1m"
+                        }
+                    ]
+                }
+
+            ]
+        }
+	],
+
+
+    "@connectors": [
+        {
+            "type": "HTTP",
+            "className": "org.moskito.control.connectors.HttpConnector"
+        },
+        {
+            "type": "RMI",
+            "className": "org.moskito.control.connectors.RMIConnector"
+        }
+    ],
+
+    "@statusUpdater": {
+        "checkPeriodInSeconds": 10,
+        "threadPoolSize": 10,
+        "timeoutInSeconds": 60,
+        "enabled": true
+    },
+
+    "@chartsUpdater": {
+        "checkPeriodInSeconds": 40,
+        "threadPoolSize": 5,
+        "timeoutInSeconds": 60,
+        "enabled": true
+    }
+
+}

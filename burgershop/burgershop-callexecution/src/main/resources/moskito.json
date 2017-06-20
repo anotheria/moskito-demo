@@ -1,0 +1,308 @@
+{
+	"@thresholdsAlertsConfig": {
+		"@notificationProviders": [
+			{
+				"className": "net.anotheria.moskito.core.threshold.alerts.notificationprovider.LogFileNotificationProvider",
+				"appenderName": "MoskitoAlert",
+				"guardedStatus": "GREEN"
+			}
+/* Uncomment (and add a comma at the end of the previous block) if you want sms notifications. You'll need an account too.
+            {
+                "className": "net.anotheria.moskito.extensions.notificationproviders.BulkSMSNotificationProvider",
+                "user": "moskito",
+                "password": "qweqweqwe",
+                "recipients": "380973777273,4915122345102",
+                "templatePath": "thresholdAlertTemplate.txt",
+                "guardedStatus": "GREEN"
+            },
+*/
+/*Uncomment if you want mail notification.
+            {
+				"className": "net.anotheria.moskito.extensions.notificationproviders.MailgunNotificationProvider",
+				"recipients": "leon@leon-rosenberg.net",
+				"htmlTemplatePath":"thresholdAlertTemplate.htm",
+                "textTemplatePath":"thresholdAlertTemplate.txt",
+				"guardedStatus": "GREEN"
+			}
+*/
+		],
+
+		"@alertHistoryConfig": {
+			"maxNumberOfItems": 500,
+			"toleratedNumberOfItems": 550
+		}
+	},
+
+    "@thresholdsConfig": {
+        "@thresholds": [
+            {
+                "name": "OrderPerMinuteThreshold",
+                "producerName": "ShopService",
+                "statName": "placeOrder",
+                "valueName": "req",
+                "intervalName": "1m",
+                "@guards": [
+                    {"value": "10", "direction": "DOWN", "status": "GREEN"},
+                    {"value": "10", "direction": "UP", "status": "YELLOW"},
+                    {"value": "15", "direction": "UP", "status": "ORANGE"},
+                    {"value": "20", "direction": "UP", "status": "RED"},
+                    {"value": "50", "direction": "UP", "status": "PURPLE"}
+                ]
+            },
+          {
+            "name": "ShopServiceAVG",
+            "producerName": "ShopService",
+            "statName": "placeOrder",
+            "valueName": "avg",
+            "intervalName": "1m",
+            "@guards": [
+              {"value": "3.0", "direction": "DOWN", "status": "GREEN"},
+              {"value": "3.0", "direction": "UP", "status": "YELLOW"},
+              {"value": "7.0", "direction": "UP", "status": "ORANGE"},
+              {"value": "10.0", "direction": "UP", "status": "RED"},
+              {"value": "50.0", "direction": "UP", "status": "PURPLE"}
+            ]
+          }
+
+
+        ]
+    },
+
+    "@accumulatorsConfig" : {
+        "accumulationAmount": 200,
+        "@accumulators": [
+            {
+                "name": "OrdersPerMinute",
+                "producerName": "ShopService",
+                "statName": "placeOrder",
+                "valueName": "req",
+                "intervalName": "1m"
+            },
+          {
+            "name": "OrdersWarning",
+            "producerName": "ThresholdProducer",
+            "statName": "warning",
+            "valueName": "Number",
+            "intervalName": "1m"
+          },
+          {
+            "name": "OrdersInfo",
+            "producerName": "ThresholdProducer",
+            "statName": "info",
+            "valueName": "Number",
+            "intervalName": "1m"
+          },
+          {
+            "name": "OrdersError",
+            "producerName": "ThresholdProducer",
+            "statName": "error",
+            "valueName": "Number",
+            "intervalName": "1m"
+          }
+]
+    },
+
+  "@gaugesConfig": {
+    "@gauges": [
+      {
+        "name": "Constant",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "constant": 70
+        },
+        "@maxValue": {
+          "constant":100
+        }
+      },
+      {
+        "name": "Orders",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "producerName": "ShopService",
+          "statName": "placeOrder",
+          "valueName": "req",
+          "intervalName": "1m"
+        },
+        "@maxValue": {
+          "constant":50
+        }
+      },
+      {
+        "name": "Sessions",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "producerName": "SessionCount",
+          "statName": "Sessions",
+          "valueName": "cur",
+          "intervalName": "default"
+        },
+        "@maxValue": {
+          "producerName": "SessionCount",
+          "statName": "Sessions",
+          "valueName": "max",
+          "intervalName": "default"
+        }
+      },
+      {
+        "name": "Memory",
+        "caption": "Used memory",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "producerName": "Heap memory",
+          "statName": "Heap memory",
+          "valueName": "Used Mb",
+          "intervalName": "default"
+        },
+        "@maxValue": {
+          "producerName": "JavaRuntimeMax",
+          "statName": "JavaRuntimeMax",
+          "valueName": "Current Mb",
+          "intervalName": "default"
+        }
+      },
+      {
+        "name": "Blocked",
+        "caption": "Blocked Threads",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "producerName": "ThreadStates",
+          "statName": "BLOCKED",
+          "valueName": "Current",
+          "intervalName": "1m"
+        },
+        "@maxValue": {
+          "producerName": "ThreadCount",
+          "statName": "ThreadCount",
+          "valueName": "current",
+          "intervalName": "default"
+        }
+      },
+      {
+        "name": "Running",
+        "caption": "Running Threads",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "producerName": "ThreadStates",
+          "statName": "RUNNABLE",
+          "valueName": "Current",
+          "intervalName": "1m"
+        },
+        "@maxValue": {
+          "producerName": "ThreadCount",
+          "statName": "ThreadCount",
+          "valueName": "current",
+          "intervalName": "default"
+        }
+      }
+    ]
+  },
+
+  "@dashboardsConfig": {
+    "@dashboards": [
+      {
+        "name": "Example Dashboard",
+        "@charts": [
+          {
+            "caption": "Memory",
+            "accumulators": ["OldGenFree MB 1m", "OldGenUsed MB 1m", "PermGenFree MB 1m"]
+          },
+          {
+            "caption": "Threads",
+            "accumulators": ["ThreadCount", "ThreadStateBlocked-1m", "ThreadStateRunnable-1m", "ThreadStateTimedWaiting-1m", "ThreadStateWaiting-1m"]
+          },
+          {
+            "accumulators": ["URL REQ 1m"]
+          },
+          {
+            "accumulators": ["URL Time 1m"]
+          },
+          {
+            "accumulators": ["URL AVG 1m"]
+          },
+          {
+            "accumulators": ["SessionCount Cur Absolute"]
+          },
+          {
+            "accumulators": ["CPU Time 1m"]
+          }
+
+        ],
+        "@thresholds": ["ThreadCount","OldGenFree", "PermGenFree"],
+        "@gauges": ["Blocked", "Memory", "Running", "Sessions"]
+
+      },
+      {
+        "name": "Burger board",
+        "@charts": [
+          {
+            "caption": "Orders",
+            "accumulators": ["OrdersPerMinute","OrdersWarning","OrdersInfo", "OrdersError"]
+          },
+          {
+            "caption": "Memory",
+            "accumulators": ["OldGenFree MB 1m", "OldGenUsed MB 1m", "PermGenFree MB 1m"]
+          },
+          {
+            "caption": "Threads",
+            "accumulators": ["ThreadCount", "ThreadStateBlocked-1m", "ThreadStateRunnable-1m", "ThreadStateTimedWaiting-1m", "ThreadStateWaiting-1m"]
+          },
+          {
+            "accumulators": ["URL REQ 1m"]
+          },
+          {
+            "accumulators": ["URL Time 1m"]
+          },
+          {
+            "accumulators": ["URL AVG 1m"]
+          },
+          {
+            "accumulators": ["SessionCount Cur Absolute"]
+          },
+          {
+            "accumulators": ["CPU Time 1m"]
+          }
+
+        ],
+        "@thresholds": ["OrderPerMinuteThreshold", "ThreadCount","OldGenFree", "PermGenFree"],
+        "@gauges": ["Orders", "Memory", "Running", "Sessions"]
+
+      },
+      {
+        "name": "Empty Dashboard"
+      }
+    ]
+
+  },
+
+
+  "@tracingConfig": {
+    "tracingEnabled": true,
+    "loggingEnabled": true,
+    "inspectEnabled": true,
+    "maxTraces": 20,
+    "shrinkingStrategy": "KEEPLONGEST"
+  },
+
+  "@pluginsConfig": {
+		"@plugins": [
+			{
+				"name": "NoOpPlugin",
+				"configurationName": "none",
+				"className": "net.anotheria.moskito.core.plugins.NoOpPlugin"
+			}
+		]
+	}
+	
+}
