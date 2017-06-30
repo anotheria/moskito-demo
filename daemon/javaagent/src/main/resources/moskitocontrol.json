@@ -1,0 +1,171 @@
+{
+    "mailNotificationEnabled" : false,
+    "notificationsMutingTime": 60,
+    "defaultApplication" : "DAEMONS",
+
+    "@applications": [
+        {
+        "name": "DAEMONS",
+        "@components": [
+            {
+                "name": "D1",
+                "category": "daemon",
+                "connectorType": "RMI",
+                "location": "localhost:9415"
+            },
+            {
+                "name": "D2",
+                "category": "daemon",
+                "connectorType": "RMI",
+                "location": "localhost:9416"
+            },
+            {
+                "name": "D3",
+                "category": "daemon",
+                "connectorType": "RMI",
+                "location": "localhost:9417"
+            }
+            ],
+			"@charts": [
+				{
+					"name": "CPU Time 1m",
+					"limit": 100,
+					"@lines": [
+							{
+								"component": "*",
+			                	"accumulator": "CPU Time 1m"
+							}
+			        	]
+					},
+              {
+                "name": "Process CPU Load 1m",
+                "limit": 100,
+                "@lines": [
+                  {
+                    "component": "*",
+                    "accumulator": "Process CPU Load 1m"
+                  }
+                ]
+              },
+              {
+                "name": "System CPU Load 1m",
+                "limit": 100,
+                "@lines": [
+                  {
+                    "component": "*",
+                    "accumulator": "System CPU Load 1m"
+                  }
+                ]
+              },
+              {
+                "name": "Runnable Threads 1m",
+                "limit": 100,
+                "@lines": [
+                  {
+                    "component": "*",
+                    "accumulator": "ThreadStateRunnable-1m"
+                  }
+                ]
+              },
+
+					{
+						"name": "Process and System CPU Load 1m in D1",
+						"limit": 100,
+						"@lines": [
+								{
+									"component": "D1",
+				                	"accumulator": "Process CPU Load 1m"
+								},
+								{
+									"component": "D1",
+				                	"accumulator": "System CPU Load 1m"
+								}
+								
+
+				        ]
+					},
+					{
+						"name": "Threads in D1",
+						"limit": 100,
+						"@lines": [
+								{
+									"component": "D1",
+				                	"accumulator": "ThreadStateRunnable-1m"
+								},
+								{
+									"component": "D1",
+				                	"accumulator": "ThreadStateBlocked-1m"
+								},
+								{
+									"component": "D1",
+				                	"accumulator": "ThreadCount"
+								},
+								{
+									"component": "D1",
+				                	"accumulator": "ThreadStateWaiting-1m"
+								},
+								{
+									"component": "D1",
+				                	"accumulator": "ThreadStateTimedWaiting-1m"
+								}
+				        ]
+					}
+								]
+        }
+      ],
+
+
+    "@connectors": [
+        {
+            "type": "HTTP",
+            "className": "org.moskito.control.connectors.HttpConnector"
+        },
+        {
+            "type": "RMI",
+            "className": "org.moskito.control.connectors.RMIConnector"
+        },
+        {
+            "type": "JDBC",
+            "className": "org.moskito.control.connectors.JDBCConnector"
+        },
+        {
+            "type": "MONGO",
+            "className": "org.moskito.control.connectors.MongoConnector"
+        },
+        {
+            "type": "URL",
+            "className": "org.moskito.control.connectors.HttpURLConnector"
+        }
+
+
+    ],
+
+    "@statusUpdater": {
+        "checkPeriodInSeconds": 10,
+        "threadPoolSize": 50,
+        "timeoutInSeconds": 60,
+        "enabled": true
+    },
+
+    "@chartsUpdater": {
+        "checkPeriodInSeconds": 40,
+        "threadPoolSize": 30,
+        "timeoutInSeconds": 60,
+        "enabled": true
+    },
+	"@pluginsConfig":{
+	    "@plugins": [
+	       /*{
+	            "name" : "SlackNotificationPlugin",
+	            "configurationName" : "slack",
+	            "className" : "org.moskito.control.plugins.slack.SlackPlugin"
+	        },*/
+          /*{
+            "name" : "FileLogPlugin",
+            "configurationName" : "my_log_configuration",
+            "className" : "org.moskito.control.plugins.logfile.StatusLogFilePlugin"
+          }*/
+	    ]
+	}
+
+}

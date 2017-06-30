@@ -15,5 +15,6 @@
 
 	<modules>
 		<module>agentlight</module>
+        <module>javaagent</module>
     </modules>
 </project>
