@@ -98,7 +98,85 @@
             "statName": "error",
             "valueName": "Number",
             "intervalName": "1m"
+          },
+          {
+            "name": "System CPU Load 1m",
+            "producerName": "OS",
+            "statName": "OS",
+            "valueName": "systemcpuload",
+            "intervalName": "default"
+          },
+          {
+            "name": "Process CPU Load 1m",
+            "producerName": "OS",
+            "statName": "OS",
+            "valueName": "processcpuload",
+            "intervalName": "default"
+          },
+          {
+            "name": "ThreadCount",
+            "producerName": "ThreadCount",
+            "statName": "ThreadCount",
+            "valueName": "current",
+            "intervalName": "default"
+          },
+          {
+            "name": "ThreadStateRunnable-1m",
+            "producerName": "ThreadStates",
+            "statName": "RUNNABLE",
+            "valueName": "current",
+            "intervalName": "1m"
+          },
+          {
+            "name": "ThreadStateWaiting-1m",
+            "producerName": "ThreadStates",
+            "statName": "TIMED_WAITING",
+            "valueName": "current",
+            "intervalName": "1m"
+          },
+          {
+            "name": "ThreadStateTimedWaiting-1m",
+            "producerName": "ThreadStates",
+            "statName": "WAITING",
+            "valueName": "current",
+            "intervalName": "1m"
+          },
+          {
+            "name": "ThreadStateBlocked-1m",
+            "producerName": "ThreadStates",
+            "statName": "BLOCKED",
+            "valueName": "current",
+            "intervalName": "1m"
+          },
+          {
+            "name": "ThreadStateRunnable-5m",
+            "producerName": "ThreadStates",
+            "statName": "RUNNABLE",
+            "valueName": "current",
+            "intervalName": "5m"
+          },
+          {
+            "name": "ThreadStateWaiting-5m",
+            "producerName": "ThreadStates",
+            "statName": "TIMED_WAITING",
+            "valueName": "current",
+            "intervalName": "5m"
+          },
+          {
+            "name": "ThreadStateTimedWaiting-5m",
+            "producerName": "ThreadStates",
+            "statName": "WAITING",
+            "valueName": "current",
+            "intervalName": "5m"
+          },
+          {
+            "name": "ThreadStateBlocked-5m",
+            "producerName": "ThreadStates",
+            "statName": "BLOCKED",
+            "valueName": "current",
+            "intervalName": "5m"
           }
+
 ]
     },
 
@@ -241,6 +319,82 @@
           "valueName": "maxtotal",
           "intervalName": "default"
         }
+      },
+      {
+        "name": "SysLoad",
+        "caption": "System CPU Load",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "producerName": "OS",
+          "statName": "OS",
+          "valueName": "systemcpuload",
+          "intervalName": "default"
+        },
+        "@maxValue": {
+          "constant": 100
+        },
+        "@zones": [
+          {
+            "color": "green",
+            "left": 0,
+            "right": 0.5
+          },
+          {
+            "color": "yellow",
+            "left": 0.5,
+            "right": 0.75
+          },
+          {
+            "color": "orange",
+            "left": 0.75,
+            "right": 0.9
+          },
+          {
+            "color": "red",
+            "left": 0.9,
+            "right": 1
+          }
+        ]
+      },
+      {
+        "name": "ProcLoad",
+        "caption": "Process CPU Load",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "producerName": "OS",
+          "statName": "OS",
+          "valueName": "processcpuload",
+          "intervalName": "default"
+        },
+        "@maxValue": {
+          "constant": 100
+        },
+        "@zones": [
+          {
+            "color": "green",
+            "left": 0,
+            "right": 0.5
+          },
+          {
+            "color": "yellow",
+            "left": 0.5,
+            "right": 0.75
+          },
+          {
+            "color": "orange",
+            "left": 0.75,
+            "right": 0.9
+          },
+          {
+            "color": "red",
+            "left": 0.9,
+            "right": 1
+          }
+        ]
       }
 
 
@@ -254,7 +408,7 @@
         "@charts": [
           {
             "caption": "Memory",
-            "accumulators": ["Mem OldGenFree MB 1m", "Mem OldGenUsed MB 1m", "Mem PermGenFree MB 1m"]
+            "accumulators": ["Mem OldGenFree MB 1m", "Mem OldGenUsed MB 1m"]
           },
           {
             "caption": "Threads",
@@ -278,12 +432,15 @@
           {
             "caption": "Errors",
             "accumulators": ["Errors.Cumulated.Initial","Errors.Cumulated.Total"]
+          },
+          {
+            "caption": "Load",
+            "accumulators": ["Process CPU Load 1m", "System CPU Load 1m"]
           }
-
 
         ],
         "@thresholds": ["ThreadCount","OldGenFree", "PermGenFree"],
-        "@gauges": ["Blocked", "Memory", "Running", "Sessions", "First Errors", "Total Errors"]
+        "@gauges": ["Blocked", "Memory", "Running", "Sessions", "First Errors", "Total Errors", "ProcLoad", "SysLoad"]
 
       },
       {
@@ -323,6 +480,52 @@
 
       },
       {
+        "name": "Memory",
+        "@charts": [
+          {
+            "caption": "GC Current Count",
+            "accumulators": ["GC PS MarkSweep current collection count 1m", "GC PS Scavenge current collection count 1m"]
+          },
+          {
+            "caption": "GC Current Time",
+            "accumulators": ["GC PS MarkSweep current collection time 1m", "GC PS Scavenge current collection time 1m"]
+          },
+          {
+            "caption": "GC Total Count",
+            "accumulators": ["GC PS MarkSweep total collection count 1m", "GC PS Scavenge total collection count 1m"]
+          },
+          {
+            "caption": "GC Total Time",
+            "accumulators": ["GC PS MarkSweep total collection time 1m", "GC PS Scavenge total collection time 1m"]
+          },
+          {
+            "caption": "GC Current Count",
+            "accumulators": ["GC Copy current collection count 1m", "GC MarkSweepCompact current collection count 1m"]
+          },
+          {
+            "caption": "GC Current Time",
+            "accumulators": ["GC Copy current collection time 1m", "GC MarkSweepCompact current collection time 1m"]
+          },
+          {
+            "caption": "GC Total Count",
+            "accumulators": ["GC Copy total collection count 1m", "GC MarkSweepCompact total collection count 1m"]
+          },
+          {
+            "caption": "GC Total Time",
+            "accumulators": ["GC Copy total collection time 1m", "GC MarkSweepCompact total collection time 1m"]
+          },
+          {
+            "caption": "Memory High Profile",
+            "accumulators": ["Mem OldGenFree MB 1m", "Mem OldGenUsed MB 1m"]
+          },
+          {
+            "caption": "Memory Low Profile",
+            "accumulators": ["Mem TenuredGenFree MB 1m", "Mem TenuredGenUsed MB 1m"]
+          }
+
+        ]
+      },
+      {
         "name": "Empty Dashboard"
       }
     ]
@@ -342,6 +545,7 @@
     "autoChartErrors": true,
     "autoChartErrorsInterval": "1m",
     "logErrors": true,
+    "countRethrows": true,
     "@catchers": [
       {
         "target": "LOGANDMEMORY",
@@ -367,18 +571,6 @@
 				"className": "net.anotheria.moskito.core.plugins.NoOpPlugin"
 			}
 		]
-	},
+	}
 
-    "@mbeanProducersConfig": {
-      "registerAutomatically": true,
-      "updateAutomatically": true,
-      "delayBeforeFirstUpdate": 15000,
-      "@domains": [
-          {
-          "name": "java.lang",
-          "classes": ["sun.management.GarbageCollectorImpl"]
-          }
-      ]
-}
-	
 }
