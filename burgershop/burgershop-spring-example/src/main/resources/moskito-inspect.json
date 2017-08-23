@@ -1,4 +1,11 @@
 {
   "showOnlineHelp":false,
-  "@authentication" : {}
+  "@authentication" : {},
+
+  "@filters" : [
+    {
+      "clazzName": "net.anotheria.moskito.webui.producers.api.filters.InternalProducerFilter",
+      "parameter": "none"
+    }
+  ]
 }
