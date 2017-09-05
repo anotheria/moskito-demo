@@ -54,7 +54,8 @@ public class AutoBuyController {
 
 			}
 
-			service.placeOrder(itemsToBuy);
+			String customerId = "AB"+rnd.nextInt(1000000);
+			service.placeOrder(customerId, itemsToBuy);
 		}
 
 		return null;

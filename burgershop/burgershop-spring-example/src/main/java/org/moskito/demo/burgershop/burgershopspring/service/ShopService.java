@@ -3,15 +3,24 @@ package org.moskito.demo.burgershop.burgershopspring.service;
 import java.util.List;
 
 /**
- * TODO comment this class
+ * Shop service.
  *
  * @author lrosenberg
  * @since 16.11.13 22:43
  */
 public interface ShopService {
+	/**
+	 * Returns the list of available items for shopping.
+	 * @return
+	 */
 	List<ShopableItem> getShopableItems();
 
-	Order placeOrder(String... items);
+	/**
+	 * Places a new order in the system.
+	 * @param items
+	 * @return
+	 */
+	Order placeOrder(String customerId, String... items);
 
 
 }

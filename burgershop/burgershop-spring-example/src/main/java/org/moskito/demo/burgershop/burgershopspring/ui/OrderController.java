@@ -33,7 +33,8 @@ public class OrderController {
 	public String order(HttpServletRequest request, @RequestParam()String choice1, @RequestParam String choice2, @RequestParam String choice3){
 
 		log.debug("Incoming order "+choice1+", "+choice2+", "+choice3);
-		Order order = service.placeOrder(choice1, choice2, choice3);
+		String customerId = (String)request.getSession().getAttribute("customerId");
+		Order order = service.placeOrder(customerId, choice1, choice2, choice3);
 
 		log.debug("Placed order "+order);
 

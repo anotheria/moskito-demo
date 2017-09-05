@@ -9,6 +9,7 @@ import net.anotheria.moskito.core.dynamic.OnDemandStatsProducerException;
 import net.anotheria.moskito.core.registry.ProducerRegistryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -32,6 +33,9 @@ public class ShopServiceImpl implements ShopService {
 
 	//step 3 - own producer
 	private OnDemandStatsProducer<SalesStats> salesProducer;
+
+	@Autowired
+	private NotificationService notificationService;
 
 	public ShopServiceImpl(){
 		items = new LinkedList<ShopableItem>();
@@ -65,7 +69,7 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public Order placeOrder(String... items) {
+	public Order placeOrder(String customerId, String... items) {
 		//first find the order
 
 		if (items==null)
@@ -89,6 +93,14 @@ public class ShopServiceImpl implements ShopService {
 			}catch(OnDemandStatsProducerException e){
 				log.warn("Couldn't mark items as sold because we obviously sell more items than producer limit" , e);
 			}
+		}
+
+		//now prepare notification.
+
+		//the following line is a bug, it has been put here to demonstrate detection of call methods.
+		log.debug("Should send notification for message to customer "+customerId+" -> "+notificationService.shouldNotificationBeSentForCustomer(customerId));
+		if (notificationService.shouldNotificationBeSentForCustomer(customerId)){
+			notificationService.sendNotificationAboutOrder(customerId, order.toString());
 		}
 
 
