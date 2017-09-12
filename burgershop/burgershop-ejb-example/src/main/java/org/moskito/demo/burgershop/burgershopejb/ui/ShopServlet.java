@@ -3,59 +3,64 @@ package org.moskito.demo.burgershop.burgershopejb.ui;
 import org.moskito.demo.burgershop.burgershopejb.service.Category;
 import org.moskito.demo.burgershop.burgershopejb.service.ShopService;
 import org.moskito.demo.burgershop.burgershopejb.service.ShopableItem;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Collects available burger ingredients,
+ * sorts it by category and passes it to shopping jsp
+ */
 public class ShopServlet extends HttpServlet {
 
     @EJB(name="ejb/shop")
     private ShopService shopService;
 
+    private static Logger log = LoggerFactory.getLogger(ShopServlet.class);
+
     @Override
-    public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest servletRequest, HttpServletResponse servletResponse)
+            throws ServletException, IOException {
 
-        String customerId = ((String) ((HttpServletRequest) servletRequest).getSession(true)
-                .getAttribute("customerId"));
-
-        servletRequest.setAttribute("customerId", customerId);
+        // Collecting available shopping items to this map
+        // with category as key and list of ingredients as value
+        HashMap<Category, List<ShopItemBean>> beans = new HashMap<>();
 
         List<ShopableItem> items = shopService.getShopableItems();
 
-        HashMap<Category, List<ShopItemBean>> beans = new HashMap<Category, List<ShopItemBean>>();
-        for (ShopableItem item : items){
-            ShopItemBean bean = new ShopItemBean();
-            bean.setItem(item.getName());
-            bean.setPrice(item.getPrice());
+        log.debug("Items: "+items);
 
-            String nicePrice = "";
-
-            nicePrice = ""+(item.getPrice()/100);
-            int centPrice = item.getPrice()-(item.getPrice()/100*100);
-            nicePrice += ".";
-            nicePrice += (centPrice<10) ? centPrice == 0 ? "00" : "0"+centPrice :""+centPrice;
-            bean.setNicePrice(nicePrice);
+        for (ShopableItem item : items) {
 
             List<ShopItemBean> itemsForCategory = beans.get(item.getCategory());
+
             if (itemsForCategory==null){
-                itemsForCategory = new ArrayList<ShopItemBean>();
+                itemsForCategory = new ArrayList<>();
                 beans.put(item.getCategory(), itemsForCategory);
             }
-            itemsForCategory.add(bean);
+
+            itemsForCategory.add(new ShopItemBean(
+                    item.getName(),
+                    item.getPrice()
+            ));
+
         }
 
+        // Fill request attributes with shop items lists with category name as key
         for (Category c : Category.values()){
             servletRequest.setAttribute(c.name(), beans.get(c));
         }
 
+        // Forward request to shopping page jsp
         servletRequest.getRequestDispatcher("/jsp/shop.jsp").forward(servletRequest, servletResponse);
 
     }

@@ -1,7 +1,7 @@
 package org.moskito.demo.burgershop.burgershopejb.service;
 
 /**
- * TODO comment this class
+ * Enum of burger ingredients
  *
  * @author lrosenberg
  * @since 16.11.13 22:44

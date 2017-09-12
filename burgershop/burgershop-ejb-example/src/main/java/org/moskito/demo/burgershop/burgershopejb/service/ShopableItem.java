@@ -1,22 +1,37 @@
 package org.moskito.demo.burgershop.burgershopejb.service;
 
 /**
- * TODO comment this class
+ * Represents burger ingredient.
  *
  * @author lrosenberg
  * @since 16.11.13 22:43
  */
 public class ShopableItem {
+
+	/**
+	 * Ingredient price
+	 */
 	private int price;
 
+	/**
+	 * Ingredient name
+	 */
 	private String name;
 
+	/**
+	 * Ingredient category.
+	 * Can be : BREAD, MEAT and EXTRAS
+	 */
 	private Category category;
 
-	public ShopableItem(){
-
-	}
-
+	/**
+	 * Constructor that sets
+	 * ingredient price, name and category
+	 *
+	 * @param aName ingredient name
+	 * @param aPrice ingredient price
+	 * @param aCategory ingredient category
+	 */
 	public ShopableItem(String aName, int aPrice, Category aCategory){
 		name = aName;
 		price = aPrice;
@@ -27,27 +42,16 @@ public class ShopableItem {
 		return price;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
 	public String toString(){
 		return getName()+" "+getCategory()+" "+getPrice();
 	}
+
 }

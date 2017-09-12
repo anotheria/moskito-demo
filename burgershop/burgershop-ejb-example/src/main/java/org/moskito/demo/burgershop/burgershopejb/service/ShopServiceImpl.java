@@ -1,6 +1,7 @@
 package org.moskito.demo.burgershop.burgershopejb.service;
 
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducer;
+import net.anotheria.moskito.core.dynamic.OnDemandStatsProducerException;
 import net.anotheria.moskito.core.registry.ProducerRegistryFactory;
 import org.moskito.demo.burgershop.burgershopejb.service.stats.SalesStats;
 import org.moskito.demo.burgershop.burgershopejb.service.stats.SalesStatsFactory;
@@ -9,11 +10,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateful;
+import javax.ejb.Singleton;
 import java.util.LinkedList;
 import java.util.List;
 
-@Stateful
+/**
+ * Implementation of {@link ShopService}.
+ */
+@Singleton
 public class ShopServiceImpl implements ShopService{
 
     private static Logger log = LoggerFactory.getLogger(ShopServiceImpl.class);
@@ -28,9 +32,13 @@ public class ShopServiceImpl implements ShopService{
 
     private List<ShopableItem> items;
 
+    /**
+     * Fills available ingredients in constructor for demo simplicity.
+     * Registers sales and threshold producer.
+     */
     public ShopServiceImpl(){
 
-        items = new LinkedList<ShopableItem>();
+        items = new LinkedList<>();
         items.add(new ShopableItem("wheat", 585, Category.BREAD));
         items.add(new ShopableItem("wholemeal", 285, Category.BREAD));
         items.add(new ShopableItem("brioche", 585, Category.BREAD));
@@ -58,7 +66,7 @@ public class ShopServiceImpl implements ShopService{
 
         ProducerRegistryFactory.getProducerRegistryInstance().registerProducer(salesProducer);
 
-        new ThresholdProducer(); // TODO : MAY DO SOMETHING WITH THIS CONSTRUCTOR
+        new ThresholdProducer();
 
     }
 
@@ -72,15 +80,33 @@ public class ShopServiceImpl implements ShopService{
         if (items==null)
             throw new IllegalArgumentException("No items for order");
 
+        // Creating new burger order
         Order order = new Order();
 
+        // Placing ordered ingredients
         for (String item : items){
             counterService.ingredientUsed(item);
             order.addItem(findItemByName(item));
         }
 
+        // Order composing is finished. Placing order...
         counterService.orderPlaced();
 
+        //now add sales counters...
+        int priceInCents = order.getTotalPrice();
+        salesProducer.getDefaultStats().addSale(priceInCents);
+
+        for (String item : items){
+            try{
+                salesProducer.getStats(item).addSale(priceInCents);
+            }catch(OnDemandStatsProducerException e){
+                log.warn("Couldn't mark items as sold because we obviously sell more items than producer limit" , e);
+            }
+        }
+
+        //the following line is a bug, it has been put here to demonstrate detection of call methods.
+        log.debug("Should send notification for message to customer "+customerId+" -> "
+                + notificationService.shouldNotificationBeSentForCustomer(customerId));
         if (notificationService.shouldNotificationBeSentForCustomer(customerId)){
             notificationService.sendNotificationAboutOrder(customerId, order.toString());
         }
@@ -90,11 +116,14 @@ public class ShopServiceImpl implements ShopService{
     }
 
     private ShopableItem findItemByName(String name){
+
         for (ShopableItem item : items){
             if (item.getName().equals(name))
                 return item;
         }
-        throw new IllegalArgumentException("No such shopable item: "+name);
+
+        throw new IllegalArgumentException("No such shopable item: " + name);
+
     }
 
 }

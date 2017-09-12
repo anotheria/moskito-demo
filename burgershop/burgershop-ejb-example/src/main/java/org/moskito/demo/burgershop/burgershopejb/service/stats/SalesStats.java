@@ -11,20 +11,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO comment this class
+ * Stat class for burger ingredient sales.
+ * Contains 'number' and 'volume' values
+ * to monitor amount of sold items and total price
+ * of each ingredient and all ingredients in total.
  *
  * @author lrosenberg
  * @since 12.12.13 13:01
  */
 public class SalesStats extends AbstractStats{
 
-	public static enum StatDef {
+	public enum StatDef {
+
 		NUMBER("Number"),
 		VOLUME("Volume");
 
 		private String statName;
 
-		private StatDef(final String aStatName) {
+		StatDef(final String aStatName) {
 			statName = aStatName;
 		}
 
@@ -33,7 +37,7 @@ public class SalesStats extends AbstractStats{
 		}
 
 		public static List<String> getStatNames() {
-			List<String> ret = new ArrayList<String>(StatDef.values().length);
+			List<String> ret = new ArrayList<>(StatDef.values().length);
 			for (StatDef value : StatDef.values()) {
 				ret.add(value.getStatName());
 			}
@@ -48,6 +52,7 @@ public class SalesStats extends AbstractStats{
 			}
 			throw new IllegalArgumentException("No such value with name: " + statName);
 		}
+
 	}
 
 	static{
@@ -64,13 +69,32 @@ public class SalesStats extends AbstractStats{
 	 */
 	private StatValue volume;
 
+	/**
+	 * Pass 'name' parameter to parent constructor
+	 * and initialize stat values.
+	 *
+	 * @param name stat name.
+	 */
 	public SalesStats(String name) {
+
 		super(name);
 
-		number = StatValueFactory.createStatValue(Long.valueOf(0), StatDef.NUMBER.getStatName(), Constants.getDefaultIntervals());
-		volume = StatValueFactory.createStatValue(Long.valueOf(0), StatDef.VOLUME.getStatName(), Constants.getDefaultIntervals());
+		number = StatValueFactory.createStatValue(
+				0L, StatDef.NUMBER.getStatName(), Constants.getDefaultIntervals()
+		);
+		volume = StatValueFactory.createStatValue(
+				0L, StatDef.VOLUME.getStatName(), Constants.getDefaultIntervals()
+		);
+
 	}
 
+	/**
+	 * Adds new sale to this stat.
+	 * Increase number of sale by one
+	 * and sold ingredients total cost.
+	 *
+	 * @param priceInCents sale amount in cents
+	 */
 	public void addSale(int priceInCents){
 		number.increase();
 		volume.increaseByInt(priceInCents);
@@ -87,7 +111,6 @@ public class SalesStats extends AbstractStats{
 	public double getAverageVolume(String intervalName){
 		return (double)getVolume(intervalName) / getNumber(intervalName);
 	}
-
 
 	@Override
 	public String toStatsString(String s, TimeUnit timeUnit) {

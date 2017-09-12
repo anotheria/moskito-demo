@@ -17,10 +17,11 @@ import java.util.List;
  * @since 12.12.13 23:24
  */
 public class SalesStatsDecorator extends AbstractDecorator {
+
 	/**
 	 * Captions.
 	 */
-	static final String CAPTIONS[] = {
+	private static final String CAPTIONS[] = {
 			"Sales",
 			"Volume",
 			"Avg"
@@ -29,7 +30,7 @@ public class SalesStatsDecorator extends AbstractDecorator {
 	/**
 	 * Short explanations.
 	 */
-	static final String SHORT_EXPLANATIONS[] = {
+	private static final String SHORT_EXPLANATIONS[] = {
 			"Number of sales",
 			"Total earnings",
 			"Avg earnings"
@@ -38,7 +39,7 @@ public class SalesStatsDecorator extends AbstractDecorator {
 	/**
 	 * Explanations.
 	 */
-	static final String EXPLANATIONS[] = {
+	private static final String EXPLANATIONS[] = {
 			"Total number of sales for this ingredient",
 			"Total earnings from sales of this ingredient",
 			"Average earnings per sale for this ingredient",
@@ -47,18 +48,26 @@ public class SalesStatsDecorator extends AbstractDecorator {
 	/**
 	 * Creates a new decorator object with given name.
 	 */
-	protected SalesStatsDecorator(){
+	SalesStatsDecorator(){
 		super("Sales", CAPTIONS, SHORT_EXPLANATIONS, EXPLANATIONS);
 	}
 
-	@Override public List<StatValueAO> getValues(IStats statsObject, String interval, TimeUnit unit) {
+	@Override
+	public List<StatValueAO> getValues(IStats statsObject, String interval, TimeUnit unit) {
+
 		SalesStats stats = (SalesStats)statsObject;
-		List<StatValueAO> ret = new ArrayList<StatValueAO>(CAPTIONS.length);
+
+		List<StatValueAO> ret = new ArrayList<>(CAPTIONS.length);
+
 		int i = 0;
 		long totalSales = stats.getNumber(interval);
+
 		ret.add(new LongValueAO(CAPTIONS[i++], totalSales));
 		ret.add(new LongValueAO(CAPTIONS[i++], stats.getVolume(interval)));
 		ret.add(new DoubleValueAO(CAPTIONS[i], stats.getAverageVolume(interval)));
+
 		return ret;
+
 	}
+
 }

@@ -14,6 +14,7 @@ import java.util.TimerTask;
  * @since 07.12.15 22:17
  */
 public class ThresholdProducer {
+
 	private OnDemandStatsProducer<SalesStats> producer;
 
 	public ThresholdProducer(){
@@ -47,4 +48,5 @@ public class ThresholdProducer {
 		}, 10L, 1000L);
 
 	}
+
 }

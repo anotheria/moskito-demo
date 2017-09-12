@@ -19,7 +19,7 @@
     <!-- Processes application requests -->
     <servlet>
         <servlet-name>homeServlet</servlet-name>
-        <servlet-class>org.moskito.demo.burgershop.burgershopejb.ui.HomeServlet</servlet-class>
+        <jsp-file>/jsp/index.jsp</jsp-file>
         <load-on-startup>1</load-on-startup>
     </servlet>
 

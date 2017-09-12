@@ -16,8 +16,6 @@
         document.createElement('aside');
         document.createElement('footer');
     </script>
-    <!-- Your customerId is ${customerId} -->
-
     <![endif]-->
 
     <script type="text/javascript">
@@ -108,7 +106,7 @@
             <td class="<ano:write name="bread" property="item"/>">
 
                 <div class="price">
-                    <span><ano:write name="bread" property="nicePrice"/></span>
+                    <span><ano:write name="bread" property="price"/></span>
                 </div>
 
                 <div class="item_name">
@@ -124,7 +122,7 @@
             <td class="<ano:write name="meat" property="item"/>">
 
                 <div class="price">
-                    <span><ano:write name="meat" property="nicePrice"/></span>
+                    <span><ano:write name="meat" property="price"/></span>
                 </div>
 
                 <div class="item_name">
@@ -140,7 +138,7 @@
             <td class="<ano:write name="extra" property="item"/>">
 
                 <div class="price">
-                    <span><ano:write name="extra" property="nicePrice"/></span>
+                    <span><ano:write name="extra" property="price"/></span>
                 </div>
 
                 <div class="item_name">

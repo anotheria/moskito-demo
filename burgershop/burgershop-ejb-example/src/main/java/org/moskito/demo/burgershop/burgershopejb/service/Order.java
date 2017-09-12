@@ -4,42 +4,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO comment this class
+ * Represents single burger order.
  *
  * @author lrosenberg
  * @since 17.11.13 20:40
  */
 public class Order {
-	private List<ShopableItem> items;
 
-	private int totalPrice;
+	/**
+	 * List of ordered burger ingredients
+	 */
+	private List<ShopableItem> items = new ArrayList<>();
 
-	public Order(){
-		items = new ArrayList<ShopableItem>();
-	}
+	/**
+	 * Total burger cost composed from it§s ingredients
+	 */
+	private int totalPrice = 0;
 
+	/**
+	 * Adds ingredient to burger
+	 * @param item burger ingredient name
+	 */
 	public void addItem(ShopableItem item){
 		items.add(item);
 		totalPrice += item.getPrice();
 	}
 
+	/**
+	 * Return list of ordered burger ingredients
+	 * @return list of ordered burger ingredients
+	 */
 	public List<ShopableItem> getItems() {
 		return items;
 	}
 
-	public void setItems(List<ShopableItem> items) {
-		this.items = items;
-	}
-
+	/**
+	 * Returns total price of this order burger
+	 * @return total price of this order burger
+	 */
 	public int getTotalPrice() {
 		return totalPrice;
-	}
-
-	public void setTotalPrice(int totalPrice) {
-		this.totalPrice = totalPrice;
 	}
 
 	public String toString(){
 		return getTotalPrice()+" "+items;
 	}
+
 }

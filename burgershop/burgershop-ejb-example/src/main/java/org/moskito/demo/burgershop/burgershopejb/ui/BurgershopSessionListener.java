@@ -28,4 +28,5 @@ public class BurgershopSessionListener implements HttpSessionListener{
 	public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
 
 	}
+
 }

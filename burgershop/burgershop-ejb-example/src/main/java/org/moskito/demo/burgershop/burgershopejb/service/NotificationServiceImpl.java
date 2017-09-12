@@ -1,8 +1,17 @@
 package org.moskito.demo.burgershop.burgershopejb.service;
 
-import javax.ejb.Stateless;
+import net.anotheria.moskito.aop.annotation.Monitor;
 
-@Stateless
+import javax.ejb.Singleton;
+
+/**
+ * Implementation of {@link NotificationService}.
+ * Actually do not do any useful staff, just wait
+ * some time on it's methods call
+ * TODO : FIND OUT THIS SERVICE DESIGNATION
+ */
+@Singleton
+@Monitor
 public class NotificationServiceImpl implements NotificationService{
 
     @Override
