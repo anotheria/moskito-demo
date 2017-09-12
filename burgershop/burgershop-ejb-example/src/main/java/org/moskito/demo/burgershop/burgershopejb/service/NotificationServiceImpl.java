@@ -1,7 +1,5 @@
 package org.moskito.demo.burgershop.burgershopejb.service;
 
-import org.moskito.demo.burgershop.burgershopejb.service.NotificationService;
-
 import javax.ejb.Stateless;
 
 @Stateless
@@ -9,12 +7,17 @@ public class NotificationServiceImpl implements NotificationService{
 
     @Override
     public boolean shouldNotificationBeSentForCustomer(String customerId) {
-        return false;
+        try {
+            Thread.sleep(50);
+        }catch(InterruptedException ignored){}
+        return true;
     }
 
     @Override
     public void sendNotificationAboutOrder(String customerId, String message) {
-        String foo = "bar";
+        try {
+            Thread.sleep(10);
+        }catch(InterruptedException ignored){}
     }
 
 }

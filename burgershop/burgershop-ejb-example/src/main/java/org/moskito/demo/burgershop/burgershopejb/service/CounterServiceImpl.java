@@ -1,18 +1,19 @@
 package org.moskito.demo.burgershop.burgershopejb.service;
 
+import net.anotheria.moskito.aop.annotation.Count;
+import net.anotheria.moskito.aop.annotation.CountByParameter;
+
 import javax.ejb.Stateless;
 
 @Stateless
 public class CounterServiceImpl implements CounterService {
 
     @Override
-    public void orderPlaced() {
-        int foo = 5;
-    }
+    @Count(category = "business", producerId = "orders")
+    public void orderPlaced() {}
 
     @Override
-    public void ingredientUsed(String ingredient) {
-        int bar = 5;
-    }
+    @CountByParameter(category = "business", producerId="ingredients")
+    public void ingredientUsed(String ingredient) {}
 
 }

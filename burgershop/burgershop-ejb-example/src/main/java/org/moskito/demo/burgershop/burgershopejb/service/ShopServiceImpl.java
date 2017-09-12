@@ -1,5 +1,13 @@
 package org.moskito.demo.burgershop.burgershopejb.service;
 
+import net.anotheria.moskito.core.dynamic.OnDemandStatsProducer;
+import net.anotheria.moskito.core.registry.ProducerRegistryFactory;
+import org.moskito.demo.burgershop.burgershopejb.service.stats.SalesStats;
+import org.moskito.demo.burgershop.burgershopejb.service.stats.SalesStatsFactory;
+import org.moskito.demo.burgershop.burgershopejb.service.stats.ThresholdProducer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import java.util.LinkedList;
@@ -7,6 +15,10 @@ import java.util.List;
 
 @Stateful
 public class ShopServiceImpl implements ShopService{
+
+    private static Logger log = LoggerFactory.getLogger(ShopServiceImpl.class);
+
+    private OnDemandStatsProducer<SalesStats> salesProducer;
 
     @EJB(name="ejb/counter")
     private CounterService counterService;
@@ -36,6 +48,17 @@ public class ShopServiceImpl implements ShopService{
         items.add(new ShopableItem("cheese", 85, Category.EXTRAS));
         items.add(new ShopableItem("sauce", 85, Category.EXTRAS));
         items.add(new ShopableItem("cockroach", 2085, Category.EXTRAS));
+
+        salesProducer = new OnDemandStatsProducer<>(
+                "sales",
+                "business",
+                "sales",
+                new SalesStatsFactory()
+        );
+
+        ProducerRegistryFactory.getProducerRegistryInstance().registerProducer(salesProducer);
+
+        new ThresholdProducer(); // TODO : MAY DO SOMETHING WITH THIS CONSTRUCTOR
 
     }
 
