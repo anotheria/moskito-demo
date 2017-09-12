@@ -26,7 +26,8 @@
         <header class="main">
             <div class="logo_line"></div>
             <img src="img/logo.png"/>
-            <button class="but" onclick="location.href='shop.html'"> Make your own <br>burger now!</button>
+            <span>Your customerId is ${customerId}</span>
+            <button class="but" onclick="location.href='shop'"> Make your own <br>burger now!</button>
         </header>
     </div>
 

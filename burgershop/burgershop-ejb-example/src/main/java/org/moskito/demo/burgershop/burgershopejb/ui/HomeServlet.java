@@ -1,33 +1,26 @@
 package org.moskito.demo.burgershop.burgershopejb.ui;
 
+import org.moskito.demo.burgershop.burgershopejb.service.ShopService;
+
+import javax.ejb.EJB;
 import javax.servlet.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-public class HomeServlet implements Servlet {
+public class HomeServlet extends HttpServlet {
 
-    @Override
-    public void init(ServletConfig servletConfig) throws ServletException {
-
-    }
-
-    @Override
-    public ServletConfig getServletConfig() {
-        return null;
-    }
+    @EJB(name="ejb/shop")
+    private ShopService shopService;
 
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
-        servletRequest.setAttribute("customerId", "NOT IMPLEMENTED YET");
+        servletRequest.setAttribute(
+                "customerId",
+                ((HttpServletRequest)servletRequest).getSession(true)
+                .getAttribute("customerId")
+        );
         servletRequest.getRequestDispatcher("/jsp/index.jsp").forward(servletRequest, servletResponse);
     }
 
-    @Override
-    public String getServletInfo() {
-        return null;
-    }
-
-    @Override
-    public void destroy() {
-
-    }
 }
