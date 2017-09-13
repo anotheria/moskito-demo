@@ -96,15 +96,19 @@ public class ShopServiceImpl implements ShopService {
 		}
 
 		//now prepare notification.
-
-		//the following line is a bug, it has been put here to demonstrate detection of call methods.
-		log.debug("Should send notification for message to customer "+customerId+" -> "+notificationService.shouldNotificationBeSentForCustomer(customerId));
-		if (notificationService.shouldNotificationBeSentForCustomer(customerId)){
-			notificationService.sendNotificationAboutOrder(customerId, order.toString());
-		}
+		sendNotification(customerId, order.toString());
 
 
 		return order;
+
+	}
+
+	private void sendNotification(String customerId, String orderDescription){
+		//the following line is a bug, it has been put here to demonstrate detection of call methods.
+		log.debug("Should send notification for message to customer "+customerId+" -> "+notificationService.shouldNotificationBeSentForCustomer(customerId));
+		if (notificationService.shouldNotificationBeSentForCustomer(customerId)){
+			notificationService.sendNotificationAboutOrder(customerId, orderDescription);
+		}
 
 	}
 

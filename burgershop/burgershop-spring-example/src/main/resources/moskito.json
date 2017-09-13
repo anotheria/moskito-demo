@@ -56,11 +56,11 @@
             "valueName": "avg",
             "intervalName": "1m",
             "@guards": [
-              {"value": "3.0", "direction": "DOWN", "status": "GREEN"},
-              {"value": "3.0", "direction": "UP", "status": "YELLOW"},
-              {"value": "7.0", "direction": "UP", "status": "ORANGE"},
-              {"value": "10.0", "direction": "UP", "status": "RED"},
-              {"value": "50.0", "direction": "UP", "status": "PURPLE"}
+              {"value": "150.0", "direction": "DOWN", "status": "GREEN"},
+              {"value": "150.0", "direction": "UP", "status": "YELLOW"},
+              {"value": "200.0", "direction": "UP", "status": "ORANGE"},
+              {"value": "250.0", "direction": "UP", "status": "RED"},
+              {"value": "500.0", "direction": "UP", "status": "PURPLE"}
             ]
           }
 
