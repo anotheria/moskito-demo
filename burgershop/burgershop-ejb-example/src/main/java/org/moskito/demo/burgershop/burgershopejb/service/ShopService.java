@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Service to retrieve available
- * shopping items and place new burger order
+ * shopping items and place new burger orders
  */
 @Local
 public interface ShopService {

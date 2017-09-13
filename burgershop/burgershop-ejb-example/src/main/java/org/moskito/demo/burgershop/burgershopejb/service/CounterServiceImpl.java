@@ -15,18 +15,18 @@ public class CounterServiceImpl implements CounterService {
 
     /**
      * 'orders' producer should register this method call
-     * in it stats
+     * in it stat
      */
     @Override
     @Count(category = "business", producerId = "orders")
     public void orderPlaced() {}
 
     /**
-     * 'orders' producer should register this method call
+     * 'ingredients' producer should register this method call
      * in stat with ingredient name
      */
     @Override
-    @CountByParameter(category = "business", producerId="ingredients")
+    @CountByParameter(category = "business", producerId = "ingredients")
     public void ingredientUsed(String ingredient) {}
 
 }

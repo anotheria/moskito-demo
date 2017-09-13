@@ -159,7 +159,7 @@
 
 
 <div class="lightbox">
-    <div class="black_bg"><!-- --></div>
+    <div class="black_bg"></div>
     <div class="box_l">
         <div class="oder_now">
             <a class="close_box">x</a>

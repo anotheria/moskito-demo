@@ -57,23 +57,24 @@
             <version>${moskito.version}</version>
         </dependency>
 
-        <!-- Enabling MoSKito Inspect Embedded -->
+        <!-- Enabling MoSKito Inspect Remote -->
         <dependency>
             <groupId>net.anotheria</groupId>
             <artifactId>moskito-inspect-remote</artifactId>
             <version>${moskito.version}</version>
         </dependency>
-        <!--- -->
+        <!-- Enabling MoSKito Inspect Embedded -->
         <dependency>
             <groupId>net.anotheria</groupId>
             <artifactId>moskito-inspect-embedded</artifactId>
             <version>${moskito.version}</version>
-        </dependency> <!-- -->
+        </dependency>
         <dependency>
             <groupId>net.anotheria</groupId>
             <artifactId>moskito-webui</artifactId>
             <version>${moskito.version}</version>
         </dependency>
+        <!-- Enabling MoSKito Control Agent -->
         <dependency>
             <groupId>org.moskito</groupId>
             <artifactId>moskito-control-agent-http-endpoint</artifactId>

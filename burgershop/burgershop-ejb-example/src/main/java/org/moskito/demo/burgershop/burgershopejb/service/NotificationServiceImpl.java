@@ -6,14 +6,20 @@ import javax.ejb.Singleton;
 
 /**
  * Implementation of {@link NotificationService}.
- * Actually do not do any useful staff, just wait
- * some time on it's methods call
- * TODO : FIND OUT THIS SERVICE DESIGNATION
  */
 @Singleton
 @Monitor
 public class NotificationServiceImpl implements NotificationService{
 
+    /**
+     * Imitates long-running execution by causing thread to sleep.
+     * Called twice due order placing to demonstrate costly method call duplication
+     *
+     * @param customerId identifier of a customer to clarify the need
+     *                   of notification send.
+     *
+     * @return always true
+     */
     @Override
     public boolean shouldNotificationBeSentForCustomer(String customerId) {
         try {
@@ -22,6 +28,11 @@ public class NotificationServiceImpl implements NotificationService{
         return true;
     }
 
+    /**
+     * Causing thread to sleep
+     * @param customerId recipient identifier
+     * @param message notification message
+     */
     @Override
     public void sendNotificationAboutOrder(String customerId, String message) {
         try {

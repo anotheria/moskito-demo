@@ -17,12 +17,12 @@ public class Order {
 	private List<ShopableItem> items = new ArrayList<>();
 
 	/**
-	 * Total burger cost composed from it§s ingredients
+	 * Total burger cost composed from it's ingredients
 	 */
 	private int totalPrice = 0;
 
 	/**
-	 * Adds ingredient to burger
+	 * Adds new ingredient to burger
 	 * @param item burger ingredient name
 	 */
 	public void addItem(ShopableItem item){

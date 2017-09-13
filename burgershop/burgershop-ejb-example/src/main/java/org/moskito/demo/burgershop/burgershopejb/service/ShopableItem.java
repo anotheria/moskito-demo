@@ -20,7 +20,6 @@ public class ShopableItem {
 
 	/**
 	 * Ingredient category.
-	 * Can be : BREAD, MEAT and EXTRAS
 	 */
 	private Category category;
 

@@ -14,8 +14,6 @@
         document.createElement('footer');
     </script>
     <![endif]-->
-    <!-- Your customerId is ${customerId} -->
-
 </head>
 
 <body>

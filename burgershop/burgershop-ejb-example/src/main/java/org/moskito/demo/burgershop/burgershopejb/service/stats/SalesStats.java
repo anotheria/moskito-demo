@@ -13,8 +13,8 @@ import java.util.List;
 /**
  * Stat class for burger ingredient sales.
  * Contains 'number' and 'volume' values
- * to monitor amount of sold items and total price
- * of each ingredient and all ingredients in total.
+ * to monitor amount of sold items and it price
+ * of each ingredient type and all ingredients in total.
  *
  * @author lrosenberg
  * @since 12.12.13 13:01

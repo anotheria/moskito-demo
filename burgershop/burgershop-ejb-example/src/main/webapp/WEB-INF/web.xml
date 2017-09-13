@@ -15,13 +15,9 @@
         <param-value>true</param-value>
     </context-param>
 
-
-    <!-- Processes application requests -->
-    <servlet>
-        <servlet-name>homeServlet</servlet-name>
-        <jsp-file>/jsp/index.jsp</jsp-file>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
+    <welcome-file-list>
+        <welcome-file>/jsp/index.jsp</welcome-file>
+    </welcome-file-list>
 
     <servlet>
         <servlet-name>shopServlet</servlet-name>
@@ -38,11 +34,6 @@
     <servlet-mapping>
         <servlet-name>shopServlet</servlet-name>
         <url-pattern>/shop</url-pattern>
-    </servlet-mapping>
-
-    <servlet-mapping>
-        <servlet-name>homeServlet</servlet-name>
-        <url-pattern></url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

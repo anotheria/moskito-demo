@@ -4,7 +4,11 @@ import javax.ejb.Local;
 
 /**
  * An interface for a notification service. It is used to demonstrate a possible bug.
- * TODO : FIND OUT THIS SERVICE DESIGNATION
+ *
+ * By making a burger-buying journey in moskito-inspect it possible to trace
+ * that {@link NotificationService#shouldNotificationBeSentForCustomer(String)}
+ * method is called twice and has significant execution time.
+ *
  * @author lrosenberg
  * @since 05.09.17 01:04
  */
@@ -23,7 +27,7 @@ public interface NotificationService {
     boolean shouldNotificationBeSentForCustomer(String customerId);
 
     /**
-     * Sends a notification to the customer.
+     * Sends a notification to a customer.
      * @param customerId recipient identifier
      * @param message notification message
      */
