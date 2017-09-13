@@ -98,7 +98,9 @@ public class ShopServiceImpl implements ShopService{
 
         for (String item : items){
             try{
-                salesProducer.getStats(item).addSale(priceInCents);
+                salesProducer.getStats(item).addSale(
+                        findItemByName(item).getPrice()
+                );
             }catch(OnDemandStatsProducerException e){
                 log.warn("Couldn't mark items as sold because we obviously sell more items than producer limit" , e);
             }
