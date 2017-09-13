@@ -11,7 +11,9 @@
     <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>burgersop-ejb-example</artifactId>
+    <name>Burgershop EJB Example Webapp</name>
+
+    <artifactId>moskito-demo-burgershop-ejb</artifactId>
 
     <dependencies>
         <dependency>
