@@ -52,7 +52,7 @@ public class OrderController {
 	private String preparePrice(Order order){
 		//return NumberUtils.currencyFormat((double)order.getTotalPrice()/100, ',');
 		//Optimization, don't need cast to double
-		return NumberUtils.currencyFormat(order.getTotalPrice()/100, ',');
+		return NumberUtils.currencyFormat(order.getTotalPrice()/100d, ',');
 	}
 
 }
