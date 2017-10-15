@@ -16,6 +16,7 @@
 	<modules>
 		<module>burgershop-spring-example</module>
 		<module>burgershop-callexecution</module>
-        <module>burgershop-ejb-example</module>
-    </modules>
+    <module>burgershop-ejb-example</module>
+    <module>burgershop-spring-stripped</module>
+  </modules>
 </project>

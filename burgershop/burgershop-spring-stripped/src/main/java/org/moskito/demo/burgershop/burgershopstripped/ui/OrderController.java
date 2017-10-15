@@ -1,10 +1,9 @@
-package org.moskito.demo.burgershop.burgershopspring.ui;
+package org.moskito.demo.burgershop.burgershopstripped.ui;
 
-import org.moskito.demo.burgershop.burgershopspring.service.Order;
-import org.moskito.demo.burgershop.burgershopspring.service.ShopService;
-import org.moskito.demo.burgershop.burgershopspring.service.ShopableItem;
-import net.anotheria.moskito.aop.annotation.Monitor;
 import net.anotheria.util.NumberUtils;
+import org.moskito.demo.burgershop.burgershopstripped.service.Order;
+import org.moskito.demo.burgershop.burgershopstripped.service.ShopService;
+import org.moskito.demo.burgershop.burgershopstripped.service.ShopableItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,6 @@ import java.util.LinkedList;
  * @since 17.11.13 15:16
  */
 @Controller
-@Monitor(category="controller")
 public class OrderController {
 	@Autowired
 	private ShopService service;
