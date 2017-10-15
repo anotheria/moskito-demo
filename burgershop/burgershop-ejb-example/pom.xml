@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>moskito-demo-burgershop</artifactId>
+        <groupId>org.moskito</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <packaging>war</packaging>
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>Burgershop EJB Example Webapp</name>
+
+    <artifactId>moskito-demo-burgershop-ejb</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.0.13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.5</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>javax.ejb-api</artifactId>
+            <version>3.2</version>
+        </dependency>
+
+        <!-- Dependency for MoSKito AOP -->
+        <dependency>
+            <groupId>net.anotheria</groupId>
+            <artifactId>moskito-core</artifactId>
+            <version>${moskito.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.anotheria</groupId>
+            <artifactId>moskito-aop</artifactId>
+            <version>${moskito.version}</version>
+        </dependency>
+
+        <!-- Enabling MoSKito Inspect Remote -->
+        <dependency>
+            <groupId>net.anotheria</groupId>
+            <artifactId>moskito-inspect-remote</artifactId>
+            <version>${moskito.version}</version>
+        </dependency>
+        <!-- Enabling MoSKito Inspect Embedded -->
+        <dependency>
+            <groupId>net.anotheria</groupId>
+            <artifactId>moskito-inspect-embedded</artifactId>
+            <version>${moskito.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.anotheria</groupId>
+            <artifactId>moskito-webui</artifactId>
+            <version>${moskito.version}</version>
+        </dependency>
+        <!-- Enabling MoSKito Control Agent -->
+        <dependency>
+            <groupId>org.moskito</groupId>
+            <artifactId>moskito-control-agent-http-endpoint</artifactId>
+            <version>${moskito.control.agent.version}</version>
+        </dependency>
+        <!-- MoSKito Inspect REST API -->
+        <dependency>
+            <groupId>net.anotheria</groupId>
+            <artifactId>moskito-inspect-jersey</artifactId>
+            <version>${moskito.version}</version>
+        </dependency>
+        <!-- /MoSKito Inspect REST API -->
+
+
+    </dependencies>
+
+    <build>
+        <finalName>burgershop-ejb</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>${aspectj-maven-plugin.version}</version>
+                <configuration>
+                    <complianceLevel>${aspectj-maven-plugin.complianceLevel}</complianceLevel>
+                    <source>${source-version}</source>
+                    <target>${target-version}</target>
+                    <aspectLibraries>
+                        <aspectLibrary>
+                            <groupId>net.anotheria</groupId>
+                            <artifactId>moskito-aop</artifactId>
+                        </aspectLibrary>
+                    </aspectLibraries>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjrt</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjtools</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <source>${source-version}</source>
+                            <target>${target-version}</target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>net.anotheria</groupId>
+                                    <artifactId>moskito-webui</artifactId>
+                                    <version>${moskito.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/tmp/media</outputDirectory>
+                                    <includes>moskito/**,**/*.jsp</includes>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>${project.build.directory}/tmp/media</directory>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+            <!-- -->
+
+        </plugins>
+    </build>
+
+</project>
