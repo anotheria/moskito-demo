@@ -5,11 +5,6 @@
 
   <display-name>Archetype Created Web Application</display-name>
 
-    <context-param>
-        <param-name>moskitoRmiPort</param-name>
-        <param-value>9450</param-value>
-    </context-param>
-
     <!-- Processes application requests -->
     <servlet>
         <servlet-name>appServlet</servlet-name>
