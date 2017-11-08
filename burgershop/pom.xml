@@ -17,5 +17,6 @@
 		<module>burgershop-spring-example</module>
 		<module>burgershop-callexecution</module>
         <module>burgershop-spring-stripped</module>
+        <module>burgershop-spring-sql</module>
     </modules>
 </project>
