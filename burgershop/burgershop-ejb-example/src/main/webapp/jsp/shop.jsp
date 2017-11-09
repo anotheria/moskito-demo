@@ -5,8 +5,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Burger Shop</title>
-    <link rel="stylesheet" href="/css/common.css"/>
-    <script src="/js/general.js"></script>
+    <link rel="stylesheet" href="css/common.css"/>
+    <script src="js/general.js"></script>
     <!--[if IE]>
     <script>
         document.createElement('header');
