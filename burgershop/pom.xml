@@ -13,10 +13,15 @@
   <name>moskito demo based on burgershop</name>
   <packaging>pom</packaging>
 
+    <properties>
+        <spring.version>4.3.6.RELEASE</spring.version>
+    </properties>
+
 	<modules>
 		<module>burgershop-spring-example</module>
 		<module>burgershop-callexecution</module>
-    <module>burgershop-ejb-example</module>
-    <module>burgershop-spring-stripped</module>
-  </modules>
+        <module>burgershop-ejb-example</module>
+        <module>burgershop-spring-stripped</module>
+        <module>burgershop-spring-sql</module>
+    </modules>
 </project>

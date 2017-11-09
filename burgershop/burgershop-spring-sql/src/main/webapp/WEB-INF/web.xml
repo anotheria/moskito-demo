@@ -22,7 +22,7 @@
     </servlet-mapping>
 
 	<listener>
-		<listener-class>org.moskito.demo.burgershop.burgershopstripped.ui.BurgershopSessionListener</listener-class>
+		<listener-class>org.moskito.demo.burgershop.burgershopsql.ui.BurgershopSessionListener</listener-class>
 	</listener>
 
 
