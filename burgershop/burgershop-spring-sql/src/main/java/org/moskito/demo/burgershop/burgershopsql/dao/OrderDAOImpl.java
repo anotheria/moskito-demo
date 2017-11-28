@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -31,9 +32,10 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	public void create(String customerId, Order order) throws SQLException {
+		Connection connection = dataSource.getConnection();
 		PreparedStatement preparedStatement = null;
 		try {
-			preparedStatement = dataSource.getConnection().prepareStatement(INSERT_SQL);
+			preparedStatement = connection.prepareStatement(INSERT_SQL);
 			preparedStatement.setString(1, customerId);
 			preparedStatement.setString(2, order.getItems().toString());
 			preparedStatement.setInt(3, order.getTotalPrice());
@@ -45,6 +47,9 @@ public class OrderDAOImpl implements OrderDAO {
 		} finally {
 			if (preparedStatement != null) {
 				preparedStatement.close();
+			}
+			if (connection != null) {
+				connection.close();
 			}
 		}
 
