@@ -38,7 +38,7 @@ public class ShopServiceImpl implements ShopService {
 	private NotificationService notificationService;
 
 	public ShopServiceImpl(){
-		items = new LinkedList<ShopableItem>();
+		items = new LinkedList<>();
 		items.add(new ShopableItem("wheat", 585, Category.BREAD));
 		items.add(new ShopableItem("wholemeal", 285, Category.BREAD));
 		items.add(new ShopableItem("brioche", 585, Category.BREAD));
@@ -57,7 +57,7 @@ public class ShopServiceImpl implements ShopService {
 		items.add(new ShopableItem("sauce", 85, Category.EXTRAS));
 		items.add(new ShopableItem("cockroach", 2085, Category.EXTRAS));
 
-		salesProducer = new OnDemandStatsProducer<SalesStats>("sales", "business", "sales", new SalesStatsFactory());
+		salesProducer = new OnDemandStatsProducer<>("sales", "business", "sales", new SalesStatsFactory());
 		ProducerRegistryFactory.getProducerRegistryInstance().registerProducer(salesProducer);
 
 		new ThresholdProducer();
@@ -107,7 +107,7 @@ public class ShopServiceImpl implements ShopService {
 		//the following line is a bug, it has been put here to demonstrate detection of call methods.
 		log.debug("Should send notification for message to customer "+customerId+" -> "+notificationService.shouldNotificationBeSentForCustomer(customerId));
 		if (notificationService.shouldNotificationBeSentForCustomer(customerId)){
-			notificationService.sendNotificationAboutOrder(customerId, orderDescription);
+			notificationService.sendNotificationAboutOrder(customerId, customerId+"@dummyemail.com",orderDescription);
 		}
 
 	}

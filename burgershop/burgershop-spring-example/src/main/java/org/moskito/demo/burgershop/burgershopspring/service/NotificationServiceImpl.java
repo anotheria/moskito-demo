@@ -1,6 +1,10 @@
 package org.moskito.demo.burgershop.burgershopspring.service;
 
 import net.anotheria.moskito.aop.annotation.Monitor;
+import net.anotheria.moskito.aop.annotation.TagParameter;
+import net.anotheria.moskito.aop.annotation.TagReturnValue;
+
+import java.util.UUID;
 
 /**
  * TODO comment this class
@@ -14,14 +18,18 @@ public class NotificationServiceImpl implements NotificationService {
 	public boolean shouldNotificationBeSentForCustomer(String customerId) {
 		try {
 			Thread.sleep(50);
-		}catch(InterruptedException ignored){}
+		} catch (InterruptedException ignored) {
+		}
 		return true;
 	}
 
 	@Override
-	public void sendNotificationAboutOrder(String customerId, String message) {
+	@TagReturnValue(name="notificationId")
+	public String sendNotificationAboutOrder(String customerId, @TagParameter(name="email") String email, String message) {
 		try {
 			Thread.sleep(10);
-		}catch(InterruptedException ignored){}
+		} catch (InterruptedException ignored) {
+		}
+		return UUID.randomUUID().toString().substring(0, 13);
 	}
 }
