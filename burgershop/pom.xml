@@ -23,5 +23,6 @@
         <module>burgershop-ejb-example</module>
         <module>burgershop-spring-stripped</module>
         <module>burgershop-spring-sql</module>
+        <module>burgershop-spring-hibernate</module>
     </modules>
 </project>

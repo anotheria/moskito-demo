@@ -1,4 +1,4 @@
-package org.moskito.demo.burgershop.burgershopspring.service;
+package org.moskito.demo.burgershop.burgershophibernate.service;
 
 /**
  * An interface for a notification service. It is used to demonstrate a possible bug.
@@ -9,18 +9,16 @@ package org.moskito.demo.burgershop.burgershopspring.service;
 public interface NotificationService {
 	/**
 	 * Returns true if a notification should be sent to a customer.
-	 * @param customerId customer id
-	 * @return true if notification should be sent
+	 * @param customerId
+	 * @return
 	 */
 	boolean shouldNotificationBeSentForCustomer(String customerId);
 
 	/**
 	 * Sends a notification to the customer.
-	 * @param customerId customerId
-	 * @param email email
-	 * @param message message
-	 * @return notificationId
+	 * @param customerId
+	 * @param message
 	 */
-	String sendNotificationAboutOrder(String customerId, String email, String message);
+	void sendNotificationAboutOrder(String customerId, String message);
 
 }
