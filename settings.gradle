@@ -1,0 +1,20 @@
+rootProject.name = 'moskito-demo'
+include ':moskito-demo-burgershop:moskito-demo-burgershop-spring'
+include ':moskito-demo-burgershop:moskito-demo-burgershop-callexecution'
+include ':moskito-demo-burgershop:moskito-demo-burgershop-ejb'
+include ':moskito-demo-burgershop:moskito-demo-burgershop-spring-stripped'
+include ':moskito-demo-burgershop:moskito-demo-burgershop-spring-sql'
+include ':moskito-demo-burgershop:burgershop-spring-hibernate'
+include ':moskito-demo-burgershop'
+include ':moskito-demo-daemon:moskito-demo-daemon-agentlight'
+include ':moskito-demo-daemon'
+
+project(':moskito-demo-burgershop:moskito-demo-burgershop-spring').projectDir = "$rootDir/burgershop/burgershop-spring-example" as File
+project(':moskito-demo-burgershop:moskito-demo-burgershop-callexecution').projectDir = "$rootDir/burgershop/burgershop-callexecution" as File
+project(':moskito-demo-burgershop:moskito-demo-burgershop-ejb').projectDir = "$rootDir/burgershop/burgershop-ejb-example" as File
+project(':moskito-demo-burgershop:moskito-demo-burgershop-spring-stripped').projectDir = "$rootDir/burgershop/burgershop-spring-stripped" as File
+project(':moskito-demo-burgershop:moskito-demo-burgershop-spring-sql').projectDir = "$rootDir/burgershop/burgershop-spring-sql" as File
+project(':moskito-demo-burgershop:burgershop-spring-hibernate').projectDir = "$rootDir/burgershop/burgershop-spring-hibernate" as File
+project(':moskito-demo-burgershop').projectDir = "$rootDir/burgershop" as File
+project(':moskito-demo-daemon:moskito-demo-daemon-agentlight').projectDir = "$rootDir/daemon/agentlight" as File
+project(':moskito-demo-daemon').projectDir = "$rootDir/daemon" as File

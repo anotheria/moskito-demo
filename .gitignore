@@ -3,9 +3,10 @@ target
 .idea
 logs
 *.iml
+gradle
+.gradle
 
 
 # Package Files #
-*.jar
 *.war
 *.ear
