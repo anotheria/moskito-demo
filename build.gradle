@@ -15,9 +15,11 @@ subprojects {
         options.encoding = 'UTF-8'
     }
 
-    ext {
-        versionMoskito = "2.8.5-SNAPSHOT"
+
+    project.ext {
+        moskitoVersion = '2.8.5-SNAPSHOT'
     }
+
     repositories {
         mavenLocal()
         mavenCentral()
