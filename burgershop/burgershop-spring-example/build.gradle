@@ -1,29 +1,9 @@
-apply plugin: 'war'
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-    maven { url "http://nexus.anotheria.net/nexus/content/groups/public" }
-    maven { url "http://repo.maven.apache.org/maven2" }
-}
-
 description = 'Burgershop Spring Example Webapp'
-
 dependencies {
     compile group: 'org.springframework', name: 'spring-web', version: '4.3.6.RELEASE'
     compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.6.RELEASE'
-
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.0.13'
     compile fileTree(dir: 'libs', include: 'moskito-aop-2.8.5-SNAPSHOT.jar')//will delete after realize 2.8.5 of Moskito
-//  compile group: 'net.anotheria', name: 'ano-tags', version: '2.1.0'
-//    compile group: 'net.anotheria', name: 'moskito-core', version: moskitoVersion
-//    //compile group: 'net.anotheria', name: 'moskito-aop', version:  moskitoVersion
-//    compile group: 'net.anotheria', name: 'moskito-inspect-remote', version: moskitoVersion
-//    compile group: 'net.anotheria', name: 'moskito-inspect-embedded', version: moskitoVersion
-//    compile group: 'net.anotheria', name: 'moskito-webui', version: moskitoVersion
-//    compile group: 'org.moskito', name: 'moskito-control-agent-http-endpoint', version: '1.2.1-SNAPSHOT'
-//    compile group: 'net.anotheria', name: 'moskito-inspect-jersey', version: moskitoVersion
-//    compile group: 'com.xeiam.xchart', name: 'xchart', version: '2.5.1'
     providedCompile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
 }

@@ -44,9 +44,6 @@ subprojects {
         compile group: 'net.anotheria', name: 'moskito-inspect-jersey', version: moskitoVersion
         compile group: 'net.anotheria', name: 'moskito-webui', version: moskitoVersion
         compile group: 'org.moskito', name: 'moskito-control-agent-http-endpoint', version: '1.2.1-SNAPSHOT'
-
-
-
         compile group: 'com.xeiam.xchart', name: 'xchart', version: '2.5.1'
         compile group: 'de.erichseifert.vectorgraphics2d', name: 'VectorGraphics2D', version: '0.9.3'
     }

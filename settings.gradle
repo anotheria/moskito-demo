@@ -16,5 +16,6 @@ project(':moskito-demo-burgershop:moskito-demo-burgershop-spring-stripped').proj
 project(':moskito-demo-burgershop:moskito-demo-burgershop-spring-sql').projectDir = "$rootDir/burgershop/burgershop-spring-sql" as File
 project(':moskito-demo-burgershop:burgershop-spring-hibernate').projectDir = "$rootDir/burgershop/burgershop-spring-hibernate" as File
 project(':moskito-demo-burgershop').projectDir = "$rootDir/burgershop" as File
+project(':moskito-demo-daemon').projectDir = "$rootDir/daemon" as File
 project(':moskito-demo-daemon:moskito-demo-daemon-agentlight').projectDir = "$rootDir/daemon/agentlight" as File
 project(':moskito-demo-daemon').projectDir = "$rootDir/daemon" as File

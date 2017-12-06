@@ -1,16 +1,12 @@
-
-apply plugin: 'war'
-
 description = 'Burgershop Spring Hibernate Example Webapp'
 dependencies {
-    compile group: 'org.springframework', name: 'spring-web', version:'4.3.6.RELEASE'
-    compile group: 'org.springframework', name: 'spring-webmvc', version:'4.3.6.RELEASE'
-    compile group: 'org.springframework', name: 'spring-orm', version:'4.3.6.RELEASE'
-    //compile group: 'net.anotheria', name: 'ano-tags', version:'2.1.0'
-    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.5'
-    compile group: 'ch.qos.logback', name: 'logback-classic', version:'1.0.13'
-    compile group: 'mysql', name: 'mysql-connector-java', version:'6.0.6'
-    compile group: 'org.apache.commons', name: 'commons-dbcp2', version:'2.1.1'
-    compile group: 'org.hibernate', name: 'hibernate-core', version:'5.2.12.Final'
-    providedCompile group: 'javax.servlet', name: 'servlet-api', version:'2.5'
+    compile group: 'org.springframework', name: 'spring-web', version: '4.3.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.6.RELEASE'
+    compile group: 'org.springframework', name: 'spring-orm', version: '4.3.6.RELEASE'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.0.13'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+    compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.1.1'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.12.Final'
+    providedCompile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
 }
