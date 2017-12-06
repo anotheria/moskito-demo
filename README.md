@@ -1,9 +1,11 @@
 moskito-demo
 ================
 
-demo project for MoSKito
+Demo project for MoSKito
 
-Demo is based on MoSKito version 2.8.3-SNPSHOT
+Project is built using gradle
+
+Demo is based on MoSKito version 2.8.5-SNPSHOT
 
 See changelog https://confluence.opensource.anotheria.net/display/MSK/03+Change+Log
 

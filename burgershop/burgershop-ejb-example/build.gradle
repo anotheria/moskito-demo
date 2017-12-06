@@ -1,0 +1,7 @@
+description = 'Burgershop EJB Example Webapp'
+dependencies {
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.5'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.0.13'
+    compile group: 'javax.ejb', name: 'javax.ejb-api', version: '3.2'
+    providedCompile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
+}
