@@ -6,7 +6,7 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-web', version:'4.3.6.RELEASE'
     compile group: 'org.springframework', name: 'spring-webmvc', version:'4.3.6.RELEASE'
     compile group: 'org.springframework', name: 'spring-jdbc', version:'4.3.6.RELEASE'
-    compile group: 'net.anotheria', name: 'ano-tags', version:'2.1.0'
+    //compile group: 'net.anotheria', name: 'ano-tags', version:'2.1.0'
     compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.5'
     compile group: 'ch.qos.logback', name: 'logback-classic', version:'1.0.13'
     compile group: 'mysql', name: 'mysql-connector-java', version:'6.0.6'
