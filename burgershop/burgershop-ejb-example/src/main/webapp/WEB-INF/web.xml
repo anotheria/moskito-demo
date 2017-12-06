@@ -48,12 +48,6 @@
     </ejb-local-ref>
 
     <ejb-local-ref>
-        <ejb-ref-name>ejb/counter</ejb-ref-name>
-        <ejb-ref-type>Session</ejb-ref-type>
-        <local>org.moskito.demo.burgershop.burgershopejb.service.CounterService</local>
-    </ejb-local-ref>
-
-    <ejb-local-ref>
         <ejb-ref-name>ejb/notification</ejb-ref-name>
         <ejb-ref-type>Session</ejb-ref-type>
         <local>org.moskito.demo.burgershop.burgershopejb.service.NotificationService</local>

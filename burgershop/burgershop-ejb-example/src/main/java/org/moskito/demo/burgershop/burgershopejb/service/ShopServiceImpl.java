@@ -1,5 +1,6 @@
 package org.moskito.demo.burgershop.burgershopejb.service;
 
+import net.anotheria.moskito.aop.annotation.Monitor;
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducer;
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducerException;
 import net.anotheria.moskito.core.registry.ProducerRegistryFactory;
@@ -18,14 +19,15 @@ import java.util.List;
  * Implementation of {@link ShopService}.
  */
 @Singleton
+@Monitor(producerId="ShopService")
 public class ShopServiceImpl implements ShopService{
 
     private static Logger log = LoggerFactory.getLogger(ShopServiceImpl.class);
 
     private OnDemandStatsProducer<SalesStats> salesProducer;
 
-    @EJB(name="ejb/counter")
-    private CounterService counterService;
+    private OrderCounter orderCounter = new OrderCounter();
+    private IngredientsCounter ingredientsCounter = new IngredientsCounter();
 
     @EJB(name="ejb/notification")
     private NotificationService notificationService;
@@ -85,12 +87,12 @@ public class ShopServiceImpl implements ShopService{
 
         // Placing ordered ingredients
         for (String item : items){
-            counterService.ingredientUsed(item);
+            ingredientsCounter.ingredientUsed(item);
             order.addItem(findItemByName(item));
         }
 
         // Order composing is finished. Placing order...
-        counterService.orderPlaced();
+        orderCounter.orderPlaced();
 
         //now add sales counters...
         int priceInCents = order.getTotalPrice();
