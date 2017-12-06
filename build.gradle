@@ -16,20 +16,25 @@ subprojects {
     }
 
     ext {
-        versionMoskito = "2.8.4-SNAPSHOT"
+        versionMoskito = "2.8.5-SNAPSHOT"
     }
     repositories {
         mavenLocal()
         mavenCentral()
         maven { url "http://nexus.anotheria.net/nexus/content/groups/public" }
         maven { url "http://repo.maven.apache.org/maven2" }
-        maven { url "https://oss.sonatype.org/service/local/staging/deploy/maven2/" }
+        maven { url "http://central.maven.org/maven2/" }
     }
+
 
     configurations.all {
     }
     dependencies {
         testCompile group: 'junit', name: 'junit', version: '4.12'
-        compileOnly group: 'com.google.code.findbugs', name: 'findbugs', version: '3.0.1'
+        compile("com.google.code.findbugs:annotations:3.0.1") {
+            transitive = false
+        }
+        compile group: 'com.xeiam.xchart', name: 'xchart', version: '2.5.0'
+        compile group: 'de.erichseifert.vectorgraphics2d', name: 'VectorGraphics2D', version: '0.9.3'
     }
 }
