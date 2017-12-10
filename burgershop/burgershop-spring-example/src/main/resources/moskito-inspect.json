@@ -1,6 +1,7 @@
 {
   "showOnlineHelp":false,
   "@authentication" : {},
+  "betaMode": "true",
 
   "@filters" : [
     {
