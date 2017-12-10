@@ -555,7 +555,7 @@
       },
       {
         "target": "MEMORY",
-        "clazz":  "org.springframework.web.util.NestedServletException",
+        "clazz":  "*",
         "parameter": ""
 
       }
