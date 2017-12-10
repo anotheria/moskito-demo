@@ -1,5 +1,6 @@
 package org.moskito.demo.burgershop.burgershopspring.service;
 
+import net.anotheria.moskito.aop.annotation.TagParameter;
 import org.moskito.demo.burgershop.burgershopspring.service.stats.SalesStats;
 import org.moskito.demo.burgershop.burgershopspring.service.stats.SalesStatsFactory;
 import org.moskito.demo.burgershop.burgershopspring.service.stats.ThresholdProducer;
@@ -112,7 +113,7 @@ public class ShopServiceImpl implements ShopService {
 
 	}
 
-	private ShopableItem findItemByName(String name){
+	private ShopableItem findItemByName(@TagParameter(name = "lastIngridient") String name){
 		for (ShopableItem item : items){
 			if (item.getName().equals(name))
 				return item;
