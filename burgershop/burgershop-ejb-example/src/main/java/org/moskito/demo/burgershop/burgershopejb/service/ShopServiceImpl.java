@@ -1,6 +1,7 @@
 package org.moskito.demo.burgershop.burgershopejb.service;
 
 import net.anotheria.moskito.aop.annotation.Monitor;
+import net.anotheria.moskito.aop.annotation.TagParameter;
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducer;
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducerException;
 import net.anotheria.moskito.core.registry.ProducerRegistryFactory;
@@ -119,7 +120,7 @@ public class ShopServiceImpl implements ShopService{
 
     }
 
-    private ShopableItem findItemByName(String name){
+    private ShopableItem findItemByName(@TagParameter(name = "lastIngridient") String name){
 
         for (ShopableItem item : items){
             if (item.getName().equals(name))

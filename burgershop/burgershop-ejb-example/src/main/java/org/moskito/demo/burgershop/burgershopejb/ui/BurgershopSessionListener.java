@@ -1,7 +1,5 @@
 package org.moskito.demo.burgershop.burgershopejb.ui;
 
-import net.anotheria.moskito.core.context.MoSKitoContext;
-
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.util.Random;
@@ -21,7 +19,6 @@ public class BurgershopSessionListener implements HttpSessionListener{
 		//whenever a new session is created, add a random customer id.
 		String customerId = Integer.toString(rnd.nextInt(1000000));
 		httpSessionEvent.getSession().setAttribute("customerId", customerId);
-		MoSKitoContext.addTag("customerId", customerId);
 	}
 
 	@Override
