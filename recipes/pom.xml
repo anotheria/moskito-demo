@@ -15,5 +15,6 @@
 
 	<modules>
 		<module>counter</module>
+		<module>restservice</module>
     </modules>
 </project>

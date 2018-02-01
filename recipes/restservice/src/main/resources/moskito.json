@@ -1,0 +1,205 @@
+{
+  "applicationName" : "",
+  "@thresholdsAlertsConfig": {
+    "@notificationProviders": [
+    ],
+    "@alertHistoryConfig": {
+      "maxNumberOfItems": 500,
+      "toleratedNumberOfItems": 550
+    }
+  },
+  "@accumulatorsConfig": {
+    "accumulationAmount": 250,
+    "@accumulatorSets": [
+    ],
+    "@accumulatorsColors": [
+    ],
+    "@accumulators": [
+      {
+        "name": "FibonacciEngine Req per Minute",
+        "producerName": "FibonacciEngine",
+        "statName": "calculate",
+        "valueName": "req",
+        "intervalName": "1m"
+      },
+      {
+        "name": "FibonacciResource Req per Minute",
+        "producerName": "FibonacciResource",
+        "statName": "calculateFibobacci",
+        "valueName": "req",
+        "intervalName": "1m"
+      },
+      {
+        "name": "FibonacciEngine Avg per Minute",
+        "producerName": "FibonacciEngine",
+        "statName": "calculate",
+        "valueName": "avg",
+        "intervalName": "1m"
+      },
+      {
+        "name": "FibonacciResource Avg per Minute",
+        "producerName": "FibonacciResource",
+        "statName": "calculateFibobacci",
+        "valueName": "avg",
+        "intervalName": "1m"
+      }
+    ]
+  },
+  "@thresholdsConfig": {
+    "@thresholds": [
+      {
+        "name": "FibonacciEngine Calls",
+        "producerName": "FibonacciEngine",
+        "statName": "calculate",
+        "valueName": "req",
+        "intervalName": "1m",
+        //timeUnit can be ignored here
+        "@guards": [
+          {
+            "value": "500",
+            "direction": "DOWN",
+            "status": "GREEN"
+          },
+          {
+            "value": "500",
+            "direction": "UP",
+            "status": "YELLOW"
+          },
+          {
+            "value": "750",
+            "direction": "UP",
+            "status": "ORANGE"
+          },
+          {
+            "value": "1000",
+            "direction": "UP",
+            "status": "RED"
+          },
+          {
+            "value": "5000",
+            "direction": "UP",
+            "status": "PURPLE"
+          }
+        ]
+      }
+    ]
+  },
+  "@dashboardsConfig": {
+    "@dashboards": [
+      {
+        "name": "RestDashboard",
+        "refresh": 60,
+        "producers": [
+          "FibonacciEngine",
+          "FibonacciResource"
+        ],
+        "@charts": [
+          {
+            "caption": "Requests",
+            "accumulators": [
+              "FibonacciEngine Req per Minute",
+              "FibonacciResource Req per Minute"
+            ]
+          },
+          {
+            "caption": "Execution avg",
+            "accumulators": [
+              "FibonacciEngine Avg per Minute",
+              "FibonacciResource Avg per Minute"
+            ]
+          },
+          {
+            "accumulators": [
+              "URL REQ 1m"
+            ]
+          },
+          {
+            "accumulators": [
+              "URL AVG 1m"
+            ]
+          }
+        ],
+        "thresholds": ["FibonacciEngine Calls"]
+
+
+      }
+
+    ]
+  },
+  "@gaugesConfig": {
+    "@gauges": [
+      //this is an example config.
+      {
+        "name": "Constant",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "constant": 70
+        },
+        "@maxValue": {
+          "constant": 100
+        },
+        "@zones": [
+          {
+            "color": "green",
+            "left": 0,
+            "right": 0.25
+          },
+          {
+            "color": "yellow",
+            "left": 0.25,
+            "right": 0.5
+          },
+          {
+            "color": "orange",
+            "left": 0.5,
+            "right": 0.75
+          },
+          {
+            "color": "red",
+            "left": 0.75,
+            "right": 1
+          }
+        ]
+      }
+
+    ],
+    "@defaultZones": [
+      {
+        "color": "orange",
+        "left": 0.85,
+        "right": 0.9
+      },
+      {
+        "color": "red",
+        "left": 0.9,
+        "right": 1
+      }
+    ]
+  },
+  "@pluginsConfig": {
+    "@plugins": [
+    ]
+  },
+  "@tracingConfig": {
+    "tracingEnabled": true,
+    "loggingEnabled": true,
+    "inspectEnabled": true,
+    "maxTraces": 50,
+    "tracers": []
+  },
+  "@filterConfig": {
+    "caseExtractors": [
+      "net.anotheria.moskito.web.filters.caseextractor.RequestURICaseExtractor",
+      "net.anotheria.moskito.web.filters.caseextractor.RefererCaseExtractor",
+      "net.anotheria.moskito.web.filters.caseextractor.MethodCaseExtractor",
+      "net.anotheria.moskito.web.filters.caseextractor.UserAgentCaseExtractor",
+      "net.anotheria.moskito.web.filters.caseextractor.DomainCaseExtractor"
+    ]
+  },
+  "@tomcatRequestProcessorProducerConfig": {
+    "ajp": true,
+    "http": true
+  }
+}
