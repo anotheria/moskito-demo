@@ -1,0 +1,306 @@
+{
+  "applicationName" : "",
+  "@thresholdsAlertsConfig": {
+    "@notificationProviders": [
+    ],
+    "@alertHistoryConfig": {
+      "maxNumberOfItems": 500,
+      "toleratedNumberOfItems": 550
+    }
+  },
+  "@accumulatorsConfig": {
+    "accumulationAmount": 250,
+    "@accumulatorSets": [
+    ],
+    "@accumulatorsColors": [
+    ],
+    "@accumulators": [
+      {
+        "name": "SelfMadeCounter SuccessPerMinute",
+        "producerName": "SelfMadeCounter",
+        "statName": "error",
+        "valueName": "Counter",
+        "intervalName": "1m"
+      },
+      {
+        "name": "SelfMadeCounter ErrorPerMinute",
+        "producerName": "SelfMadeCounter",
+        "statName": "error",
+        "valueName": "Counter",
+        "intervalName": "1m"
+      },
+      {
+        "name": "AnnotationBasedCounter SuccessPerMinute",
+        "producerName": "AnnotationBasedCounter",
+        "statName": "error",
+        "valueName": "Counter",
+        "intervalName": "1m"
+      },
+      {
+        "name": "AnnotationBasedCounter ErrorPerMinute",
+        "producerName": "AnnotationBasedCounter",
+        "statName": "error",
+        "valueName": "Counter",
+        "intervalName": "1m"
+      },
+    ]
+  },
+  "@thresholdsConfig": {
+    "@thresholds": [
+      {
+        "name": "SelfMadeCounter Errors",
+        "producerName": "SelfMadeCounter",
+        "statName": "error",
+        "valueName": "Counter",
+        "intervalName": "1m",
+        //timeUnit can be ignored here
+        "@guards": [
+          {
+            "value": "10",
+            "direction": "DOWN",
+            "status": "GREEN"
+          },
+          {
+            "value": "10",
+            "direction": "UP",
+            "status": "YELLOW"
+          },
+          {
+            "value": "12",
+            "direction": "UP",
+            "status": "ORANGE"
+          },
+          {
+            "value": "15",
+            "direction": "UP",
+            "status": "RED"
+          },
+          {
+            "value": "20",
+            "direction": "UP",
+            "status": "PURPLE"
+          }
+        ]
+      },
+      {
+        "name": "AnnotationBasedCounter Errors",
+        "producerName": "AnnotationBasedCounter",
+        "statName": "error",
+        "valueName": "Counter",
+        "intervalName": "1m",
+        //timeUnit can be ignored here
+        "@guards": [
+          {
+            "value": "10",
+            "direction": "DOWN",
+            "status": "GREEN"
+          },
+          {
+            "value": "10",
+            "direction": "UP",
+            "status": "YELLOW"
+          },
+          {
+            "value": "12",
+            "direction": "UP",
+            "status": "ORANGE"
+          },
+          {
+            "value": "15",
+            "direction": "UP",
+            "status": "RED"
+          },
+          {
+            "value": "20",
+            "direction": "UP",
+            "status": "PURPLE"
+          }
+        ]
+      }
+    ]
+  },
+  "@dashboardsConfig": {
+    "@dashboards": [
+      {
+        "name": "Counter Dashboard",
+        "refresh": 60,
+        "@charts": [
+          {
+            "caption": "SelfMadeCounter",
+            "accumulators": [
+              "SelfMadeCounter SuccessPerMinute",
+              "SelfMadeCounter ErrorPerMinute"
+            ]
+          },
+          {
+            "caption": "AnnotationBasedCounter",
+            "accumulators": [
+              "AnnotationBasedCounter SuccessPerMinute",
+              "AnnotationBasedCounter ErrorPerMinute"
+            ]
+          },
+        ],
+        "@thresholds": [
+          "SelfMadeCounter Errors",
+          "AnnotationBasedCounter Errors"
+        ],
+        "@gauges": [
+          "SMC Errors", "ANB Errors"
+        ]
+      }
+
+    ]
+  },
+  "@gaugesConfig": {
+    "@gauges": [
+      //this is an example config.
+      {
+        "name": "Constant",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "constant": 70
+        },
+        "@maxValue": {
+          "constant": 100
+        },
+        "@zones": [
+          {
+            "color": "green",
+            "left": 0,
+            "right": 0.25
+          },
+          {
+            "color": "yellow",
+            "left": 0.25,
+            "right": 0.5
+          },
+          {
+            "color": "orange",
+            "left": 0.5,
+            "right": 0.75
+          },
+          {
+            "color": "red",
+            "left": 0.75,
+            "right": 1
+          }
+        ]
+      },
+      {
+        "name": "SMC Errors",
+        "caption": "SelfMadeCounter Errors",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "producerName": "SelfMadeCounter",
+          "statName": "error",
+          "valueName": "Counter",
+          "intervalName": "1m"
+        },
+        "@maxValue": {
+          "constant": 50
+        },
+        "@zones": [
+          {
+            "color": "green",
+            "left": 0,
+            "right": 0.5
+          },
+          {
+            "color": "yellow",
+            "left": 0.5,
+            "right": 0.75
+          },
+          {
+            "color": "orange",
+            "left": 0.75,
+            "right": 0.9
+          },
+          {
+            "color": "red",
+            "left": 0.9,
+            "right": 1
+          }
+        ]
+      },
+      {
+        "name": "ANB Errors",
+        "caption": "AnnotationBasedCounter Errors",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "producerName": "AnnotationBasedCounter",
+          "statName": "error",
+          "valueName": "Counter",
+          "intervalName": "1m"
+        },
+        "@maxValue": {
+          "constant": 50
+        },
+        "@zones": [
+          {
+            "color": "green",
+            "left": 0,
+            "right": 0.5
+          },
+          {
+            "color": "yellow",
+            "left": 0.5,
+            "right": 0.75
+          },
+          {
+            "color": "orange",
+            "left": 0.75,
+            "right": 0.9
+          },
+          {
+            "color": "red",
+            "left": 0.9,
+            "right": 1
+          }
+        ]
+      }
+
+    ],
+    "@defaultZones": [
+      {
+        "color": "orange",
+        "left": 0.85,
+        "right": 0.9
+      },
+      {
+        "color": "red",
+        "left": 0.9,
+        "right": 1
+      }
+    ]
+  },
+  "@pluginsConfig": {
+    "@plugins": [
+    ]
+  },
+  "@tracingConfig": {
+    "tracingEnabled": true,
+    "loggingEnabled": true,
+    "inspectEnabled": true,
+    "maxTraces": 50,
+    "tracers": []
+  },
+  "@filterConfig": {
+    "caseExtractors": [
+      "net.anotheria.moskito.web.filters.caseextractor.RequestURICaseExtractor",
+      "net.anotheria.moskito.web.filters.caseextractor.RefererCaseExtractor",
+      "net.anotheria.moskito.web.filters.caseextractor.MethodCaseExtractor",
+      "net.anotheria.moskito.web.filters.caseextractor.UserAgentCaseExtractor",
+      "net.anotheria.moskito.web.filters.caseextractor.DomainCaseExtractor"
+    ]
+  },
+  "@tomcatRequestProcessorProducerConfig": {
+    "ajp": true,
+    "http": true
+  }
+}
