@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>moskito-demo-counter</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>Counter Recipe</name>
+  <description>This example describes usage of counters</description>
+
+	<parent>
+		<groupId>org.moskito</groupId>
+		<artifactId>moskito-demo-recipes</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+  <dependencies>
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>1.7.5</version>
+      </dependency>
+      <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <version>1.0.13</version>
+      </dependency>
+
+      <!-- Dependency for MoSKito AOP -->
+      <dependency>
+          <groupId>net.anotheria</groupId>
+          <artifactId>moskito-core</artifactId>
+          <version>${moskito.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>net.anotheria</groupId>
+          <artifactId>moskito-aop</artifactId>
+          <version>${moskito.version}</version>
+      </dependency>
+
+      <!-- Enabling MoSKito Inspect Embedded -->
+      <dependency>
+          <groupId>net.anotheria</groupId>
+          <artifactId>moskito-inspect-remote</artifactId>
+          <version>${moskito.version}</version>
+      </dependency>
+  </dependencies>
+      <build>
+        <plugins>
+			 <plugin>
+					 <groupId>org.codehaus.mojo</groupId>
+					 <artifactId>aspectj-maven-plugin</artifactId>
+					 <version>${aspectj-maven-plugin.version}</version>
+					 <configuration>
+							 <complianceLevel>${aspectj-maven-plugin.complianceLevel}</complianceLevel>
+							 <source>${source-version}</source>
+							 <target>${target-version}</target>
+							 <aspectLibraries>
+								 <aspectLibrary>
+									 <groupId>net.anotheria</groupId>
+									 <artifactId>moskito-aop</artifactId>
+							 </aspectLibrary>
+						 </aspectLibraries>
+					 </configuration>
+					 <dependencies>
+							 <dependency>
+									 <groupId>org.aspectj</groupId>
+									 <artifactId>aspectjrt</artifactId>
+									 <version>${aspectj.version}</version>
+							 </dependency>
+							 <dependency>
+									 <groupId>org.aspectj</groupId>
+									 <artifactId>aspectjtools</artifactId>
+									 <version>${aspectj.version}</version>
+							 </dependency>
+					 </dependencies>
+					 <executions>
+							 <execution>
+									 <goals>
+											 <goal>compile</goal>
+											 <goal>test-compile</goal>
+									 </goals>
+									 <configuration>
+											 <source>${source-version}</source>
+											 <target>${target-version}</target>
+									 </configuration>
+							 </execution>
+					 </executions>
+			 </plugin>
+        </plugins>
+      </build>
+
+</project>
