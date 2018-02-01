@@ -18,7 +18,7 @@
       {
         "name": "SelfMadeCounter SuccessPerMinute",
         "producerName": "SelfMadeCounter",
-        "statName": "error",
+        "statName": "success",
         "valueName": "Counter",
         "intervalName": "1m"
       },
@@ -32,7 +32,7 @@
       {
         "name": "AnnotationBasedCounter SuccessPerMinute",
         "producerName": "AnnotationBasedCounter",
-        "statName": "error",
+        "statName": "success",
         "valueName": "Counter",
         "intervalName": "1m"
       },
