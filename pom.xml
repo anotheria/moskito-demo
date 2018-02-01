@@ -28,6 +28,7 @@
 	<modules>
 		<module>burgershop</module>
 		<module>daemon</module>
+		<module>recipes</module>
 	</modules>
 
     <dependencyManagement>
