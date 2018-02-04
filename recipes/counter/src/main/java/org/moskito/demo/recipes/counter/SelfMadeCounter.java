@@ -18,7 +18,7 @@ public class SelfMadeCounter {
 	private OnDemandStatsProducer<CounterStats> producer;
 
 	public SelfMadeCounter(){
-		producer = new EntryCountLimitedOnDemandStatsProducer<>("SelfMadeCounter", "default", "default", CounterStatsFactory.DEFAULT_INSTANCE, 10);
+		producer = new EntryCountLimitedOnDemandStatsProducer<>("ProcessCounter", "default", "default", CounterStatsFactory.DEFAULT_INSTANCE, 10);
 		ProducerRegistryFactory.getProducerRegistryInstance().registerProducer(producer);
 	}
 
