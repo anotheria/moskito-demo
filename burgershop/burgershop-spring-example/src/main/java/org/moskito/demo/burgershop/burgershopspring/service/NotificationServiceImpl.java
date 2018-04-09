@@ -12,7 +12,7 @@ import java.util.UUID;
  * @author lrosenberg
  * @since 05.09.17 01:04
  */
-@Monitor
+@Monitor(producerId = "NotificationService")
 public class NotificationServiceImpl implements NotificationService {
 	@Override
 	public boolean shouldNotificationBeSentForCustomer(String customerId) {
