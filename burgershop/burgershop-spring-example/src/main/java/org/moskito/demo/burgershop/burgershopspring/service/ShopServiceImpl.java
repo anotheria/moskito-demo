@@ -118,6 +118,6 @@ public class ShopServiceImpl implements ShopService {
 			if (item.getName().equals(name))
 				return item;
 		}
-		throw new IllegalArgumentException("No such shopable item: "+name);
+		throw new InvalidIngredientException("No such ingridient item: "+name);
 	}
 }
