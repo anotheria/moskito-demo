@@ -70,6 +70,30 @@
 
     "@accumulatorsConfig" : {
         "accumulationAmount": 200,
+        "@autoAccumulators": [
+          {
+            "namePattern": "$PRODUCERNAME.REQ.1m",
+            "producerNamePattern": "(.*)Service",
+            "statName": "cumulated",
+            "valueName": "req",
+            "intervalName": "1m"
+          },
+          {
+            "namePattern": "$PRODUCERNAME.TIME.1m",
+            "producerNamePattern": "(.*)Service",
+            "statName": "cumulated",
+            "valueName": "time",
+            "intervalName": "1m"
+          },
+          {
+            "namePattern": "$PRODUCERNAME.AVG.1m",
+            "producerNamePattern": "(.*)Service",
+            "statName": "cumulated",
+            "valueName": "avg",
+            "intervalName": "1m"
+          }
+
+        ],
         "@accumulators": [
             {
                 "name": "OrdersPerMinute",
@@ -549,16 +573,20 @@
     "@catchers": [
       {
         "target": "LOGANDMEMORY",
-        "clazz":  "java.lang.IllegalArgumentException",
+        "exceptionClazz":  "java.lang.IllegalArgumentException",
         "parameter": "IllegalArgExcLog"
-
       },
+      {
+        "target": "MEMORY",
+        "exceptionClazz":  "org.moskito.demo.burgershop.burgershopspring.service.InvalidIngredientException",
+        "parameter": ""
+      }/**,
       {
         "target": "MEMORY",
         "clazz":  "*",
         "parameter": ""
 
-      }
+      }   */
 
     ]
   },
@@ -569,7 +597,12 @@
 				"name": "NoOpPlugin",
 				"configurationName": "none",
 				"className": "net.anotheria.moskito.core.plugins.NoOpPlugin"
-			}
+			},
+          {
+            "name": "MoSKitoSaaSerrorPlugin",
+            "configurationName": "none yet",
+            "className": "net.anotheria.moskito.moskitosaas.errorhandling.MoskitoSaasErrorHandlingPlugin"
+          }
 		]
 	}
 
