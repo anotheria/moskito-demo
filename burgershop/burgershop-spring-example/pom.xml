@@ -100,8 +100,15 @@
 		  <version>${moskito.version}</version>
 	  </dependency>
 	  <!-- /MoSKito Inspect REST API -->
-	
 
+	  <!-- moskito saas plugin for demo-of saas (default disabled) -->
+	  <!--
+	  <dependency>
+		  <groupId>net.anotheria</groupId>
+		  <artifactId>moskito-saas-plugin</artifactId>
+		  <version>${moskito.version}</version>
+	  </dependency>
+		-->
 
 
   </dependencies>
