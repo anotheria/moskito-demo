@@ -91,7 +91,15 @@
             "statName": "cumulated",
             "valueName": "avg",
             "intervalName": "1m"
+          },
+          {
+            "namePattern": "$PRODUCERNAME.ERR.1m",
+            "producerNamePattern": "(.*)Service",
+            "statName": "cumulated",
+            "valueName": "err",
+            "intervalName": "1m"
           }
+
 
         ],
         "@accumulators": [
@@ -501,6 +509,40 @@
         ],
         "@thresholds": ["OrderPerMinuteThreshold", "ThreadCount","OldGenFree", "PermGenFree"],
         "@gauges": ["Orders", "Memory", "Running", "Sessions"]
+
+      },
+      {
+        "name": "ServiceBoard",
+        "@charts": [],
+        "@chartPatterns": [
+          {
+            "caption": "Service Requests",
+            "accumulatorPatterns": [
+              "(.*)Service.REQ.1m"
+            ]
+          },
+          {
+            "caption": "Service Errors",
+            "accumulatorPatterns": [
+              "(.*)Service.ERR.1m"
+            ]
+          },
+          {
+            "caption": "Service TotalTime",
+            "accumulatorPatterns": [
+                "(.*)Service.TIME.1m"
+              ]
+          },
+          {
+            "caption": "Service Average Duration",
+            "accumulatorPatterns": [
+              "(.*)Service.AVG.1m"
+            ]
+          }
+
+
+        ],
+        "@producerNamePatterns": ["(.*)Service"]
 
       },
       {
