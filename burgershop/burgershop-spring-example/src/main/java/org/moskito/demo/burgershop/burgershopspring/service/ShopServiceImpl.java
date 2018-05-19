@@ -1,13 +1,12 @@
 package org.moskito.demo.burgershop.burgershopspring.service;
 
-import net.anotheria.moskito.aop.annotation.TagParameter;
-import org.moskito.demo.burgershop.burgershopspring.service.stats.SalesStats;
-import org.moskito.demo.burgershop.burgershopspring.service.stats.SalesStatsFactory;
-import org.moskito.demo.burgershop.burgershopspring.service.stats.ThresholdProducer;
 import net.anotheria.moskito.aop.annotation.Monitor;
+import net.anotheria.moskito.aop.annotation.TagParameter;
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducer;
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducerException;
 import net.anotheria.moskito.core.registry.ProducerRegistryFactory;
+import org.moskito.demo.burgershop.burgershopspring.service.stats.SalesStats;
+import org.moskito.demo.burgershop.burgershopspring.service.stats.SalesStatsFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +60,6 @@ public class ShopServiceImpl implements ShopService {
 		salesProducer = new OnDemandStatsProducer<>("sales", "business", "sales", new SalesStatsFactory());
 		ProducerRegistryFactory.getProducerRegistryInstance().registerProducer(salesProducer);
 
-		new ThresholdProducer();
 	}
 
 	@Override
