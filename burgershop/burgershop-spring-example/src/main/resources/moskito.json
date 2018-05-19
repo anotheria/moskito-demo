@@ -111,27 +111,6 @@
                 "intervalName": "1m"
             },
           {
-            "name": "OrdersWarning",
-            "producerName": "ThresholdProducer",
-            "statName": "warning",
-            "valueName": "Number",
-            "intervalName": "1m"
-          },
-          {
-            "name": "OrdersInfo",
-            "producerName": "ThresholdProducer",
-            "statName": "info",
-            "valueName": "Number",
-            "intervalName": "1m"
-          },
-          {
-            "name": "OrdersError",
-            "producerName": "ThresholdProducer",
-            "statName": "error",
-            "valueName": "Number",
-            "intervalName": "1m"
-          },
-          {
             "name": "System CPU Load 1m",
             "producerName": "OS",
             "statName": "OS",
@@ -476,11 +455,11 @@
 
       },
       {
-        "name": "Burger board",
+        "name": "Burger Board",
         "@charts": [
           {
             "caption": "Orders",
-            "accumulators": ["OrdersPerMinute","OrdersWarning","OrdersInfo", "OrdersError"]
+            "accumulators": ["OrdersPerMinute"]
           },
           {
             "caption": "Memory",
@@ -512,7 +491,7 @@
 
       },
       {
-        "name": "ServiceBoard",
+        "name": "Service Board",
         "@charts": [],
         "@chartPatterns": [
           {
