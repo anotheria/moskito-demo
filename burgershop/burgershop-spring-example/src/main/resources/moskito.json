@@ -625,6 +625,20 @@
             "className": "net.anotheria.moskito.moskitosaas.errorhandling.MoskitoSaasErrorHandlingPlugin"
           }
 		]
-	}
+	},
+
+  "@taggingConfig": {
+    "autotagSessionId": true,
+    "autotagIp": true,
+    "autotagUserAgent": true,
+    "autotagReferer": true,
+    "@customTags": [
+      {
+        "name": "customerId",
+        "attribute": "session.customerId"
+      }
+    ],
+    "tagHistorySize": 10
+  }
 
 }
