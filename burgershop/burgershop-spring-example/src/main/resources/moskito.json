@@ -618,12 +618,13 @@
 				"name": "NoOpPlugin",
 				"configurationName": "none",
 				"className": "net.anotheria.moskito.core.plugins.NoOpPlugin"
-			},
+			}
+			/*,
           {
-            "name": "MoSKitoSaaSerrorPlugin",
+            "name": "MoSKitoSaasErrorPlugin",
             "configurationName": "none yet",
             "className": "net.anotheria.moskito.moskitosaas.errorhandling.MoskitoSaasErrorHandlingPlugin"
-          }
+          }*/
 		]
 	},
 
