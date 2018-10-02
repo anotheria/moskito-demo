@@ -7,7 +7,7 @@ import net.anotheria.moskito.aop.annotation.TagReturnValue;
 import java.util.UUID;
 
 /**
- * TODO comment this class
+ * Implementation of the dummy notification service.
  *
  * @author lrosenberg
  * @since 05.09.17 01:04
