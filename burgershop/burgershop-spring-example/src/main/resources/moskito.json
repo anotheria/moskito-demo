@@ -5,7 +5,17 @@
 				"className": "net.anotheria.moskito.core.threshold.alerts.notificationprovider.LogFileNotificationProvider",
 				"appenderName": "MoskitoAlert",
 				"guardedStatus": "GREEN"
-			}
+			},
+          {
+            "name" : "MailNotificationProvider",
+            "configurationName" : "mail",
+            "className" : "net.anotheria.moskito.extensions.notificationproviders.MailNotificationProvider",
+            "recipients": "leon@anotheria.net",
+            "textTemplatePath": "thresholdAlertTemplate.txt",
+            "htmlTemplatePath": "thresholdAlertTemplate.html"
+
+
+          }
 /* Uncomment (and add a comma at the end of the previous block) if you want sms notifications. You'll need an account too.
             {
                 "className": "net.anotheria.moskito.extensions.notificationproviders.BulkSMSNotificationProvider",
