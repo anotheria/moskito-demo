@@ -100,6 +100,12 @@
 		  <version>${moskito.version}</version>
 	  </dependency>
 	  <!-- /MoSKito Inspect REST API -->
+	  <!-- MoSKito notification providers for email. -->
+	  <dependency>
+		  <groupId>net.anotheria</groupId>
+		  <artifactId>moskito-notification-providers</artifactId>
+		  <version>${moskito.version}</version>
+	  </dependency>
 
 	  <!-- moskito saas plugin for demo-of saas (default disabled) -->
 	  <!--
