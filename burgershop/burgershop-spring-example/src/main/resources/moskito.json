@@ -342,6 +342,21 @@
         }
       },
       {
+        "name": "Shop Response",
+        "@minValue": {
+          "constant": 0
+        },
+        "@currentValue": {
+          "producerName": "ShopService",
+          "statName": "placeOrder",
+          "valueName": "avg",
+          "intervalName": "1m"
+        },
+        "@maxValue": {
+          "constant": "1000"
+        }
+      },
+      {
         "name": "SysLoad",
         "caption": "System CPU Load",
         "@minValue": {
