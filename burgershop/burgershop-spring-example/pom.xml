@@ -34,12 +34,18 @@
 				</exclusion>
 			</exclusions>
       </dependency>
-      <dependency>
-          <groupId>javax.servlet</groupId>
-          <artifactId>servlet-api</artifactId>
-          <version>2.5</version>
-          <scope>provided</scope>
-      </dependency>
+	  <dependency>
+		  <groupId>javax.servlet</groupId>
+		  <artifactId>javax.servlet-api</artifactId>
+		  <version>3.1.0</version>
+		  <scope>provided</scope>
+	  </dependency>
+	  <dependency>
+		  <groupId>javax.servlet.jsp</groupId>
+		  <artifactId>javax.servlet.jsp-api</artifactId>
+		  <version>2.3.1</version>
+		  <scope>provided</scope>
+	  </dependency>
 
       <dependency>
           <groupId>org.slf4j</groupId>
@@ -72,11 +78,12 @@
       </dependency>
 
       <!-- Enabling MoSKito Inspect Embedded -->
+<!--
       <dependency>
           <groupId>net.anotheria</groupId>
           <artifactId>moskito-inspect-remote</artifactId>
           <version>${moskito.version}</version>
-      </dependency>
+      </dependency>-->
 <!--- -->
       <dependency>
           <groupId>net.anotheria</groupId>
@@ -198,6 +205,15 @@
                     </webResources>
                 </configuration>
             </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
 <!-- -->
 
         </plugins>
