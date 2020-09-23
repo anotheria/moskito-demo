@@ -26,6 +26,11 @@
         <url-pattern>*.html</url-pattern>
     </servlet-mapping>
 
+	<filter-mapping>
+		<filter-name>MoSKitoControlEndpoint</filter-name>
+		<url-pattern>/moskito-control-agent/*</url-pattern>
+	</filter-mapping>
+
 	<listener>
 		<listener-class>org.moskito.demo.burgershop.burgershopspring.ui.BurgershopSessionListener</listener-class>
 	</listener>
