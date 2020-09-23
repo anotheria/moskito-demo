@@ -1,12 +1,18 @@
 {
-	"@thresholdsAlertsConfig": {
+  //setup custom intervals if you wish
+/*  "intervals": [
+    "5m",
+    "15m",
+    "snapshot"
+  ],*/
+  "@thresholdsAlertsConfig": {
 		"@notificationProviders": [
 			{
 				"className": "net.anotheria.moskito.core.threshold.alerts.notificationprovider.LogFileNotificationProvider",
 				"appenderName": "MoskitoAlert",
 				"guardedStatus": "GREEN"
 			},
-          {
+          /*{
             "name" : "MailNotificationProvider",
             "configurationName" : "mail",
             "className" : "net.anotheria.moskito.extensions.notificationproviders.MailNotificationProvider",
@@ -15,7 +21,7 @@
             "htmlTemplatePath": "thresholdAlertTemplate.html"
 
 
-          }
+          } */
 /* Uncomment (and add a comma at the end of the previous block) if you want sms notifications. You'll need an account too.
             {
                 "className": "net.anotheria.moskito.extensions.notificationproviders.BulkSMSNotificationProvider",
@@ -42,6 +48,10 @@
 			"toleratedNumberOfItems": 550
 		}
 	},
+
+  "@killSwitch": {
+    "disableMetricCollection": false
+  },
 
     "@thresholdsConfig": {
         "@thresholds": [
@@ -602,6 +612,42 @@
 
   },
 
+  "@loadFactorsConfig": {
+    "@factors": [
+      {
+        "name": "ShopController2ServiceREQ",
+        "metric": "req",
+        "interval": "default",
+        "@left": {
+          "producerName": "OrderController",
+          "category": "",
+          "subsystem": ""
+        },
+        "@right": {
+          "producerName": "",
+          "subsystem": "",
+          "category": "service"
+        }
+      },
+      {
+        "name": "ShopService2NotificationTime",
+        "metric": "req",
+        "interval": "1m",
+        "@left": {
+          "producerName": "ShopService",
+          "category": "",
+          "subsystem": ""
+        },
+        "@right": {
+          "producerName": "NotificationService",
+          "subsystem": "",
+          "category": ""
+        }
+      }
+
+    ]
+  },
+
 
   "@tracingConfig": {
     "tracingEnabled": true,
@@ -665,6 +711,16 @@
       }
     ],
     "tagHistorySize": 10
+  },
+"@builtinProducersConfig": {
+    "javaMemoryProducers": true,
+    "javaMemoryPoolProducers": true,
+    "javaThreadingProducers": true,
+    "osProducer": true,
+    "runtimeProducer": true,
+    "mbeanProducers": true,
+    "gcProducer": true,
+    "errorProducer": true
   }
 
 }
