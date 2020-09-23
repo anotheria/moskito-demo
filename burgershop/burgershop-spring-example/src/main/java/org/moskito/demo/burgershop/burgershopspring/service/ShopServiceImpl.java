@@ -5,6 +5,8 @@ import net.anotheria.moskito.aop.annotation.TagParameter;
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducer;
 import net.anotheria.moskito.core.dynamic.OnDemandStatsProducerException;
 import net.anotheria.moskito.core.registry.ProducerRegistryFactory;
+import org.moskito.demo.burgershop.burgershopspring.service.kitchen.KitchenService;
+import org.moskito.demo.burgershop.burgershopspring.service.kitchen.KitchenServiceException;
 import org.moskito.demo.burgershop.burgershopspring.service.stats.SalesStats;
 import org.moskito.demo.burgershop.burgershopspring.service.stats.SalesStatsFactory;
 import org.slf4j.Logger;
@@ -20,22 +22,24 @@ import java.util.List;
  * @author lrosenberg
  * @since 16.11.13 22:47
  */
-@Monitor(producerId="ShopService")
+@Monitor(producerId="ShopService", category = "service")
 public class ShopServiceImpl implements ShopService {
 
-	private LinkedList<ShopableItem> items;
+	private final LinkedList<ShopableItem> items;
 
-	private static Logger log = LoggerFactory.getLogger(ShopServiceImpl.class);
+	private static final Logger log = LoggerFactory.getLogger(ShopServiceImpl.class);
 
 	//step 2 -> counters
-	private OrderCounter counter = new OrderCounter();
-	private IngredientCounter ingredientCounter = new IngredientCounter();
+	private final OrderCounter counter = new OrderCounter();
+	private final IngredientCounter ingredientCounter = new IngredientCounter();
 
 	//step 3 - own producer
-	private OnDemandStatsProducer<SalesStats> salesProducer;
+	private final OnDemandStatsProducer<SalesStats> salesProducer;
 
 	@Autowired
 	private NotificationService notificationService;
+
+	@Autowired KitchenService kitchenService;
 
 	public ShopServiceImpl(){
 		items = new LinkedList<>();
@@ -94,6 +98,14 @@ public class ShopServiceImpl implements ShopService {
 			}
 		}
 
+		//place order in the kitchen
+		//this is the demo for CountByReturnValue annotation.
+		try {
+			kitchenService.scheduleForProduction(order);
+		}catch (KitchenServiceException e){
+			//we ignore this exception, since its only for demonstration purposes.
+		}
+
 		//now prepare notification.
 		sendNotification(customerId, order.toString());
 
@@ -118,4 +130,5 @@ public class ShopServiceImpl implements ShopService {
 		}
 		throw new InvalidIngredientException("No such ingridient item: "+name);
 	}
+
 }

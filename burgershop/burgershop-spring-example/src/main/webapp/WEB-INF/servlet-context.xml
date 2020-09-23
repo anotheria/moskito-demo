@@ -19,5 +19,6 @@
 
     <bean class="org.moskito.demo.burgershop.burgershopspring.service.ShopServiceImpl" id="ShopService"/>
 	<bean class="org.moskito.demo.burgershop.burgershopspring.service.NotificationServiceImpl" id="NotificationService"/>
+	<bean class="org.moskito.demo.burgershop.burgershopspring.service.kitchen.KitchenServiceImpl" id="KitchenService"/>
 
 </beans>
