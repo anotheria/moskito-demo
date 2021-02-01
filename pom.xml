@@ -31,7 +31,8 @@
 		<module>burgershop</module>
 		<module>daemon</module>
 		<module>recipes</module>
-	</modules>
+        <module>spring-boot</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
