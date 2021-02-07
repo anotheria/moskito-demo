@@ -654,7 +654,8 @@
     "loggingEnabled": true,
     "inspectEnabled": true,
     "maxTraces": 20,
-    "shrinkingStrategy": "KEEPLONGEST"
+    "shrinkingStrategy": "KEEPLONGEST",
+    "@tracers": ["ShopService"]
   },
 
   "@errorHandlingConfig": {
