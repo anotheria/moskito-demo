@@ -1,10 +1,11 @@
 package org.moskito.demo.burgershop.burgershopspring.ui;
 
+import net.anotheria.moskito.aop.annotation.Monitor;
+import net.anotheria.moskito.aop.annotation.UserActivity;
+import net.anotheria.util.NumberUtils;
 import org.moskito.demo.burgershop.burgershopspring.service.Order;
 import org.moskito.demo.burgershop.burgershopspring.service.ShopService;
 import org.moskito.demo.burgershop.burgershopspring.service.ShopableItem;
-import net.anotheria.moskito.aop.annotation.Monitor;
-import net.anotheria.util.NumberUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,10 @@ public class OrderController {
 	@Autowired
 	private ShopService service;
 
-	private static Logger log = LoggerFactory.getLogger(OrderController.class);
+	private static final Logger log = LoggerFactory.getLogger(OrderController.class);
 
 	@RequestMapping(value = "/order.html")
+	@UserActivity(name="order_placed")
 	public String order(HttpServletRequest request, @RequestParam()String choice1, @RequestParam String choice2, @RequestParam String choice3){
 
 		log.debug("Incoming order "+choice1+", "+choice2+", "+choice3);

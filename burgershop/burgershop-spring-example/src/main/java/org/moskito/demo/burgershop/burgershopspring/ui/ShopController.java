@@ -1,5 +1,6 @@
 package org.moskito.demo.burgershop.burgershopspring.ui;
 
+import net.anotheria.moskito.aop.annotation.UserActivity;
 import org.moskito.demo.burgershop.burgershopspring.service.Category;
 import org.moskito.demo.burgershop.burgershopspring.service.ShopService;
 import org.moskito.demo.burgershop.burgershopspring.service.ShopableItem;
@@ -25,12 +26,13 @@ import java.util.List;
 @Monitor(category="controller")
 public class ShopController {
 
-	private static Logger log = LoggerFactory.getLogger(ShopController.class);
+	private static final Logger log = LoggerFactory.getLogger(ShopController.class);
 
 	@Autowired
 	private ShopService service;
 
 	@RequestMapping(value = "/shop.html")
+	@UserActivity(name="shopvisit")
 	public String enterShop(HttpServletRequest request){
 
 		List<ShopableItem> items = service.getShopableItems();
