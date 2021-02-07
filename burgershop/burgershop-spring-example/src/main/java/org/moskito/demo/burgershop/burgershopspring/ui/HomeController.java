@@ -1,6 +1,7 @@
 package org.moskito.demo.burgershop.burgershopspring.ui;
 
 import net.anotheria.moskito.aop.annotation.Monitor;
+import net.anotheria.moskito.aop.annotation.UserActivity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Monitor(category="controller")
 public class HomeController {
 	@RequestMapping(value = "/")
+	@UserActivity(name="landing")
 	public String home() {
 		System.out.println("HomeController: Passing through...");
 		return "index";
