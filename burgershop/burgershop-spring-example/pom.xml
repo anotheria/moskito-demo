@@ -14,6 +14,16 @@
 
   <dependencies>
       <dependency>
+          <groupId>org.moskito</groupId>
+          <artifactId>moskito-central-embedded-connector</artifactId>
+          <version>1.1.0</version>
+      </dependency>
+      <dependency>
+          <groupId>org.moskito</groupId>
+          <artifactId>moskito-central-storages</artifactId>
+          <version>1.1.0</version>
+      </dependency>
+      <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-web</artifactId>
           <version>${spring.version}</version>
@@ -78,13 +88,13 @@
       </dependency>
 
       <!-- Enabling MoSKito Inspect Embedded -->
-<!--
+
       <dependency>
           <groupId>net.anotheria</groupId>
           <artifactId>moskito-inspect-remote</artifactId>
           <version>${moskito.version}</version>
-      </dependency>-->
-<!--- -->
+      </dependency>
+
       <dependency>
           <groupId>net.anotheria</groupId>
           <artifactId>moskito-inspect-embedded</artifactId>
@@ -122,6 +132,11 @@
 		  <version>${moskito.version}</version>
 	  </dependency>
 		-->
+      <dependency>
+          <groupId>org.moskito</groupId>
+          <artifactId>moskito-control-agent-http-endpoint</artifactId>
+          <version>1.2.2</version>
+      </dependency>
 
 
   </dependencies>

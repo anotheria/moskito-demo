@@ -35,5 +35,7 @@
 		<listener-class>org.moskito.demo.burgershop.burgershopspring.ui.BurgershopSessionListener</listener-class>
 	</listener>
 
-
+    <listener>
+        <listener-class>net.anotheria.moskito.webui.embedded.StartMoSKitoInspectBackendForRemoteListener</listener-class>
+    </listener>
 </web-app>
