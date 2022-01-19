@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="001" author="mdemydovych">
+        <createTable tableName="rates" schemaName="public">
+            <column type="INTEGER" name="id" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column type="VARCHAR(20)" name="date"/>
+            <column type="VARCHAR(20)" name="time"/>
+            <column type="INTEGER" name="digital_code"/>
+            <column type="VARCHAR(50)" name="literal_code"/>
+            <column type="INTEGER" name="number"/>
+            <column type="VARCHAR(50)" name="currency_name"/>
+            <column type="DECIMAL(10,2)" name="official_course"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="002" author="mdemydovych">
+        <loadData file="data/exchange_rates.csv"
+                  separator=","
+                  relativeToChangelogFile="true"
+                  tableName="rates"
+                  schemaName="public"/>
+    </changeSet>
+</databaseChangeLog>
