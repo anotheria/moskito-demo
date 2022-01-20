@@ -2,7 +2,7 @@ burgershop
 ==========
 
 Burgershop is a small example web-app to demonstrate basic moskito features.
-There are multiple versions of the burgershop here. Keep in mind, *burgershop-spring-example* is the main version.
+There are multiple versions of the burgershop here. Keep in mind, **burgershop-spring-example** is the main version.
 
  * burgershop-spring-example - base example with annotations aop, counters, custom producers, tags.
  * burgershop-ejb-example - burgershop for ejb. (JBoss/Wildfly or Glassfish)
