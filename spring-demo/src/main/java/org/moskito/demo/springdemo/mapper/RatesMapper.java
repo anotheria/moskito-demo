@@ -1,7 +1,7 @@
-package com.example.springdemo.mapper;
+package org.moskito.demo.springdemo.mapper;
 
-import com.example.springdemo.domain.Rates;
-import com.example.springdemo.model.RatesDto;
+import org.moskito.demo.springdemo.domain.Rates;
+import org.moskito.demo.springdemo.model.RatesDto;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 

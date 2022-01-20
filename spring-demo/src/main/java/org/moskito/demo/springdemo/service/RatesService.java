@@ -1,9 +1,9 @@
-package com.example.springdemo.service;
+package org.moskito.demo.springdemo.service;
 
-import com.example.springdemo.domain.Rates;
-import com.example.springdemo.mapper.RatesMapper;
-import com.example.springdemo.model.RatesDto;
-import com.example.springdemo.repository.RatesRepository;
+import org.moskito.demo.springdemo.domain.Rates;
+import org.moskito.demo.springdemo.mapper.RatesMapper;
+import org.moskito.demo.springdemo.model.RatesDto;
+import org.moskito.demo.springdemo.repository.RatesRepository;
 import lombok.RequiredArgsConstructor;
 import net.anotheria.moskito.aop.annotation.Count;
 import net.anotheria.moskito.aop.annotation.Monitor;

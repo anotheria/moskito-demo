@@ -1,7 +1,7 @@
-package com.example.springdemo.web;
+package org.moskito.demo.springdemo.web;
 
-import com.example.springdemo.model.RatesDto;
-import com.example.springdemo.service.RatesService;
+import org.moskito.demo.springdemo.model.RatesDto;
+import org.moskito.demo.springdemo.service.RatesService;
 import lombok.RequiredArgsConstructor;
 import net.anotheria.moskito.aop.annotation.Monitor;
 import org.springframework.web.bind.annotation.*;

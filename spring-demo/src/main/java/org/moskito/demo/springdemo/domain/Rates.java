@@ -1,4 +1,4 @@
-package com.example.springdemo.domain;
+package org.moskito.demo.springdemo.domain;
 
 import lombok.Data;
 
