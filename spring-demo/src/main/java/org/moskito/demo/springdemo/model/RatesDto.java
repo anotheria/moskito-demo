@@ -1,4 +1,4 @@
-package com.example.springdemo.model;
+package org.moskito.demo.springdemo.model;
 
 import lombok.Data;
 
