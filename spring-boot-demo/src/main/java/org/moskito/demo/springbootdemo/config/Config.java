@@ -1,4 +1,4 @@
-package org.moskito.demo.springdemo.config;
+package org.moskito.demo.springbootdemo.config;
 
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.Configuration;
