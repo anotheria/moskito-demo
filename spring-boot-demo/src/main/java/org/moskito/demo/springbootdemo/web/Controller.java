@@ -1,10 +1,13 @@
-package org.moskito.demo.springdemo.web;
+package org.moskito.demo.springbootdemo.web;
 
-import org.moskito.demo.springdemo.model.RatesDto;
-import org.moskito.demo.springdemo.service.RatesService;
 import lombok.RequiredArgsConstructor;
 import net.anotheria.moskito.aop.annotation.Monitor;
-import org.springframework.web.bind.annotation.*;
+import org.moskito.demo.springbootdemo.model.Rates;
+import org.moskito.demo.springbootdemo.service.RatesService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -39,7 +42,7 @@ public class Controller {
     }
 
     @GetMapping("/rates")
-    public List<RatesDto> getRates() {
+    public List<Rates> getRates() {
         return ratesService.findAll();
     }
 }
