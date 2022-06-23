@@ -16,7 +16,7 @@
     <properties>
         <start-class>org.moskito.demo.springboot.DemoApplication</start-class>
         <moskito.version>2.10.1</moskito.version>
-        <spring-boot.version>2.6.2</spring-boot.version>
+        <spring-boot.version>2.6.6</spring-boot.version>
     </properties>
 
     <dependencies>
