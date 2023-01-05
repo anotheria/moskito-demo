@@ -13,7 +13,7 @@
     <name>moskito demonstration package</name>
     <packaging>pom</packaging>
     <properties>
-    	<moskito.version>3.1.1-SNAPSHOT</moskito.version>
+    	<moskito.version>3.2.1-SNAPSHOT</moskito.version>
 		<moskito.control.agent.version>3.0.1-SNAPSHOT</moskito.control.agent.version>
 		<aspectj.version>1.8.7</aspectj.version>
 		<aspectj-maven-plugin.version>1.8</aspectj-maven-plugin.version>
