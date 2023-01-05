@@ -13,8 +13,8 @@
     <name>moskito demonstration package</name>
     <packaging>pom</packaging>
     <properties>
-    	<moskito.version>2.10.2-SNAPSHOT</moskito.version>
-		<moskito.control.agent.version>3.0.0</moskito.control.agent.version>
+    	<moskito.version>3.1.1-SNAPSHOT</moskito.version>
+		<moskito.control.agent.version>3.0.1-SNAPSHOT</moskito.control.agent.version>
 		<aspectj.version>1.8.7</aspectj.version>
 		<aspectj-maven-plugin.version>1.8</aspectj-maven-plugin.version>
 		<aspectj-maven-plugin.complianceLevel>1.8</aspectj-maven-plugin.complianceLevel>
@@ -53,7 +53,7 @@
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-maf</artifactId>
-                <version>2.1.1</version>
+                <version>3.0.0</version>
             </dependency>
             <dependency>
                 <groupId>net.anotheria</groupId>
@@ -125,6 +125,11 @@
             <dependency>
                 <groupId>org.moskito</groupId>
                 <artifactId>moskito-control-agent</artifactId>
+                <version>${moskito.control.agent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.moskito</groupId>
+                <artifactId>moskito-control-agent-http-endpoint</artifactId>
                 <version>${moskito.control.agent.version}</version>
             </dependency>
 
