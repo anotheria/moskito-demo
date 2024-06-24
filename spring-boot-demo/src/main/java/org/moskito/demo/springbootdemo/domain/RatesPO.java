@@ -1,4 +1,4 @@
-package org.moskito.demo.springdemo.domain;
+package org.moskito.demo.springbootdemo.domain;
 
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @Data
 @Table(name = "rates")
 @Entity
-public class Rates {
+public class RatesPO {
 
     @Id
     @Column(name = "id")

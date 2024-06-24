@@ -1,13 +1,11 @@
-package org.moskito.demo.springdemo.model;
+package org.moskito.demo.springbootdemo.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import java.math.BigDecimal;
 
 @Data
-public class RatesDto {
+public class Rates {
 
     private Integer id;
 
