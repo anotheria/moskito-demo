@@ -3,26 +3,15 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>moskito-demo-burgershop-spring</artifactId>
   <packaging>war</packaging>
-  <version>1.0.0-SNAPSHOT</version>
   <name>Burgershop Spring Example Webapp</name>
 
 	<parent>
 		<groupId>org.moskito</groupId>
 		<artifactId>moskito-demo-burgershop</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>2.0.0-SNAPSHOT</version>
 	</parent>
 
   <dependencies>
-      <dependency>
-          <groupId>org.moskito</groupId>
-          <artifactId>moskito-central-embedded-connector</artifactId>
-          <version>1.1.0</version>
-      </dependency>
-      <dependency>
-          <groupId>org.moskito</groupId>
-          <artifactId>moskito-central-storages</artifactId>
-          <version>1.1.0</version>
-      </dependency>
       <dependency>
           <groupId>org.springframework</groupId>
           <artifactId>spring-web</artifactId>
@@ -36,13 +25,7 @@
       <dependency>
           <groupId>net.anotheria</groupId>
           <artifactId>ano-tags</artifactId>
-          <version>2.1.0</version>
-			<exclusions>
-				<exclusion>
-					<groupId>net.anotheria</groupId>
-					<artifactId>ano-util</artifactId>
-				</exclusion>
-			</exclusions>
+          <version>4.0.0</version>
       </dependency>
 	  <dependency>
 		  <groupId>javax.servlet</groupId>
@@ -209,7 +192,7 @@
 
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.1</version>
+                <version>3.4.0</version>
                 <configuration>
                     <webResources>
                         <resource>
@@ -220,12 +203,12 @@
             </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${source-version}</source>
+                    <target>${target-version}</target>
+                </configuration>
 			</plugin>
 <!-- -->
 

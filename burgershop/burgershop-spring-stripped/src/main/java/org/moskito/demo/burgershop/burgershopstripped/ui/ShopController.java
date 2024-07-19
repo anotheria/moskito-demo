@@ -1,5 +1,6 @@
 package org.moskito.demo.burgershop.burgershopstripped.ui;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.moskito.demo.burgershop.burgershopstripped.service.Category;
 import org.moskito.demo.burgershop.burgershopstripped.service.ShopService;
 import org.moskito.demo.burgershop.burgershopstripped.service.ShopableItem;
@@ -9,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

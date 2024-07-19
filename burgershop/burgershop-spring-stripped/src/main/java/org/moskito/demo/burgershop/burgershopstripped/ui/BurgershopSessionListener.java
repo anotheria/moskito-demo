@@ -1,7 +1,8 @@
 package org.moskito.demo.burgershop.burgershopstripped.ui;
 
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
+import jakarta.servlet.http.HttpSessionEvent;
+import jakarta.servlet.http.HttpSessionListener;
+
 import java.util.Random;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Random;
  * @author lrosenberg
  * @since 22.05.17 07:05
  */
-public class BurgershopSessionListener implements HttpSessionListener{
+public class BurgershopSessionListener implements HttpSessionListener {
 
 	private static Random rnd = new Random(System.nanoTime());
 

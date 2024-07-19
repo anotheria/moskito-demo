@@ -1,5 +1,6 @@
 package org.moskito.demo.burgershop.burgershopstripped.ui;
 
+import jakarta.servlet.http.HttpServletRequest;
 import net.anotheria.util.NumberUtils;
 import org.moskito.demo.burgershop.burgershopstripped.service.Order;
 import org.moskito.demo.burgershop.burgershopstripped.service.ShopService;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedList;
 
 /**

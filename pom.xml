@@ -3,26 +3,26 @@
     <parent>
         <groupId>net.anotheria</groupId>
         <artifactId>parent</artifactId>
-        <version>2.13</version>
+        <version>4.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.moskito</groupId>
     <artifactId>moskito-demo</artifactId>
-  	<version>1.0.0-SNAPSHOT</version>
+  	<version>2.0.0-SNAPSHOT</version>
     <name>moskito demonstration package</name>
     <packaging>pom</packaging>
     <properties>
-    	<moskito.version>3.2.7</moskito.version>
-		<moskito.control.agent.version>3.1.1</moskito.control.agent.version>
-		<aspectj.version>1.8.7</aspectj.version>
-		<aspectj-maven-plugin.version>1.8</aspectj-maven-plugin.version>
-		<aspectj-maven-plugin.complianceLevel>1.8</aspectj-maven-plugin.complianceLevel>
-		<source-version>1.8</source-version>
-		<target-version>1.8</target-version>
+    	<moskito.version>4.0.2</moskito.version>
+		<moskito.control.agent.version>4.0.0</moskito.control.agent.version>
+		<aspectj.version>1.9.21</aspectj.version>
+        <aspectj-maven-plugin.version>1.14.0</aspectj-maven-plugin.version>
+        <aspectj-maven-plugin.complianceLevel>17</aspectj-maven-plugin.complianceLevel>
+		<source-version>11</source-version>
+		<target-version>11</target-version>
 
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 
     </properties>
 
@@ -38,43 +38,43 @@
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>configureme</artifactId>
-                <version>2.4.0</version>
+                <version>4.0.0</version>
             </dependency>
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-util</artifactId>
-                <version>2.1.8</version>
+                <version>4.0.0</version>
             </dependency>
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-comm</artifactId>
-                <version>2.1.1</version>
+                <version>4.0.0</version>
             </dependency>
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-maf</artifactId>
-                <version>3.0.0</version>
+                <version>4.0.0</version>
             </dependency>
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-tags</artifactId>
-                <version>2.1.1</version>
+                <version>4.0.0</version>
             </dependency>
             <!-- for moskito sql -->
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-db</artifactId>
-                <version>2.1.2</version>
+                <version>4.0.0</version>
             </dependency>
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-plass</artifactId>
-                <version>2.1.2</version>
+                <version>4.0.0</version>
             </dependency>
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-prise</artifactId>
-                <version>2.2.0</version>
+                <version>4.0.0</version>
             </dependency>
             <dependency>
                 <groupId>commons-codec</groupId>
