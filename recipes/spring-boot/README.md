@@ -3,7 +3,7 @@ spring-boot-moskito-demo
 
 Spring boot demo project for MoSKito
 
-Demo is based on MoSKito version 2.10.1-SNAPSHOT
+Demo is based on MoSKito version 4.0.3 and Java21.
 
 How to run spring boot demo application:
 1) Via spring boot maven plugin:
@@ -20,11 +20,11 @@ How to run spring boot demo application:
         
     1.2 Run the command "mvn clean package spring-boot:repackage".
         
-    1.3 Go to the target folder and run "java -jar moskito-demo-spring-boot-0.0.1-SNAPSHOT-spring-boot.jar".
+    1.3 Go to the target folder and run "java -jar moskito-demo-spring-boot-2.0.0-SNAPSHOT-spring-boot.jar".
     
     1.4 Spring boot app will start on port 8080 and local registry will start on port 9250 (If this port is busy, another port will be selected. In order to find out which port was selected, you can look at the log of the org.distributeme.core.RMIRegistryUtil).
   
-    1.5 If you want to specify local registry port run "java -DlocalRmiRegistryPort=the_port_you_want_to_use -jar moskito-demo-spring-boot-0.0.1-SNAPSHOT-spring-boot.jar".
+    1.5 If you want to specify local registry port run "java -DlocalRmiRegistryPort=the_port_you_want_to_use -jar moskito-demo-spring-boot-2.0.0-SNAPSHOT-spring-boot.jar".
 
 3) Run moskito-inspect application (for details see https://anotheria.net/blog/msk/the-complete-moskito-integration-guide-step-1/).
 4) Enter localhost as host and your local registry post as port. Click connect.
