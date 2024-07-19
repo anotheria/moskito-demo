@@ -14,7 +14,7 @@
     <description>This example describes usage of spring boot application with moskito-inspect</description>
     <properties>
         <start-class>org.moskito.demo.springboot.DemoApplication</start-class>
-        <moskito.version>4.0.0</moskito.version>
+        <moskito.version>4.0.3</moskito.version>
         <spring-boot.version>3.3.2</spring-boot.version>
     </properties>
 
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>net.anotheria</groupId>
             <artifactId>moskito-springboot2</artifactId>
-            <version>4.0.3-SNAPSHOT</version>
+            <version>${moskito.version}</version>
         </dependency>
 
 
@@ -63,6 +63,11 @@
             <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
+		<dependency>
+            <groupId>ch.qos.logback</groupId>
+             <artifactId>logback-classic</artifactId>
+             <version>1.4.11</version>
+         </dependency>
     </dependencies>
 
     <build>
