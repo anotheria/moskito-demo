@@ -1,7 +1,7 @@
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-         version="3.0">
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
 
   <display-name>Burgershop Spring Example</display-name>
 
@@ -25,12 +25,12 @@
         <servlet-name>appServlet</servlet-name>
         <url-pattern>*.html</url-pattern>
     </servlet-mapping>
-
+	<!--
 	<filter-mapping>
 		<filter-name>MoSKitoControlEndpoint</filter-name>
 		<url-pattern>/moskito-control-agent/*</url-pattern>
 	</filter-mapping>
-
+-->
 	<listener>
 		<listener-class>org.moskito.demo.burgershop.burgershopspring.ui.BurgershopSessionListener</listener-class>
 	</listener>

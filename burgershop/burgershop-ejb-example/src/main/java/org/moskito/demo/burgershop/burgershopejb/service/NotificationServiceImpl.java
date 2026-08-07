@@ -2,7 +2,7 @@ package org.moskito.demo.burgershop.burgershopejb.service;
 
 import net.anotheria.moskito.aop.annotation.Monitor;
 
-import javax.ejb.Singleton;
+import jakarta.ejb.Singleton;
 
 /**
  * Implementation of {@link NotificationService}.

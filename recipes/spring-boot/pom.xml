@@ -14,7 +14,7 @@
     <description>This example describes usage of spring boot application with moskito-inspect</description>
     <properties>
         <start-class>org.moskito.demo.springboot.DemoApplication</start-class>
-        <moskito.version>4.0.3</moskito.version>
+        <moskito.version>4.0.4-SNAPSHOT</moskito.version>
         <spring-boot.version>3.3.2</spring-boot.version>
     </properties>
 

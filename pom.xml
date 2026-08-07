@@ -3,7 +3,7 @@
     <parent>
         <groupId>net.anotheria</groupId>
         <artifactId>parent</artifactId>
-        <version>4.0</version>
+        <version>4.5</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -13,16 +13,16 @@
     <name>moskito demonstration package</name>
     <packaging>pom</packaging>
     <properties>
-    	<moskito.version>4.0.2</moskito.version>
-		<moskito.control.agent.version>4.0.0</moskito.control.agent.version>
+    	<moskito.version>5.0.1-SNAPSHOT</moskito.version>
+		<moskito.control.agent.version>4.1.0</moskito.control.agent.version>
 		<aspectj.version>1.9.21</aspectj.version>
         <aspectj-maven-plugin.version>1.14.0</aspectj-maven-plugin.version>
         <aspectj-maven-plugin.complianceLevel>17</aspectj-maven-plugin.complianceLevel>
-		<source-version>11</source-version>
-		<target-version>11</target-version>
+		<source-version>21</source-version>
+		<target-version>21</target-version>
 
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
 
     </properties>
 
@@ -38,12 +38,12 @@
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>configureme</artifactId>
-                <version>4.0.0</version>
+                <version>4.1.1</version>
             </dependency>
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-util</artifactId>
-                <version>4.0.0</version>
+                <version>4.0.7</version>
             </dependency>
             <dependency>
                 <groupId>net.anotheria</groupId>
@@ -53,12 +53,12 @@
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-maf</artifactId>
-                <version>4.0.0</version>
+                <version>4.1.0</version>
             </dependency>
             <dependency>
                 <groupId>net.anotheria</groupId>
                 <artifactId>ano-tags</artifactId>
-                <version>4.0.0</version>
+                <version>4.0.1</version>
             </dependency>
             <!-- for moskito sql -->
             <dependency>

@@ -1,7 +1,7 @@
 package org.moskito.demo.burgershop.burgershopspring.ui;
 
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
+import jakarta.servlet.http.HttpSessionEvent;
+import jakarta.servlet.http.HttpSessionListener;
 import java.util.Random;
 
 /**

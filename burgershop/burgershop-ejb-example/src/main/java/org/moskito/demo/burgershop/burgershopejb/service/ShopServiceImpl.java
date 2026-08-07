@@ -11,8 +11,8 @@ import org.moskito.demo.burgershop.burgershopejb.service.stats.ThresholdProducer
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ejb.EJB;
-import javax.ejb.Singleton;
+import jakarta.ejb.EJB;
+import jakarta.ejb.Singleton;
 import java.util.LinkedList;
 import java.util.List;
 

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.LinkedList;
 
 /**
@@ -32,7 +32,7 @@ public class OrderController {
 
 	@RequestMapping(value = "/order.html")
 	@UserActivity(name="order_placed")
-	public String order(HttpServletRequest request, @RequestParam()String choice1, @RequestParam String choice2, @RequestParam String choice3){
+	public String order(HttpServletRequest request, @RequestParam("choice1")String choice1, @RequestParam("choice2") String choice2, @RequestParam("choice3") String choice3){
 
 		log.debug("Incoming order "+choice1+", "+choice2+", "+choice3);
 		String customerId = (String)request.getSession().getAttribute("customerId");

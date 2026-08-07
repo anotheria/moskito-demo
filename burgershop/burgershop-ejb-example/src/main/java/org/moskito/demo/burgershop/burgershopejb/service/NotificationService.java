@@ -1,6 +1,6 @@
 package org.moskito.demo.burgershop.burgershopejb.service;
 
-import javax.ejb.Local;
+import jakarta.ejb.Local;
 
 /**
  * An interface for a notification service. It is used to demonstrate a possible bug.
